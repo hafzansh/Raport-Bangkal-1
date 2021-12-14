@@ -1,0 +1,18 @@
+﻿<Window x:Class="Raport.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raport"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid Name="dgr" Margin="0,0,0,222" />
+
+        <Button Content="Button" HorizontalAlignment="Left" Margin="572,293,0,0" VerticalAlignment="Top" Height="81" Width="156" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="354,284,0,0" VerticalAlignment="Top" Height="90" Width="169" Click="Button_Click_1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="126,329,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+        <Label Name="timer" Content="Label" HorizontalAlignment="Left" Margin="126,284,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
