@@ -8,15 +8,20 @@
 
   <ItemGroup>
     <None Remove="Resources\logo.png" />
+    <None Remove="Resources\save.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\save.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="itext7" Version="7.2.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
   </ItemGroup>

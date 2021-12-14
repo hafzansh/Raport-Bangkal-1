@@ -2,6 +2,38 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <!-- Default Icon -->
+    <DrawingImage x:Key="disket">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V670 H639.18 V0 H0 Z">
+                <DrawingGroup.Transform>
+                    <TranslateTransform X="446.7" Y="0" />
+                </DrawingGroup.Transform>
+                <DrawingGroup Opacity="1" Transform="1,0,0,1,-52.459,-191.18">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FF204A87" Geometry="F1 M639.18,670z M0,0z M70.997,191.18C60.714,191.18,52.459,199.4356,52.459,209.718L52.459,787.018 52.459,809.993 52.459,861.172 691.639,861.172 691.639,809.993 691.639,787.018 691.639,209.718C691.639,199.435,683.3834,191.18,673.101,191.18L71.0009999999999,191.18z" />
+                        <DrawingGroup Opacity="1" Transform="2.5352,0,0,2.5352,1201.9,-341.76">
+                            <GeometryDrawing Brush="#FFEEEEEC">
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry RadiusX="2.0203" RadiusY="2.0203" Rect="-446.7,229.51,12.768,10" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FFEEEEEC">
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry RadiusX="2.0203" RadiusY="2.0203" Rect="-220.71,229.51,12.768,10" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <GeometryDrawing Brush="#FFEEEEEC">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry RadiusX="5.1218" RadiusY="5.1218" Rect="119.44,209.75,505.22,363.52" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF888A85" Geometry="F1 M639.18,670z M0,0z M218.51,634.36C211.4993,634.36,205.913,640.0251,205.913,647.036L205.913,827.266C205.913,828.346,206.057,829.3562,206.30912,830.3557L206.30912,861.1737 548.55912,861.1737 548.55912,828.6127C548.60752,828.16131,548.55912,827.73051,548.55912,827.2659L548.55912,647.0359C548.55912,640.0252,542.97332,634.3599,535.96212,634.3599L218.51212,634.3599z M409.2,651.314L493.653,651.314C494.00769,651.314,494.28679,651.59309,494.28679,651.94779L494.28679,827.98779C494.28679,828.34248,494.00769,828.62158,493.653,828.62158L409.2,828.62158C408.84531,828.62158,408.56621,828.34248,408.56621,827.98779L408.56621,651.94779C408.56621,651.59309,408.84531,651.314,409.2,651.314z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
     <PathGeometry x:Key="DefaultIcon" Figures="M4,2L4,22 12.683594,22C12.387594,21.378,12.181078,20.707,12.080078,20L12.074219,20C12.026219,19.673 12,19.34 12,19 12,15.474 14.609,12.566078 18,12.080078 18.327,12.033078 18.66,12 19,12 19.34,12 19.673,12.033078 20,12.080078L20,8 14,2 4,2z M13,3.4550781L18.5,9 13,9 13,3.4550781z M19,14C16.25,14 14,16.25 14,19 14,21.75 16.25,24 19,24 21.75,24 24,21.75 24,19 24,16.25 21.75,14 19,14z M19,16C19.461147,16,19.892436,16.114019,20.283203,16.300781L16.300781,20.285156C16.113553,19.893994 16,19.461758 16,19 16,17.346 17.346,16 19,16z M21.699219,17.716797C21.885981,18.107564 22,18.538853 22,19 22,20.654 20.654,22 19,22 18.538242,22 18.106006,21.886447 17.714844,21.699219L21.699219,17.716797z"/>
 
     <!-- Menu Icon Left -->

@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:Raport"
         mc:Ignorable="d" Name="home"
         Title="MainWindow" Height="650" Width="1000"
@@ -12,6 +13,7 @@
         ResizeMode="NoResize" FontFamily="Poppins" MouseDown="home_MouseDown">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:Window1.Save}" Executed="SaveExecuted"/>
+        <CommandBinding Command="{x:Static local:Window1.Toggle}" Executed="ToggleExecuted"/>
     </Window.CommandBindings>
     <Border Background="{DynamicResource PrimaryBackgroundColor}"
             CornerRadius="8">
@@ -40,19 +42,19 @@
                             </Border.Background>
                         </Border>
 
-                        <Label Content="Poppins"
-                               Foreground="{DynamicResource PrimaryTextColor}"
+                        <Label Content="Raport K13"
+                               Foreground="{DynamicResource PrimaryBlueColor}"
                                FontWeight="Bold"
-                               FontSize="16"
+                               FontSize="25"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               Margin="60 0 0 0"/>
+                               Margin="50 0 0 0"/>
                     </Grid>
 
                     <!-- Start: MenuItem -->
                     <StackPanel Grid.Row="1" Margin="-1 40 0 20">
                         <Button x:Name="btnHome" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnHome_MouseEnter" MouseLeave="btnHome_MouseLeave" Click="btnHome_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource home}" IconWidth="16" Text="Home" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryLightGrayColor}" Icon="{DynamicResource home}" IconWidth="16" Text="Home" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnDashboard" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnDashboard_MouseEnter" MouseLeave="btnDashboard_MouseLeave" Click="btnDashboard_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="Dashboard" VerticalAlignment="Center"/>
@@ -96,7 +98,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="10,15,0,15" Height="30" Width="30">
+                <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="15,15,0,15" Height="30" Width="30">
                     <ToggleButton.Triggers>
                         <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                             <BeginStoryboard>
@@ -117,12 +119,19 @@
                     </ToggleButton.Triggers>
                 </ToggleButton>
 
-                <StackPanel Orientation="Horizontal" Margin="45,0,106,0">
-                    <Button x:Name="save" Content="Simpan" Click="Button_Click" IsEnabled="False" Height="20"/>
+                <StackPanel Background="Transparent" Orientation="Horizontal" Margin="45,0,106,0" MouseDown="StackPanel_MouseDown">
+                    <Button fa:Awesome.Content="Save" Style="{StaticResource IconButtonFA}"
+        TextElement.FontFamily="pack://application:,,,/FontAwesome.WPF;component/#FontAwesome" x:Name="save" Click="Button_Click" IsEnabled="False">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Simpan
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
 
                 </StackPanel>
                 <!-- Start: Button Close | Restore | Minimize -->
-                <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft" Width="142">
+                <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft" Width="142">
                     <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
                     <Button x:Name="btnRestore" Margin="5,0" Click="btnRestore_Click">
                         <Button.Style>
@@ -142,10 +151,18 @@
 
                 <Frame Grid.Row="1"
                        Name="fContainer"
-                       Margin="20"
+                       Margin="20,0,20,34"
                        NavigationUIVisibility="Hidden">
 
                 </Frame>
+                <StackPanel Grid.Row="1" Margin="0,0,0,0" Height="24" VerticalAlignment="Bottom">
+
+
+                    <Border BorderBrush="Red" CornerRadius="0,0,8,0" Background="{DynamicResource SecundaryBackgroundColor}">
+                        <Label HorizontalAlignment="Right" Name="lastSaved" VerticalAlignment="Center" Content="" Foreground="White"/>
+                    </Border>
+                </StackPanel>
+
 
 
             </Grid>

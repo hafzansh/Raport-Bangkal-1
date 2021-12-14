@@ -1,6 +1,7 @@
 ﻿using Raport.Helper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +21,10 @@ namespace Raport
     
     public partial class Window1 : Window
     {
+        long timeSaved = DateTime.UtcNow.Ticks;
         public static RoutedCommand Save = new RoutedCommand();
+        public static RoutedCommand Toggle = new RoutedCommand();
+        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         bool Home = true;
         bool dashboard, dasis = false;
         public Window1()
@@ -29,12 +33,95 @@ namespace Raport
             fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
             setConnection();
             Save.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
+            Toggle.InputGestures.Add(new KeyGesture(Key.Tab, ModifierKeys.Control));
+            
+        }
+        private void exitPrompt()
+        {
+            string msgtext = "Simpan data yang telah dirubah?";
+            string txt = "Raport K13 SDN Bangkal 1";
+            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("dataDisimpan");
+                    break;
+                case MessageBoxResult.No:
+                    Close();
+                    break;
+                case MessageBoxResult.Cancel:                    
+                    break;
+            }
+        }
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            savedTime();
+        }
+        private void savedTime()
+        {
+            const int SECOND = 1;
+            const int MINUTE = 60 * SECOND;
+            const int HOUR = 60 * MINUTE;
+            const int DAY = 24 * HOUR;
+            const int MONTH = 30 * DAY;
+            string a;
+            var ts = new TimeSpan(DateTime.UtcNow.Ticks - (Int64)timeSaved);
+            
+            double delta = Math.Abs(ts.TotalSeconds);
+
+            if (delta < 1 * MINUTE)
+
+                a = ts.Seconds == 1 ? "beberapa detik yang lalu" : "beberapa detik yang lalu";
+
+            else if (delta < 2 * MINUTE)
+                a = "Semenit yang lalu";
+
+            else if (delta < 45 * MINUTE)
+                a = ts.Minutes + " menit yang lalu";
+
+            else if (delta < 90 * MINUTE)
+                a = "Satu jam yang lalu";
+
+            else if (delta < 24 * HOUR)
+                a = ts.Hours + " jam yang lalu";
+
+            else if (delta < 48 * HOUR)
+                a = "Kemarin";
+
+            else if (delta < 30 * DAY)
+                a = ts.Days + " Hari yang lalu";
+
+            else if (delta < 12 * MONTH)
+            {
+                long months = Convert.ToInt64(Math.Floor((double)ts.Days / 30));
+                a = months <= 1 ? "1 Bulan yang lalu" : months + " Bulan yang lalu";
+            }
+            else
+            {
+                long years = Convert.ToInt64(Math.Floor((double)ts.Days / 365));
+                a = years <= 1 ? "1 Tahun yang lalu" : years + " Tahun yang lalu";
+            }
+
+            lastSaved.Content = "Terakhir disimpan, " + a;
         }
         private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (save.IsEnabled) { 
             save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             }
+        }
+        private void ToggleExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == true)
+            {
+                Tg_Btn.IsChecked = false;
+            }
+            else
+            {
+                Tg_Btn.IsChecked = true;
+            }
+
         }
         private void setConnection()
         {
@@ -78,7 +165,7 @@ namespace Raport
                 Popup.PlacementTarget = btnProducts;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Data SIswa";
+                Header.PopupText.Text = "Data Siswa";
             }
         }
 
@@ -226,7 +313,14 @@ namespace Raport
         // Start: Button Close | Restore | Minimize 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            if (save.IsEnabled)
+            {
+                exitPrompt();
+            }
+            else
+            {
+                Close();
+            }
         }
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)
@@ -245,20 +339,20 @@ namespace Raport
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
             Home = true;
             dasis = dashboard = false;
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Dashboard.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Uri("Pages/Dashboard.xaml", UriKind.RelativeOrAbsolute));
             dashboard = true;
             dasis = Home = false;
         }
         private void btnDasis_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Dasis.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new Uri("Pages/Dasis.xaml", UriKind.RelativeOrAbsolute));
             dasis = true;
             Home = dashboard = false;
         }
@@ -272,20 +366,43 @@ namespace Raport
             {
                 Connection.UpdateDB(Connection.adapter, Connection.dataset, Constants.dasis_title, Constants.dasis);
                 save.IsEnabled = false;
+                reCount();
             }
             else if (dashboard)
             {
+                
                 Connection.UpdateDB(Connection.adapter, Connection.dataset, Constants.mtk_title, Constants.mtk);
                 save.IsEnabled = false;
+                reCount();
+                
             }
         }
 
+        public void reCount()
+        {
+            timeSaved = DateTime.UtcNow.Ticks;
+            dispatcherTimer.Stop();
+            savedTime();            
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+            dispatcherTimer.Start();
+        }
 
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                if (WindowState == WindowState.Normal)
+                    WindowState = WindowState.Maximized;
+                else
+                    WindowState = WindowState.Normal;
+            }
+        }
 
         private void home_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+                DragMove();
         }        
     }
 }
