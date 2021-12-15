@@ -16,7 +16,22 @@
                     <DataGridTextColumn Header="Nama" Width="150" Binding="{Binding nama}"/>
                     <DataGridTextColumn Header="Tempat Lahir" Width="100" Binding="{Binding tempat_lahir}"/>
                     <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding tanggal_lahir}"/>
-                    <DataGridTextColumn Header="Jenis Kelamin" Width="70" Binding="{Binding jenis_kelamin}"/>
+                    <DataGridTemplateColumn Header="Jenis Kelamin" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding jenis_kelamin}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox SelectedValue="{Binding jenis_kelamin}" SelectedValuePath="Content">
+                                    <ComboBoxItem Content="Laki-laki"/>
+                                    <ComboBoxItem Content="Perempuan"/>
+                                </ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="Jenis Kelamin" Width="70" Binding="{Binding jenis_kelamin}"/>-->
                     <DataGridTextColumn Header="Agama" Width="60" Binding="{Binding agama}"/>
                     <DataGridTextColumn Header="Alamat" Width="150" Binding="{Binding alamat}"/>
                     <DataGridTextColumn Header="Nama Ayah" Width="130" Binding="{Binding nama_ayah}"/>

@@ -29,9 +29,9 @@ namespace Raport
         bool dashboard, dasis = false;
         public Window1()
         {
-            InitializeComponent();
-            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            InitializeComponent();            
             setConnection();
+            btnHome.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Save.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
             Toggle.InputGestures.Add(new KeyGesture(Key.Tab, ModifierKeys.Control));
             
@@ -339,24 +339,28 @@ namespace Raport
         }
         // End: Button Close | Restore | Minimize
 
+        private void btnAction(String title,String uri)
+        {
+            fContainer.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
+            appTitle.Content = title;
+            Home = dasis = dashboard = false;
+        }
+
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
-            Home = true;
-            dasis = dashboard = false;
+            btnAction("Home", "Pages/Home.xaml");            
+            Home = true;            
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new Uri("Pages/Dashboard.xaml", UriKind.RelativeOrAbsolute));
+            btnAction("Dashboard", "Pages/Dashboard.xaml");
             dashboard = true;
-            dasis = Home = false;
         }
         private void btnDasis_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new Uri("Pages/Dasis.xaml", UriKind.RelativeOrAbsolute));
+            btnAction("Data Siswa", "Pages/Dasis.xaml");
             dasis = true;
-            Home = dashboard = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

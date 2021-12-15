@@ -17,6 +17,14 @@
                     <DataGridTextColumn Header="Nama" Binding="{Binding nama}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Kompetensi Dasar 1" Width="130" Binding="{Binding kd1}"/>
                     <DataGridTextColumn Header="Kompetensi Dasar 2" Width="130" Binding="{Binding kd2}"/>
+                    <!--<DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                            Command="Delete"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

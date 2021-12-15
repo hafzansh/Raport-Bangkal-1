@@ -26,33 +26,35 @@
             <Border Grid.Column="0"
                     Background="{DynamicResource SecundaryBackgroundColor}"
                     CornerRadius="8 0 0 8">
-                <Grid x:Name="GridNav" Width="60">
+                <Grid x:Name="GridNav" Width="65">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="65"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
                         <Border 
                               Margin="14 0 0 0"
-                              Width="32" Height="24"
+                              Width="32" Height="30"
                               HorizontalAlignment="Left">
                             <Border.Background>
-                                <ImageBrush ImageSource="Resources/logo.png" Stretch="Uniform"/>
+                                <ImageBrush ImageSource="Resources/tut_logo.png" Stretch="Uniform"/>
                             </Border.Background>
                         </Border>
 
                         <Label Content="Raport K13"
-                               Foreground="{DynamicResource PrimaryBlueColor}"
+                               Foreground="{DynamicResource SecundaryIconColor}"
                                FontWeight="Bold"
                                FontSize="25"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               Margin="50 0 0 0"/>
+                               Margin="53 2 0 0"/>
                     </Grid>
 
                     <!-- Start: MenuItem -->
                     <StackPanel Grid.Row="1" Margin="-1 40 0 20">
+                        <ScrollViewer Height="600" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical" >
                         <Button x:Name="btnHome" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnHome_MouseEnter" MouseLeave="btnHome_MouseLeave" Click="btnHome_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource home}" IconWidth="16" Text="Home" VerticalAlignment="Center"/>
                         </Button>
@@ -77,9 +79,27 @@
                         <Button x:Name="btnSecurity" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
                         </Button>
+                        <Button x:Name="btnSecurity2" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnSecurity3" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnSecurity4" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnSecurity5" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
+                        </Button>
+                            <Button x:Name="btnSecurity6" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
+                                <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
+                            </Button>
                         <Button x:Name="btnSetting" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSetting_MouseEnter" MouseLeave="btnSetting_MouseLeave">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource settings}" IconWidth="16" Text="Setting" VerticalAlignment="Center"/>
                         </Button>
+                                <StackPanel Height="70"></StackPanel>
+                        </StackPanel>
+                        </ScrollViewer>
                     </StackPanel>
                     <!-- End: MenuItem -->
 
@@ -94,7 +114,7 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="63"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -103,7 +123,7 @@
                         <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                             <BeginStoryboard>
                                 <Storyboard x:Name="HideStackPanel">
-                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="210" To="60" Duration="0:0:0.5">
+                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="210" To="63" Duration="0:0:0.2">
                                     </DoubleAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -111,7 +131,7 @@
                         <EventTrigger RoutedEvent="ToggleButton.Checked">
                             <BeginStoryboard>
                                 <Storyboard x:Name="ShowStackPanel">
-                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="60" To="210" Duration="0:0:0.5">
+                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="63" To="210" Duration="0:0:0.2">
                                     </DoubleAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -128,6 +148,7 @@
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
+                    <Label Name="appTitle" Content="Home" VerticalAlignment="Center" Foreground="{StaticResource SecundaryIconColor}" FontSize="25" FontWeight="Bold" Margin="0,2,0,0"/>
 
                 </StackPanel>
                 <!-- Start: Button Close | Restore | Minimize -->

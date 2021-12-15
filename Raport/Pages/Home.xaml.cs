@@ -1,19 +1,7 @@
 ﻿using Raport.Helper;
 using Raport.Services;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TextAlignment = iText.Layout.Properties.TextAlignment;
 
 namespace Raport.Pages
 {
@@ -29,7 +17,7 @@ namespace Raport.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Report.CreateDasis(Connection.dataset.Tables["Data Siswa"]);
+            Report.CreateDasis(Connection.dataset.Tables[Constants.dasis_title]);
         }
     }
 }
