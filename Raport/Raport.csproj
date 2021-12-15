@@ -29,7 +29,6 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Themes\" />
-    <Folder Include="Styles\" />
   </ItemGroup>
 
 </Project>

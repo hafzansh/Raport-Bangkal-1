@@ -10,20 +10,20 @@
         <!-- Start: Indicator Style -->
         <Style x:Key="IndicatorStyle" TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="0 5 5 0"/>
-            <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"/>
+            <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
             <Setter Property="Visibility" Value="Hidden"/>
             <Setter Property="Height" Value="35"/>
-            <Setter Property="Width" Value="4"/>
+            <Setter Property="Width" Value="50"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
                     <Setter Property="Visibility" Value="Visible"/>
-                    <Setter Property="Background" Value="{DynamicResource TextFourthColor}"/>
+                    <Setter Property="Background" Value="{DynamicResource PrimaryThirdColor}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
                     <Setter Property="Visibility" Value="Visible"/>
-                    <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"/>
+                    <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
                 </DataTrigger>
             </Style.Triggers> 
         </Style>
@@ -37,7 +37,7 @@
                     <Setter Property="Fill" Value="{DynamicResource TextFourthColor}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Fill" Value="{DynamicResource PrimaryBlueColor}"/>
+                    <Setter Property="Fill" Value="{DynamicResource TextFourthColor}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -55,7 +55,7 @@
                     <Setter Property="Foreground" Value="{DynamicResource TextFourthColor}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource PrimaryBlueColor}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource SecundaryIconColor}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>

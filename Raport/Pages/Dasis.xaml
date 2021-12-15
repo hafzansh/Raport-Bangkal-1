@@ -8,12 +8,26 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Data Siswa">
 
-    <Grid>
+    <Grid VirtualizingPanel.IsVirtualizing="True">
         <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
-            <StackPanel Orientation="Vertical">
-                <DataGrid EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="dasisDG" Height="407" CellEditEnding="dasisDG_CellEditEnding"/>
-                <Button Content="Save" Width="100" Height="20" Click="Button_Click"/>
-            </StackPanel>
+            <DataGrid Style="{StaticResource datagridS1}" MaxHeight="1000" MaxWidth="1300" CanUserResizeColumns="false" AutoGenerateColumns="False" SelectionUnit="Cell" IsSynchronizedWithCurrentItem="False" CanUserReorderColumns="False" CanUserAddRows="True" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="dasisDG" CellEditEnding="dasisDG_CellEditEnding" PreviewKeyDown="dasisDG_PreviewKeyDown" PreparingCellForEdit="dasisDG_PreparingCellForEdit">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="No. Induk" Width="40" Binding="{Binding induk}"/>
+                    <DataGridTextColumn Header="Nama" Width="150" Binding="{Binding nama}"/>
+                    <DataGridTextColumn Header="Tempat Lahir" Width="100" Binding="{Binding tempat_lahir}"/>
+                    <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding tanggal_lahir}"/>
+                    <DataGridTextColumn Header="Jenis Kelamin" Width="70" Binding="{Binding jenis_kelamin}"/>
+                    <DataGridTextColumn Header="Agama" Width="60" Binding="{Binding agama}"/>
+                    <DataGridTextColumn Header="Alamat" Width="150" Binding="{Binding alamat}"/>
+                    <DataGridTextColumn Header="Nama Ayah" Width="130" Binding="{Binding nama_ayah}"/>
+                    <DataGridTextColumn Header="Nama Ibu" Width="130" Binding="{Binding nama_ibu}"/>
+                    <DataGridTextColumn Header="Pekerjaan Ayah" Width="80" Binding="{Binding p_ayah}"/>
+                    <DataGridTextColumn Header="Pekerjaan Ibu" Width="80" Binding="{Binding p_ibu}"/>
+                    <DataGridTextColumn Header="Pendidikan Sebelumnya" Width="100" Binding="{Binding pendidikan_sebelumnya}"/>
+                    <DataGridTextColumn Header="Kelurahan" Width="100" Binding="{Binding kelurahan}"/>
+                    <DataGridTextColumn Header="Kecamatan" Width="100" Binding="{Binding kecamatan}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Border>
     </Grid>
 </Page>

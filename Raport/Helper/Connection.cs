@@ -31,6 +31,21 @@ namespace Raport.Helper
                 Console.WriteLine(ex);
             }
         }
+        public static void DBConnection2(String target,String tablename)
+        {
+            try
+            {
+                string query = "SELECT distinct " +target + ".id, " + target + ".induk, data_siswa.nama, " + target + ".kd1," + target + ".kd2 FROM " + target + " inner join data_siswa on " + target + ".induk=data_siswa.induk";
+                adapter.SelectCommand = new SQLiteCommand(query, sqlite);
+                commandBuilder = new SQLiteCommandBuilder(adapter);
+                adapter.Fill(dataset, tablename);
+
+            }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         public static void UpdateDB(SQLiteDataAdapter uAdapter,DataSet uDS,string uTable,String q)
         {
             try

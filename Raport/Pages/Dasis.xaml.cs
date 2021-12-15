@@ -25,12 +25,6 @@ namespace Raport.Pages
             //Connection.DBConnection(Constants.dasis, Constants.dasis_title);
             dasisDG.ItemsSource = Connection.dataset.Tables[Constants.dasis_title].DefaultView;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Connection.UpdateDB(Connection.adapter, Connection.dataset, Constants.dasis_title,Constants.dasis);
-        }
-
         private void dasisDG_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             foreach (Window window in Application.Current.Windows)
@@ -41,5 +35,36 @@ namespace Raport.Pages
                 }
             }
         }
+
+        private void dasisDG_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            
+            UIElement uiElement = e.OriginalSource as UIElement;
+            switch (e.Key)
+            {
+                case Key.Left:
+                    e.Handled = true;
+                    _ = uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Left));
+                    break;
+                case Key.Right:
+                    e.Handled = true;
+                    _ = uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Right));
+                    break;
+                case Key.Up:
+                    e.Handled = true;
+                    _ = uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
+                    break;
+                case Key.Down:
+                    e.Handled = true;
+                    _ = uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
+                    break;
+            }
+        }
+
+        private void dasisDG_PreparingCellForEdit(object sender, DataGridPreparingCellForEditEventArgs e)
+        {
+            
+        }
+
     }
 }

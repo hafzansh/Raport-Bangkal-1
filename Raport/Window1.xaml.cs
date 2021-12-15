@@ -48,6 +48,7 @@ namespace Raport
                     MessageBox.Show("dataDisimpan");
                     break;
                 case MessageBoxResult.No:
+                    Connection.sqlite.Close();
                     Close();
                     break;
                 case MessageBoxResult.Cancel:                    
@@ -128,7 +129,7 @@ namespace Raport
             try
             {
                 Connection.DBConnection(Constants.dasis, Constants.dasis_title);
-                Connection.DBConnection(Constants.mtk, Constants.mtk_title);
+                Connection.DBConnection2(Constants.mtk,Constants.mtk_title);
 
             }
             catch (Exception ex)
@@ -319,6 +320,7 @@ namespace Raport
             }
             else
             {
+                Connection.sqlite.Close();
                 Close();
             }
         }

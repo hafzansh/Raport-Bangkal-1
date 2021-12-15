@@ -10,8 +10,15 @@
 
     <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
         <StackPanel Orientation="Vertical">
-            <DataGrid EnableColumnVirtualization="True" EnableRowVirtualization="True" Name="DG_mtk" Margin="0,0,0,10" Height="407" CellEditEnding="DG_mtk_CellEditEnding"/>
-            <Button Content="Save" Width="100" Height="20" Click="Button_Click"/>
+            <DataGrid ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" Name="DG_mtk" Margin="0,0,0,10" Height="407" CellEditEnding="DG_mtk_CellEditEnding">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="No" Width="40" Binding="{Binding id}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Induk" Width="40" Binding="{Binding induk}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Nama" Binding="{Binding nama}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Kompetensi Dasar 1" Width="130" Binding="{Binding kd1}"/>
+                    <DataGridTextColumn Header="Kompetensi Dasar 2" Width="130" Binding="{Binding kd2}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
     </Border>
 </Page>

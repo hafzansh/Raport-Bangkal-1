@@ -54,31 +54,31 @@
                     <!-- Start: MenuItem -->
                     <StackPanel Grid.Row="1" Margin="-1 40 0 20">
                         <Button x:Name="btnHome" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnHome_MouseEnter" MouseLeave="btnHome_MouseLeave" Click="btnHome_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryLightGrayColor}" Icon="{DynamicResource home}" IconWidth="16" Text="Home" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource home}" IconWidth="16" Text="Home" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnDashboard" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnDashboard_MouseEnter" MouseLeave="btnDashboard_MouseLeave" Click="btnDashboard_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="Dashboard" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="Dashboard" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnProducts" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnDasis_MouseEnter" MouseLeave="btnDasis_MouseLeave"  Click="btnDasis_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource products}" IconWidth="16" Text="Products" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" Text="Products" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnProductStock" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnProductStock_MouseEnter" MouseLeave="btnProductStock_MouseLeave">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource products}" IconWidth="16" Text="Product Stock" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" Text="Product Stock" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnOrderList_MouseEnter" MouseLeave="btnOrderList_MouseLeave">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource email}" IconWidth="16" Text="Order List" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource email}" IconWidth="16" Text="Order List" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnBilling" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnBilling_MouseEnter" MouseLeave="btnBilling_MouseLeave">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource billing}" IconWidth="16" Text="Billing" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource billing}" IconWidth="16" Text="Billing" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnPointOfSale" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnPointOfSale_MouseEnter" MouseLeave="btnPointOfSale_MouseLeave">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource car}" IconWidth="16" Text="Point Of Sale" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource car}" IconWidth="16" Text="Point Of Sale" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnSecurity" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSecurity_MouseEnter" MouseLeave="btnSecurity_MouseLeave">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource lock}" IconWidth="16" Text="Security" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnSetting" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSetting_MouseEnter" MouseLeave="btnSetting_MouseLeave">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource settings}" IconWidth="16" Text="Setting" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource settings}" IconWidth="16" Text="Setting" VerticalAlignment="Center"/>
                         </Button>
                     </StackPanel>
                     <!-- End: MenuItem -->
@@ -159,7 +159,7 @@
 
 
                     <Border BorderBrush="Red" CornerRadius="0,0,8,0" Background="{DynamicResource SecundaryBackgroundColor}">
-                        <Label HorizontalAlignment="Right" Name="lastSaved" VerticalAlignment="Center" Content="" Foreground="White"/>
+                        <Label HorizontalAlignment="Right" Name="lastSaved" VerticalAlignment="Center" Content="" Foreground="#3d405b"/>
                     </Border>
                 </StackPanel>
 
