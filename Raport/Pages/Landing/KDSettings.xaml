@@ -1,0 +1,147 @@
+﻿<Page x:Class="Raport.Pages.Landing.KDSettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Raport.Pages.Landing"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Pengaturan Kompetensi Dasar">
+
+
+    <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+        <Grid VirtualizingPanel.IsVirtualizing="True" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="4" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}">Kompetensi Dasar</Label>
+            <Label Grid.Row="1" Margin="2 20 0 10">Agama</Label>
+            <!--<TextBox Style="{StaticResource SingleLineTextBox}" Grid.Row="1" Grid.Column="1" Height="20" Margin="0,5,0,10" />-->
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontWeight="Bold" IsHitTestVisible="False" Text="Pengetahuan" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="{StaticResource SecundaryIconColor}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=kd_agm3}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                    <TextBox PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Style="{StaticResource SingleLineTextBox}"  Width="80"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="kd_agm3" Margin="0,0,0,15"/>
+                </StackPanel>
+                <StackPanel Width="60"/>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                    <TextBlock FontWeight="Bold" IsHitTestVisible="False" Text="Keterampilan" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="{StaticResource SecundaryIconColor}">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=kd_agm4}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <TextBox PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Style="{StaticResource SingleLineTextBox}" Width="80"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="kd_agm4" Margin="0,0,0,15"/>
+                </StackPanel>
+            </StackPanel>
+            <Label Grid.Row="2" Margin="2 0 0 15">PKN</Label>
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <TextBox PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_pkn3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_pkn4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="3" Margin="2 0 0 15">Bahasa Indonesia</Label>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <TextBox PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bi3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bi4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="4" Margin="2 0 0 15">Matematika</Label>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_mtk3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_mtk4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="5" Margin="2 0 0 15">IPA</Label>
+            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_ipa3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_ipa4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="6" Margin="2 0 0 15">IPS</Label>
+            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_ips3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_ips4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="7" Margin="2 0 0 15">SBdP</Label>
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_sbdp3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_sbdp4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="8" Margin="2 0 0 15">PJOK</Label>
+            <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_pjok3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_pjok4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="9" Margin="2 0 0 15">Bahasa Banjar</Label>
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bjr3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bjr4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="10" Margin="2 0 0 15">Bahasa Inggris</Label>
+            <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bing3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bing4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <Label Grid.Row="11" Margin="2 0 0 15">BTA</Label>
+            <StackPanel Grid.Row="11" Grid.Column="1" Orientation="Horizontal">
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bta3" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+                <StackPanel Width="60"/>
+                <TextBox  PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" Name="kd_bta4" Style="{StaticResource SingleLineTextBox}" Width="80" Height="20" Margin="0,0,0,15" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="4" Margin="0 0 30 15" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button Name="back" Style="{StaticResource RoundedButtonStyle}" Margin="0 0 30 0"   Content="Kembali" Height="30" Width="70" Click="back_Click"  />
+                <Button Name="savenext" Style="{StaticResource RoundedButtonStyle}"   Content="Simpan" Height="30" Width="70" Click="savenext_Click"  />
+            </StackPanel>
+            
+            <Border Grid.RowSpan="8" Grid.Column="4"
+                              Margin="14 35 0 0"
+                              Width="250" Height="250"
+                              HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/sd_logo.png" Stretch="Uniform"/>
+                </Border.Background>
+            </Border>
+        </Grid>
+    </Border>
+</Page>

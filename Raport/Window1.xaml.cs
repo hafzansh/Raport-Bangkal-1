@@ -29,7 +29,7 @@ namespace Raport
         bool dashboard, dasis = false;
         public Window1()
         {
-            InitializeComponent();            
+            InitializeComponent();
             setConnection();
             btnHome.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Save.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
@@ -49,12 +49,12 @@ namespace Raport
                     break;
                 case MessageBoxResult.No:
                     Connection.sqlite.Close();
-                    Close();
+                    Constants.CloseApp();
                     break;
                 case MessageBoxResult.Cancel:                    
                     break;
             }
-        }
+        }        
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             savedTime();
@@ -129,7 +129,7 @@ namespace Raport
             try
             {
                 Connection.DBConnection(Constants.dasis, Constants.dasis_title);
-                Connection.DBConnection2(Constants.mtk,Constants.mtk_title);
+                Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
 
             }
             catch (Exception ex)
@@ -321,7 +321,7 @@ namespace Raport
             else
             {
                 Connection.sqlite.Close();
-                Close();
+                Constants.CloseApp();
             }
         }
 
@@ -404,7 +404,6 @@ namespace Raport
                     WindowState = WindowState.Normal;
             }
         }
-
         private void home_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

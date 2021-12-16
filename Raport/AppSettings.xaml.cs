@@ -27,15 +27,26 @@ namespace Raport
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Database.db_name = db_name.Text;
-            Database.kd_agm3 = int.Parse(kd_agm3.Text);
-            Database.kd_agm4 = int.Parse(kd_agm4.Text);
-            Database.CreateDB();
+            Database.db_name = "Masliah_IV (Empat)_Ganjil_2021-2022";
+            Constants.dbName = Database.db_name;                
+            Window window = new Window1();
+            window.Show();
+            this.Hide();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

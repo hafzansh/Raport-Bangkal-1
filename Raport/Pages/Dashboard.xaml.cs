@@ -23,9 +23,11 @@ namespace Raport.Pages
     {
         public Dashboard()
         {
-            InitializeComponent();
-            //Connection.DBConnection(Constants.mtk, Constants.mtk_title);
+            InitializeComponent();            
+            Connection.dataset.Tables[Constants.mtk_title].Clear();
+            Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
             DG_mtk.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,6 +44,11 @@ namespace Raport.Pages
                     (window as Window1).save.IsEnabled = true;
                 }
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

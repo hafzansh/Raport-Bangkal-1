@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Raport.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Dashboard">
+      Title="Dashboard" Loaded="Page_Loaded">
 
     <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
         <StackPanel Orientation="Vertical">
@@ -15,8 +15,8 @@
                     <DataGridTextColumn Header="No" Width="40" Binding="{Binding id}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Induk" Width="40" Binding="{Binding induk}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Nama" Binding="{Binding nama}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Kompetensi Dasar 1" Width="130" Binding="{Binding kd1}"/>
-                    <DataGridTextColumn Header="Kompetensi Dasar 2" Width="130" Binding="{Binding kd2}"/>
+                    <DataGridTextColumn Header="Kompetensi Dasar 1" Width="130" Binding="{Binding kdp1}"/>
+                    <DataGridTextColumn Header="Kompetensi Dasar 2" Width="130" Binding="{Binding kdp2}"/>
                     <!--<DataGridTemplateColumn Header="Delete">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

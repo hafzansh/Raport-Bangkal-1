@@ -35,7 +35,7 @@ namespace Raport.Helper
         {
             try
             {
-                string query = "SELECT distinct " +target + ".id, " + target + ".induk, data_siswa.nama, " + target + ".kd1," + target + ".kd2 FROM " + target + " inner join data_siswa on " + target + ".induk=data_siswa.induk";
+                string query = "SELECT distinct " +target + ".id, " + target + ".induk, data_siswa.nama, " + target + ".kdp1," + target + ".kdp2, " + target + ".kdp3, " + target + ".kdp4, " + target + ".kdp5, " + target + ".uts, " + target + ".uas FROM " + target + " inner join data_siswa on " + target + ".induk=data_siswa.induk";
                 adapter.SelectCommand = new SQLiteCommand(query, sqlite);
                 commandBuilder = new SQLiteCommandBuilder(adapter);
                 adapter.Fill(dataset, tablename);
