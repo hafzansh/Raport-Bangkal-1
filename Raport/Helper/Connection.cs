@@ -15,7 +15,7 @@ namespace Raport.Helper
         public static DataTable table = new DataTable();
         public static DataSet dataset = new DataSet();
         public static SQLiteCommandBuilder commandBuilder;
-        public static SQLiteConnection sqlite = new SQLiteConnection("Data Source=" + Constants.folderpath + Constants.dbName +";" + Constants.dbVersion);
+        public static SQLiteConnection sqlite = new SQLiteConnection("Data Source=" + Constants.folderpath + Constants.dbName +".db" +";" + Constants.dbVersion);
         public static void DBConnection(String q, String tablename)
         {
             try

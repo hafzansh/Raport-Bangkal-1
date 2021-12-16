@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\childrens.png" />
     <None Remove="Resources\logo.png" />
     <None Remove="Resources\save.svg" />
+    <None Remove="Resources\sd_logo.png" />
     <None Remove="Resources\tut_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\childrens.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -33,6 +38,12 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\sd_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
