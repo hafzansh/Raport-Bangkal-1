@@ -327,6 +327,31 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="datagridS1Name" TargetType="{x:Type DataGridCell}">
+        <Setter Property="Padding" Value="4,3,4,3" />
+        <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Border Padding="{TemplateBinding Padding}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{TemplateBinding Background}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style TargetType="Control">
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="datagridS1" TargetType="{x:Type DataGrid}">
         <!-- Make the border and grid lines a little less imposing -->
         <Setter Property="BorderBrush" Value="#DDDDDD" />
@@ -364,6 +389,7 @@
                     </Style.Triggers>
                     <!-- Add some padding around the contents of a cell -->
                     <Setter Property="Padding" Value="4,3,4,3" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="BorderThickness" Value="1"/>
                     <Setter Property="Template">
@@ -402,6 +428,7 @@
                     </Style.Triggers>
                     <!-- Add some padding around the contents of a cell -->
                     <Setter Property="Padding" Value="4,3,4,3" />
+                    <Setter Property="FontWeight" Value="Bold"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="BorderThickness" Value="1"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>

@@ -12,8 +12,8 @@
         <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
             <DataGrid Style="{StaticResource datagridS1}" MaxHeight="1000" MaxWidth="1300" CanUserResizeColumns="false" AutoGenerateColumns="False" SelectionUnit="Cell" IsSynchronizedWithCurrentItem="False" CanUserReorderColumns="False" CanUserAddRows="True" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="dasisDG" CellEditEnding="dasisDG_CellEditEnding" PreviewKeyDown="dasisDG_PreviewKeyDown" PreparingCellForEdit="dasisDG_PreparingCellForEdit">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No. Induk" Width="40" Binding="{Binding induk}"/>
-                    <DataGridTextColumn Header="Nama" Width="150" Binding="{Binding nama}"/>
+                    <DataGridTextColumn Header="  No. Induk" Width="45" Binding="{Binding induk}"/>
+                    <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Width="150" Binding="{Binding nama}"/>
                     <DataGridTextColumn Header="Tempat Lahir" Width="100" Binding="{Binding tempat_lahir}"/>
                     <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding tanggal_lahir}"/>
                     <DataGridTemplateColumn Header="Jenis Kelamin" Width="80">

@@ -61,6 +61,21 @@ namespace Raport.Helper
                 MessageBox.Show("Error, " + ex);
             }
         }
+        public static void UpdateDB2(SQLiteDataAdapter uAdapter, DataSet uDS, string uTable, String q)
+        {
+            try
+            {
+                string query = "SELECT id,kdp1,kdp2,kdp3,kdp4,kdp5,uts,uas FROM " + q;
+                uAdapter.SelectCommand = new SQLiteCommand(query, sqlite);
+                commandBuilder = new SQLiteCommandBuilder(uAdapter);
+                uAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+                uAdapter.Update(uDS, uTable);
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error, " + ex);
+            }
+        }
 
     }
 }

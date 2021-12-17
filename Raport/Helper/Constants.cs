@@ -48,7 +48,7 @@ namespace Raport.Helper
             "ON UPDATE NO ACTION, pramuka     VARCHAR(5),karate VARCHAR(5),pmr VARCHAR(5),tari VARCHAR(5),tinggi VARCHAR(6)," +
             "berat_badan VARCHAR(5),pendengaran VARCHAR(10),penglihatan VARCHAR(10),gigi VARCHAR(10),lainnya VARCHAR(10),s INTEGER(2)," +
             "i INTEGER(2),a INTEGER(2),FOREIGN KEY(induk) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE);";
-        public static string sikap_query = "CREATE TABLE data_sikap (id INTEGER     PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk)," +
+        public static string sikap_query = "CREATE TABLE data_sikap (id INTEGER     PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE," +
             "sikap1 INTEGER(1),sikap2 INTEGER(1),sikap3 INTEGER(1),sikap4 INTEGER(1));";
         public static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string folder = "Raport Bangkal 1/";

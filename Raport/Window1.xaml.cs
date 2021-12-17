@@ -377,7 +377,7 @@ namespace Raport
             else if (dashboard)
             {
                 
-                Connection.UpdateDB(Connection.adapter, Connection.dataset, Constants.mtk_title, Constants.mtk);
+                Connection.UpdateDB2(Connection.adapter, Connection.dataset, Constants.mtk_title, Constants.mtk);
                 save.IsEnabled = false;
                 reCount();
                 
