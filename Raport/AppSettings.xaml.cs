@@ -27,7 +27,7 @@ namespace Raport
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Database.db_name = db_name.Text;
-            Database.db_name = "Masliah_IV (Empat)_Ganjil_2021-2022";
+            Database.db_name = "Test_I (Satu)_Ganjil_2021-2022";
             Constants.dbName = Database.db_name;                
             Window window = new Window1();
             window.Show();

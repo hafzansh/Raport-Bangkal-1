@@ -1,14 +1,10 @@
 ﻿using Raport.Helper;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -18,39 +14,40 @@ using System.Windows.Shapes;
 
 namespace Raport.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para Dashboard.xaml
-    /// </summary>
-    public partial class Dashboard : Page
+    public partial class mp_pkn : Page
     {        
-        public Dashboard()
+        public mp_pkn()
         {
-            Constants.current1 = Database.kd_mtk3;
-            InitializeComponent();            
-            Connection.dataset.Tables[Constants.mtk_title].Clear();
-            Connection.DBConnection2(Constants.mtk, Constants.mtk_title);            
-            DG_mtk.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;
-            if (Database.kd_mtk3 == 1)
+
+            InitializeComponent();
+            Constants.current1 = Database.kd_pkn3;
+            Connection.dataset.Tables[Constants.pkn_title].Clear();
+            Connection.DBConnection2(Constants.pkn, Constants.pkn_title);
+            Connection.dataset.Tables["kd_pkn3"].Clear();
+            Connection.KD3("pkn3", "kd_pkn3", Database.kd_pkn3);
+            data_kd.ItemsSource = Connection.dataset.Tables["kd_pkn3"].DefaultView;
+            data.ItemsSource = Connection.dataset.Tables[Constants.pkn_title].DefaultView;
+            if (Database.kd_pkn3 == 1)
             {
-                DG_mtk.Columns[7].IsReadOnly = DG_mtk.Columns[6].IsReadOnly = DG_mtk.Columns[5].IsReadOnly = DG_mtk.Columns[5].IsReadOnly = true;
-            }else if (Database.kd_mtk3 == 2)
+                data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = data.Columns[4].IsReadOnly = true;
+            }else if (Database.kd_pkn3 == 2)
             {
-                DG_mtk.Columns[7].IsReadOnly = DG_mtk.Columns[6].IsReadOnly = DG_mtk.Columns[5].IsReadOnly = true;
+                data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = true;
             }
-            else if (Database.kd_mtk3 == 3)
+            else if (Database.kd_pkn3 == 3)
             {
-                DG_mtk.Columns[7].IsReadOnly = DG_mtk.Columns[6].IsReadOnly = true;
+                data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = true;
             }
-            else if (Database.kd_mtk3 == 4)
+            else if (Database.kd_pkn3 == 4)
             {
-                DG_mtk.Columns[7].IsReadOnly = true;
+                data.Columns[7].IsReadOnly = true;
             }
             else
             {
 
             }
         }
-        private void DG_mtk_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        private void data_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             foreach (Window window in Application.Current.Windows)
             {
@@ -62,7 +59,7 @@ namespace Raport.Pages
 
         }
 
-        private void DG_mtk_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void data_PreviewKeyDown(object sender, KeyEventArgs e)
         {            
             UIElement uiElement = e.OriginalSource as UIElement;
             switch (e.Key)

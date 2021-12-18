@@ -46,4 +46,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Pages\mp_pkn.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

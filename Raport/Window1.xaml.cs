@@ -1,6 +1,7 @@
 ﻿using Raport.Helper;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -26,15 +27,56 @@ namespace Raport
         public static RoutedCommand Toggle = new RoutedCommand();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         bool Home = true;
-        bool dashboard, dasis = false;
+        bool pkn,dashboard, dasis = false;
         public Window1()
         {
             InitializeComponent();
-            setConnection();
+            loadValue();
+            Connection.setConnection();
             btnHome.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Save.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
             Toggle.InputGestures.Add(new KeyGesture(Key.Tab, ModifierKeys.Control));
             
+        }
+        private void loadValue()
+        {
+            Connection.sqlite.Open();
+            string query = "select * from app_settings";
+            SQLiteCommand command = new SQLiteCommand(query, Connection.sqlite);
+            SQLiteDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                Database.wali_kelas = (string)dr["wali_kelas"];
+                Database.nip_wali_kelas = (string)dr["nip_wali_kelas"];
+                Database.kepala_sekolah = (string)dr["kepala_sekolah"];
+                Database.nip_kepala_sekolah = (string)dr["nip_kepala_sekolah"];
+                Database.semester = (string)dr["semester"];
+                Database.tahun = (string)dr["tahun"];
+                Database.kelas = (string)dr["kelas"];
+                Database.kd_agm3 = (int)dr["kd_agm3"];
+                Database.kd_agm4 = (int)dr["kd_agm4"];
+                Database.kd_pkn3 = (int)dr["kd_pkn4"];
+                Database.kd_pkn4 = (int)dr["kd_pkn4"];
+                Database.kd_bi3 = (int)dr["kd_bi3"];
+                Database.kd_bi4 = (int)dr["kd_bi4"];
+                Database.kd_mtk3 = (int)dr["kd_mtk3"];
+                Database.kd_mtk4 = (int)dr["kd_mtk4"];
+                Database.kd_ipa3 = (int)dr["kd_ipa3"];
+                Database.kd_ipa4 = (int)dr["kd_ipa4"];
+                Database.kd_ips3 = (int)dr["kd_ips3"];
+                Database.kd_ips4 = (int)dr["kd_ips4"];
+                Database.kd_sbdp3 = (int)dr["kd_sbdp3"];
+                Database.kd_sbdp4 = (int)dr["kd_sbdp4"];
+                Database.kd_pjok3 = (int)dr["kd_pjok3"];
+                Database.kd_pjok4 = (int)dr["kd_pjok4"];
+                Database.kd_bjr3 = (int)dr["kd_bjr3"];
+                Database.kd_bjr4 = (int)dr["kd_bjr4"];
+                Database.kd_bing3 = (int)dr["kd_bing3"];
+                Database.kd_bing4 = (int)dr["kd_bing4"];
+                Database.kd_bta3 = (int)dr["kd_bta3"];
+                Database.kd_bta4 = (int)dr["kd_bta4"];
+            }
+            Connection.sqlite.Close();
         }
         private void exitPrompt()
         {
@@ -124,19 +166,7 @@ namespace Raport
             }
 
         }
-        private void setConnection()
-        {
-            try
-            {
-                Connection.DBConnection(Constants.dasis, Constants.dasis_title);
-                Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Koneksi Database error, " + ex);
-            }
-        }
+        
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Tg_Btn.IsChecked = false;
@@ -362,7 +392,11 @@ namespace Raport
             btnAction("Data Siswa", "Pages/Dasis.xaml");
             dasis = true;
         }
-
+        private void btnPkn_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction("PKN", "Pages/mp_pkn.xaml");
+            pkn = true;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (Home)
@@ -381,6 +415,15 @@ namespace Raport
                 save.IsEnabled = false;
                 reCount();
                 
+            }
+            else if (pkn)
+            {
+
+                Connection.UpdatePKN(Connection.adapter, Connection.dataset, Constants.pkn_title, Constants.pkn);
+                Connection.UpdateKD(Connection.adapter, Connection.dataset,"pkn3", "kd_pkn3");
+                save.IsEnabled = false;
+                reCount();
+
             }
         }
 

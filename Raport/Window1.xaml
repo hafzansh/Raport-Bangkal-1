@@ -64,7 +64,7 @@
                         <Button x:Name="btnProducts" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnDasis_MouseEnter" MouseLeave="btnDasis_MouseLeave"  Click="btnDasis_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" Text="Products" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnProductStock" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnProductStock_MouseEnter" MouseLeave="btnProductStock_MouseLeave">
+                                <Button x:Name="btnProductStock" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnProductStock_MouseEnter" MouseLeave="btnProductStock_MouseLeave" Click="btnPkn_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" Text="Product Stock" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnOrderList_MouseEnter" MouseLeave="btnOrderList_MouseLeave">
@@ -148,7 +148,7 @@
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
-                    <Label Name="appTitle" Content="Home" VerticalAlignment="Center" Foreground="{StaticResource SecundaryIconColor}" FontSize="25" FontWeight="Bold" Margin="0,2,0,0"/>
+                    <Label Name="appTitle" Content="Home" VerticalAlignment="Center" Foreground="{StaticResource SecundaryIconColor}" FontSize="25" FontWeight="Bold" Margin="0,3,0,0"/>
 
                 </StackPanel>
                 <!-- Start: Button Close | Restore | Minimize -->
@@ -172,7 +172,7 @@
 
                 <Frame Grid.Row="1"
                        Name="fContainer"
-                       Margin="20,0,20,34"
+                       Margin="20,0,2,34"
                        NavigationUIVisibility="Hidden">
 
                 </Frame>

@@ -54,29 +54,33 @@ namespace Raport.Helper
                     command.ExecuteNonQuery();
                     command.CommandText = Constants.sikap_query;
                     command.ExecuteNonQuery();
+                    command.CommandText = Constants.app_query;
+                    command.ExecuteNonQuery();
                     CreateTable(command, Constants.agm);
-                    CreateKDT(command, kd_agm3, kd_agm4, Constants.agm);
+                    CreateKDT(command,Constants.agm);
                     CreateTable(command, Constants.pkn);
-                    CreateKDT(command, kd_pkn3, kd_pkn4, Constants.pkn);
+                    CreateKDT(command,Constants.pkn);
                     CreateTable(command, Constants.mtk);
-                    CreateKDT(command, kd_mtk3, kd_mtk4, Constants.mtk);
+                    CreateKDT(command,Constants.mtk);
                     CreateTable(command, Constants.bi);
-                    CreateKDT(command, kd_bi3, kd_bi4, Constants.bi);
+                    CreateKDT(command,Constants.bi);
                     CreateTable(command, Constants.ipa);
-                    CreateKDT(command, kd_ipa3, kd_ipa4, Constants.ipa);
+                    CreateKDT(command,Constants.ipa);
                     CreateTable(command, Constants.ips);
-                    CreateKDT(command, kd_ips3, kd_ips4, Constants.ips);
+                    CreateKDT(command,Constants.ips);
                     CreateTable(command, Constants.sbdp);
-                    CreateKDT(command, kd_sbdp3, kd_sbdp4, Constants.sbdp);
+                    CreateKDT(command,Constants.sbdp);
                     CreateTable(command, Constants.pjok);
-                    CreateKDT(command, kd_pjok3, kd_pjok4, Constants.pjok);
+                    CreateKDT(command,Constants.pjok);
                     CreateTable(command, Constants.bjr);
-                    CreateKDT(command, kd_bjr3, kd_bjr4, Constants.bjr);
+                    CreateKDT(command,Constants.bjr);
                     CreateTable(command, Constants.bing);
-                    CreateKDT(command, kd_bing3, kd_bing4, Constants.bing);
+                    CreateKDT(command,Constants.bing);
                     CreateTable(command, Constants.bta);
-                    CreateKDT(command, kd_bta3, kd_bta4, Constants.bta);
+                    CreateKDT(command,Constants.bta);
                     CreateTrigger(command);
+
+                    InsertAppSettings(command);
                 }
                 catch(Exception ex)
                 {
@@ -89,28 +93,38 @@ namespace Raport.Helper
             }
 
         }
+        public static void InsertAppSettings(SQLiteCommand command)
+        {
+            string query = "insert into app_settings values (NULL,'" +
+            Database.wali_kelas + "' , '" + nip_wali_kelas + "' , '" + kepala_sekolah + "' , '" + nip_kepala_sekolah + "' , '" + semester + "' , '" + tahun + "' , '" +
+            kelas + "'," + kd_agm3 + "," + kd_agm4 + "," + kd_pkn3 + "," + kd_pkn4 + "," + kd_bi3 + "," + kd_bi4 + "," + kd_mtk3 + "," +
+            kd_mtk4 + "," + kd_ipa3 + "," + kd_ipa4 + "," + kd_ips3 + "," + kd_ips4 + "," + kd_sbdp3 + "," + kd_sbdp4 + "," + kd_pjok3 + "," +
+            kd_pjok4 + "," + kd_bjr3 + "," + kd_bjr4 + "," + kd_bing3 + "," + kd_bing4 + "," + kd_bta3 + "," + kd_bta4 + ")";
+            command.CommandText = query;
+            command.ExecuteNonQuery();
+        }
         public static void CreateTable(SQLiteCommand command,string table_name)
         {
             command.CommandText = TableQuery(table_name);
             command.ExecuteNonQuery();            
         }
-        public static void CreateKDT(SQLiteCommand command, int kdp, int kdk,string table_name)
+        public static void CreateKDT(SQLiteCommand command,string table_name)
         {
-            for (int i = 1; i <= kdp; i++)
+            for (int i = 1; i <= 5; i++)
             {
-                string q = "alter table " + table_name + " add kdp" + i + " double;";
+                string q = "alter table " + table_name + " add kdp" + i + " double default (0);";
                 command.CommandText = q;
                 command.ExecuteNonQuery();
             }
-            for (int i = 1; i <= kdp; i++)
+            for (int i = 1; i <= 5; i++)
             {
-                string q = "alter table " + table_name + " add tugas" + i + " double;";
+                string q = "alter table " + table_name + " add tugas" + i + " double default (0);";
                 command.CommandText = q;
                 command.ExecuteNonQuery();
             }
-            for (int i = 1; i <= kdk; i++)
+            for (int i = 1; i <= 5; i++)
             {
-                string q = "alter table " + table_name + " add kdk" + i + " double;";
+                string q = "alter table " + table_name + " add kdk" + i + " double default (0);";
                 command.CommandText = q;
                 command.ExecuteNonQuery();
             }
@@ -118,7 +132,7 @@ namespace Raport.Helper
         public static string TableQuery(string title)
         {
             string q = "CREATE TABLE " + title + " (id INTEGER PRIMARY KEY AUTOINCREMENT,induk VARCHAR(8) REFERENCES data_siswa(induk)" +
-                " ON DELETE CASCADE ON UPDATE CASCADE,uts double, uas double); ";
+                " ON DELETE CASCADE ON UPDATE CASCADE,uts double default (0), uas double default (0)); ";
 
             return q;
         }

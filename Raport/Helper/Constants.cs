@@ -50,6 +50,11 @@ namespace Raport.Helper
             "i INTEGER(2),a INTEGER(2),FOREIGN KEY(induk) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE);";
         public static string sikap_query = "CREATE TABLE data_sikap (id INTEGER     PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE," +
             "sikap1 INTEGER(1),sikap2 INTEGER(1),sikap3 INTEGER(1),sikap4 INTEGER(1));";
+        public static string app_query = "CREATE TABLE app_settings (id INTEGER      PRIMARY KEY AUTOINCREMENT,wali_kelas VARCHAR(30)," +
+            "nip_wali_kelas VARCHAR(16),kepala_sekolah VARCHAR(30),nip_kepala_sekolah VARCHAR(16),semester VARCHAR(10),tahun VARCHAR(10)," +
+            "kelas VARCHAR(10),kd_agm3 INT(2),kd_agm4 INT(2),kd_pkn3 INT(2),kd_pkn4 INT(2),kd_bi3 INT(2),kd_bi4 INT(2),kd_mtk3 INT(2)," +
+            "kd_mtk4 INT(2),kd_ipa3 INT(2),kd_ipa4 INT(2),kd_ips3 INT(2),kd_ips4 INT(2),kd_sbdp3 INT(2),kd_sbdp4 INT(2),kd_pjok3 INT(2)," +
+            "kd_pjok4 INT(2),kd_bjr3 INT(2),kd_bjr4 INT(2),kd_bing3 INT(2),kd_bing4 INT(2),kd_bta3 INT(2),kd_bta4 INT(2));";
         public static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string folder = "Raport Bangkal 1/";
         public static string folderpath = Path.Combine(path,folder);
@@ -57,6 +62,9 @@ namespace Raport.Helper
         public static string dbVersion = "Version=3;";
         public static bool isLanding = true;
         public static bool isSaved = true;
+
+        public static int current1;
+        public static int current2;
         public static void CloseApp()
         {
             System.Windows.Application.Current.Shutdown();
