@@ -1,0 +1,208 @@
+﻿<Page x:Class="Raport.Pages.Subjects.mp_ips"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Raport.Pages"
+      xmlns:helper="clr-namespace:Raport.Helper"
+      xmlns:mdex="clr-namespace:MaterialDesign_WPF_Expander;assembly=MaterialDesign-WPF-Expander"
+      mc:Ignorable="d" 
+      d:DesignHeight="1200" d:DesignWidth="800"
+      Title="Dashboard">
+    <Page.Resources>
+        <helper:Average x:Key="Average" />
+        <helper:Average2 x:Key="Average2" />
+        <helper:Result x:Key="Result" />
+        <helper:Result2 x:Key="Result2" />
+    </Page.Resources>
+    <Border CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}" >
+        <ScrollViewer CanContentScroll="true">
+            <StackPanel Orientation="Vertical" Margin="20,15,10,0">
+                <mdex:Expander  Name="ExpanderKD3" 
+                HorizontalAlignment="Stretch"
+                Title="Aspek Pengetahuan"
+                VerticalAlignment="Bottom"
+                Background="{StaticResource SecundaryBackgroundColor}"
+                BorderBrush="#FFF56E6E"
+                CornerRadius="1"
+                BorderThickness="0,0,0,2"                               
+                Padding="0"
+                FontFamily="Roboto"
+                HeaderFontWeight="Bold"
+                HeaderHorizontalAlignment="Right"
+                IsOpened="True" >
+
+                    <DataGrid CanUserDeleteRows="False" Name="data_kd" Margin="0,0,0,0" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" SelectionUnit="Cell" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="KOMPETENSI DASAR" Width="190" Binding="{Binding kd}"/>
+                            <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Isikan Kompetensi Dasar Aspek Pengetahuan" Binding="{Binding ips3}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </mdex:Expander>
+                <mdex:Expander Name="ExpanderData3"
+                          HorizontalAlignment="Stretch"
+                Title="Nilai Pengetahuan"
+                VerticalAlignment="Bottom"
+                Background="{StaticResource SecundaryBackgroundColor}"
+                BorderBrush="#FFF56E6E"
+                CornerRadius="1"
+                BorderThickness="0,0,0,2"                               
+                Padding="0"
+                FontFamily="Roboto"
+                HeaderFontWeight="Bold"
+                HeaderHorizontalAlignment="Right">
+                    <DataGrid CanUserDeleteRows="False" Height="580" VerticalScrollBarVisibility="Visible" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" Name="data" Margin="0,0,0,10" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown" SelectionUnit="Cell">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="No" Width="40" Binding="{Binding id}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Induk" Width="45" Binding="{Binding induk}" IsReadOnly="True"/>
+                            <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Binding="{Binding nama}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="KD1" Width="50" Binding="{Binding kdp1}"/>
+                            <DataGridTextColumn Header="KD2" Width="50" Binding="{Binding kdp2}"/>
+                            <DataGridTextColumn Header="KD3" Width="50" Binding="{Binding kdp3}"/>
+                            <DataGridTextColumn Header="KD4" Width="50" Binding="{Binding kdp4}"/>
+                            <DataGridTextColumn Header="KD5" Width="50" Binding="{Binding kdp5}"/>
+                            <DataGridTextColumn Header="T1" Width="50" Binding="{Binding tugas1}"/>
+                            <DataGridTextColumn Header="T2" Width="50" Binding="{Binding tugas2}"/>
+                            <DataGridTextColumn Header="T3" Width="50" Binding="{Binding tugas3}"/>
+                            <DataGridTextColumn Header="T4" Width="50" Binding="{Binding tugas4}"/>
+                            <DataGridTextColumn Header="T5" Width="50" Binding="{Binding tugas5}"/>
+                            <DataGridTextColumn Header="UTS" Width="50" Binding="{Binding uts}"/>
+                            <DataGridTextColumn Header="UAS" Width="50" Binding="{Binding uas}"/>
+                            <DataGridTextColumn                        
+                                IsReadOnly="True"
+                                Header="Rerata (NP)"                                
+                                Width="50">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource Average}" >
+                                        <Binding Path="kdp1" />
+                                        <Binding Path="kdp2" />
+                                        <Binding Path="kdp3" />
+                                        <Binding Path="kdp4" />
+                                        <Binding Path="kdp5" />
+                                        <Binding Path="tugas1" />
+                                        <Binding Path="tugas2" />
+                                        <Binding Path="tugas3" />
+                                        <Binding Path="tugas4" />
+                                        <Binding Path="tugas5" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header=" KET  T/TT"
+                                IsReadOnly="True"
+                                Width="90">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource Result}">
+                                        <Binding Path="kdp1" />
+                                        <Binding Path="kdp2" />
+                                        <Binding Path="kdp3" />
+                                        <Binding Path="kdp4" />
+                                        <Binding Path="kdp5" />
+                                        <Binding Path="tugas1" />
+                                        <Binding Path="tugas2" />
+                                        <Binding Path="tugas3" />
+                                        <Binding Path="tugas4" />
+                                        <Binding Path="tugas5" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <!--<DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                            Command="Delete"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </mdex:Expander>
+                <mdex:Expander Name="ExpanderKD4"
+                          HorizontalAlignment="Stretch"
+                Title="Aspek Keterampilan"
+                VerticalAlignment="Bottom"
+                Background="{StaticResource SecundaryBackgroundColor}"
+                BorderBrush="#FFF56E6E"
+                CornerRadius="1"
+                BorderThickness="0,0,0,2"                               
+                Padding="0"
+                FontFamily="Roboto"
+                HeaderFontWeight="Bold"
+                HeaderHorizontalAlignment="Right"
+                IsOpened="False" >
+                    <DataGrid CanUserDeleteRows="False" Name="data_kd2" Margin="0,0,0,20" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" SelectionUnit="Cell" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding kd}" Header="KOMPETENSI DASAR" Width="200" />
+                            <DataGridTextColumn Binding="{Binding ips4}" CellStyle="{StaticResource datagridS1Name}" Header="Isikan Kompetensi Dasar Aspek Keterampilan" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </mdex:Expander>
+                <mdex:Expander Name="ExpanderData4"
+                              HorizontalAlignment="Stretch"
+                Title="Nilai Keterampilan"
+                VerticalAlignment="Bottom"
+                Background="{StaticResource SecundaryBackgroundColor}"
+                BorderBrush="#FFF56E6E"
+                CornerRadius="1"
+                BorderThickness="0,0,0,2"                               
+                Padding="0"
+                FontFamily="Roboto"
+                HeaderFontWeight="Bold"
+                HeaderHorizontalAlignment="Right"
+                IsOpened="True" >
+                    <DataGrid Height="510" Name="data2" CanUserDeleteRows="False" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown" SelectionUnit="Cell">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="No" Width="40" Binding="{Binding id}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Induk" Width="45" Binding="{Binding induk}" IsReadOnly="True"/>
+                            <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Binding="{Binding nama}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="KD1" Width="50" Binding="{Binding kdk1}"/>
+                            <DataGridTextColumn Header="KD2" Width="50" Binding="{Binding kdk2}"/>
+                            <DataGridTextColumn Header="KD3" Width="50" Binding="{Binding kdk3}"/>
+                            <DataGridTextColumn Header="KD4" Width="50" Binding="{Binding kdk4}"/>
+                            <DataGridTextColumn Header="KD5" Width="50" Binding="{Binding kdk5}"/>
+                            <DataGridTextColumn                        
+                                IsReadOnly="True"
+                                Header="Rerata (NP)"                                
+                                Width="50">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource Average2}" >
+                                <Binding Path="kdk1" />
+                                <Binding Path="kdk2" />
+                                <Binding Path="kdk3" />
+                                <Binding Path="kdk4" />
+                                    <Binding Path="kdk5" />
+                                </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+                                Header=" KET  T/TT"
+                                IsReadOnly="True"
+                                Width="90">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource Result2}">
+                                    <Binding Path="kdk1" />
+                                    <Binding Path="kdk2" />
+                                    <Binding Path="kdk3" />
+                                    <Binding Path="kdk4" />
+                                    <Binding Path="kdk5" />
+                                </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+
+                            <!--<DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                            Command="Delete"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </mdex:Expander>
+                                
+            </StackPanel>
+            
+        </ScrollViewer>
+    </Border>
+</Page>

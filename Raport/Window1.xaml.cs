@@ -372,7 +372,7 @@ namespace Raport
         }
         private void btnPkn_Click(object sender, RoutedEventArgs e)
         {
-            btnAction("PKN (" + Database.kkm_pkn + ")", "Pages/mp_pkn.xaml");
+            btnAction("PKN (" + Database.kkm_pkn + ")", "Pages/Subjects/mp_pkn.xaml");
             pkn = true;
         }
         private void btnagm_MouseEnter(object sender, MouseEventArgs e)
@@ -392,8 +392,197 @@ namespace Raport
         }
         private void btnagm_Click(object sender, RoutedEventArgs e)
         {
-            btnAction("agm (" + Database.kkm_agm + ")", "Pages/mp_agm.xaml");
+            btnAction(Constants.agm_title + " (" + Database.kkm_agm + ")", "Pages/Subjects/mp_agm.xaml");
             agm = true;
+        }
+        private void btnbi_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnbi;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.bi_title;
+            }
+        }
+
+        private void btnbi_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnbi_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.bi_title + " (" + Database.kkm_bi + ")", "Pages/Subjects/mp_bi.xaml");
+            bi = true;
+        }
+        private void btnmtk_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnmtk;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.mtk_title;
+            }
+        }
+
+        private void btnmtk_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnmtk_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.mtk_title + " (" + Database.kkm_mtk + ")", "Pages/Subjects/mp_mtk.xaml");
+            mtk = true;
+        }
+        private void btnipa_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnipa;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.ipa_title;
+            }
+        }
+
+        private void btnipa_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnipa_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.ipa_title + " (" + Database.kkm_ipa + ")", "Pages/Subjects/mp_ipa.xaml");
+            ipa = true;
+        }
+        private void btnips_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnips;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.ips_title;
+            }
+        }
+
+        private void btnips_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnips_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.ips_title + " (" + Database.kkm_ips + ")", "Pages/Subjects/mp_ips.xaml");
+            ips = true;
+        }
+        private void btnsbdp_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnsbdp;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.sbdp_title;
+            }
+        }
+
+        private void btnsbdp_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnsbdp_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.sbdp_title + " (" + Database.kkm_sbdp + ")", "Pages/Subjects/mp_sbdp.xaml");
+            sbdp = true;
+        }
+        private void btnpjok_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnpjok;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.pjok_title;
+            }
+        }
+
+        private void btnpjok_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnpjok_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.pjok_title + " (" + Database.kkm_pjok + ")", "Pages/Subjects/mp_pjok.xaml");
+            pjok = true;
+        }
+        private void btnbjr_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnbjr;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.bjr_title;
+            }
+        }
+
+        private void btnbjr_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnbjr_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.bjr_title + " (" + Database.kkm_bjr + ")", "Pages/Subjects/mp_bjr.xaml");
+            bjr = true;
+        }
+        private void btnbing_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnbing;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.bing_title;
+            }
+        }
+
+        private void btnbing_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnbing_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.bing_title + " (" + Database.kkm_bing + ")", "Pages/Subjects/mp_bing.xaml");
+            bing = true;
+        }
+        private void btnbta_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnbta;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.bta_title;
+            }
+        }
+
+        private void btnbta_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnbta_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction(Constants.bta_title + " (" + Database.kkm_bta + ")", "Pages/Subjects/mp_bta.xaml");
+            bta = true;
         }
     }
 }

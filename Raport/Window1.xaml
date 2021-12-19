@@ -69,6 +69,33 @@
                                 <Button x:Name="btnPkn" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnPkn_MouseEnter" MouseLeave="btnPkn_MouseLeave"  Click="btnPkn_Click">
                                     <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" Text="PKN" VerticalAlignment="Center"/>
                                 </Button>
+                                <Button x:Name="btnbi"  MouseEnter="btnbi_MouseEnter" MouseLeave="btnbi_MouseLeave"  Click="btnbi_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="Bahasa Indonesia" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnmtk"  MouseEnter="btnmtk_MouseEnter" MouseLeave="btnmtk_MouseLeave"  Click="btnmtk_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="Matematika" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnipa"  MouseEnter="btnipa_MouseEnter" MouseLeave="btnipa_MouseLeave"  Click="btnipa_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="IPA" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnips"  MouseEnter="btnips_MouseEnter" MouseLeave="btnips_MouseLeave"  Click="btnips_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="IPS" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnsbdp"  MouseEnter="btnsbdp_MouseEnter" MouseLeave="btnsbdp_MouseLeave"  Click="btnsbdp_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="SBdP" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnpjok"  MouseEnter="btnpjok_MouseEnter" MouseLeave="btnpjok_MouseLeave"  Click="btnpjok_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="PJOK" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnbjr"  MouseEnter="btnbjr_MouseEnter" MouseLeave="btnbjr_MouseLeave"  Click="btnbjr_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="Bahasa Banjar" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnbing"  MouseEnter="btnbing_MouseEnter" MouseLeave="btnbing_MouseLeave"  Click="btnbing_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="Bahasa Inggris" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
+                                <Button x:Name="btnbta"  MouseEnter="btnbta_MouseEnter" MouseLeave="btnbta_MouseLeave"  Click="btnbta_Click" Style="{DynamicResource PopupButtonStyle}">
+                                    <ctls:MenuItem  Text="BTA" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource products}" IconWidth="16" VerticalAlignment="Center"/>
+                                </Button>
                                 <Button x:Name="btnBilling" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnBilling_MouseEnter" MouseLeave="btnBilling_MouseLeave">
                                     <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryButtonColor}" Icon="{DynamicResource billing}" IconWidth="16" Text="Billing" VerticalAlignment="Center"/>
                                 </Button>

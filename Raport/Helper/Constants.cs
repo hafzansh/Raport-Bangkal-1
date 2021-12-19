@@ -20,27 +20,37 @@ namespace Raport.Helper
         public static string sikap_title = "Sikap";
         public static string agm = "mp_agama";
         public static string agm_title = "Agama";
+        public static string agm_title2 = "Agama2";
         public static string pkn = "mp_pkn";
         public static string pkn_title = "PKN";
         public static string pkn_title2 = "PKN2";
         public static string bi = "mp_bi";
         public static string bi_title = "Bahasa Indonesia";
+        public static string bi_title2 = "Bahasa Indonesia2";
         public static string mtk = "mp_mtk";
         public static string mtk_title = "Matematika";
+        public static string mtk_title2 = "Matematika2";
         public static string ipa = "mp_ipa";
         public static string ipa_title = "IPA";
+        public static string ipa_title2 = "IPA2";
         public static string ips = "mp_ips";
         public static string ips_title = "IPS";
+        public static string ips_title2 = "IPS2";
         public static string sbdp = "mp_sbdp";
         public static string sbdp_title = "SBdp";
+        public static string sbdp_title2 = "SBdp2";
         public static string pjok = "mp_pjok";
         public static string pjok_title = "PJOK";
+        public static string pjok_title2 = "PJOK2";
         public static string bjr = "mp_bjr";
         public static string bjr_title = "B. Banjar";
+        public static string bjr_title2 = "B. Banjar2";
         public static string bing = "mp_bing";
         public static string bing_title = "B. Inggris";
+        public static string bing_title2 = "B. Inggris2";
         public static string bta = "mp_bta";
         public static string bta_title = "BTA";
+        public static string bta_title2 = "BTA2";
         public static string dasis_query = "CREATE TABLE data_siswa (induk INTEGER(8)  PRIMARY KEY,nama VARCHAR(30), " +
                         "tempat_lahir VARCHAR(15), tanggal_lahir VARCHAR(20), jenis_kelamin VARCHAR(9), agama VARCHAR(10)," +
                         "alamat TEXT, nama_ayah VARCHAR(30), nama_ibu VARCHAR(30), p_ayah VARCHAR(15), p_ibu VARCHAR(15)," +

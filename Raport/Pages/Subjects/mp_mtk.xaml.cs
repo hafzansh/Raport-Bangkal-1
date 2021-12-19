@@ -1,58 +1,92 @@
 ﻿using Raport.Helper;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Raport.Pages
+namespace Raport.Pages.Subjects
 {
-    public partial class mp_mtk3 : Page
+    public partial class mp_mtk : Page
     {
-        private static TaskScheduler GetSyncronizationContent() =>
-     SynchronizationContext.Current != null ?
-          TaskScheduler.FromCurrentSynchronizationContext() :
-          TaskScheduler.Current;
-        public mp_mtk3()
+        public mp_mtk()
         {
 
             InitializeComponent();
             Constants.current1 = Database.kd_mtk3;
             Constants.current3 = Database.kd_mtk4;
-            Constants.current2 = Database.kkm_pkn;
-            Connection.dataset.Tables[Constants.mtk_title].Clear();
+            Constants.current2 = Database.kkm_mtk;            
+            validate();
+            try
+            {
+                clearTable();
+                fillConnect();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+
+
+
+        }
+        private void fillConnect()
+        {
             Connection.MP_KD3(Constants.mtk, Constants.mtk_title);
-            Connection.dataset.Tables["kd_mtk3"].Clear();
+            Connection.MP_KD4(Constants.mtk, Constants.mtk_title2);
             Connection.KD("mtk3", "kd_mtk3", Database.kd_mtk3);
+            Connection.KD("mtk4", "kd_mtk4", Database.kd_mtk4);
             data_kd.ItemsSource = Connection.dataset.Tables["kd_mtk3"].DefaultView;
-            data.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;            
+            data.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;
+            data_kd2.ItemsSource = Connection.dataset.Tables["kd_mtk4"].DefaultView;
+            data2.ItemsSource = Connection.dataset.Tables[Constants.mtk_title2].DefaultView;
+        }
+        private void clearTable()
+        {
+            Connection.dataset.Tables[Constants.mtk_title].Clear();
+            Connection.dataset.Tables[Constants.mtk_title2].Clear();
+            Connection.dataset.Tables["kd_mtk3"].Clear();
+            Connection.dataset.Tables["kd_mtk4"].Clear();
+        }
+        private void validate()
+        {
+            ExpanderKD3.Title = "Aspek Pengetahuan (" + Constants.current1 + ")";
+            ExpanderKD4.Title = "Aspek Keterampilan (" + Constants.current3 + ")";
             if (Database.kd_mtk3 == 1)
             {
                 data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = data.Columns[4].IsReadOnly = true;
+                data.Columns[12].IsReadOnly = data.Columns[11].IsReadOnly = data.Columns[10].IsReadOnly = data.Columns[9].IsReadOnly = true;
             }
             else if (Database.kd_mtk3 == 2)
             {
                 data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = true;
+                data.Columns[12].IsReadOnly = data.Columns[11].IsReadOnly = data.Columns[10].IsReadOnly = true;
             }
             else if (Database.kd_mtk3 == 3)
             {
                 data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = true;
+                data.Columns[12].IsReadOnly = data.Columns[11].IsReadOnly = true;
             }
             else if (Database.kd_mtk3 == 4)
             {
                 data.Columns[7].IsReadOnly = true;
+                data.Columns[12].IsReadOnly = true;
             }
-            else
-            {
 
+            if (Database.kd_mtk4 == 1)
+            {
+                data2.Columns[7].IsReadOnly = data2.Columns[6].IsReadOnly = data2.Columns[5].IsReadOnly = data2.Columns[4].IsReadOnly = true;
+            }
+            else if (Database.kd_mtk4 == 2)
+            {
+                data2.Columns[7].IsReadOnly = data2.Columns[6].IsReadOnly = data2.Columns[5].IsReadOnly = true;
+            }
+            else if (Database.kd_mtk4 == 3)
+            {
+                data2.Columns[7].IsReadOnly = data2.Columns[6].IsReadOnly = true;
+            }
+            else if (Database.kd_mtk4 == 4)
+            {
+                data2.Columns[7].IsReadOnly = true;
             }
         }
         private void data_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
