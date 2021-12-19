@@ -288,17 +288,79 @@ namespace Raport
                 save.IsEnabled = false;
                 reCount();
             }
-            else if (dashboard)
-            {
-                
-                Connection.UpdateDB2(Connection.adapter, Connection.dataset, Constants.mtk_title, Constants.mtk);
-                save.IsEnabled = false;
-                reCount();
-                
-            }
             else if (pkn)
             {
                 UpdateData(Connection.adapter, Connection.dataset, Constants.pkn_title, Constants.pkn_title2, Constants.pkn, "pkn3", "kd_pkn3", "pkn4", "kd_pkn4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (agm)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.agm_title, Constants.agm_title2, Constants.agm, "agm3", "kd_agm3", "agm4", "kd_agm4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (bi)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.bi_title, Constants.bi_title2, Constants.bi, "bi3", "kd_bi3", "bi4", "kd_bi4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (mtk)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.mtk_title, Constants.mtk_title2, Constants.mtk, "mtk3", "kd_mtk3", "mtk4", "kd_mtk4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (ipa)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.ipa_title, Constants.ipa_title2, Constants.ipa, "ipa3", "kd_ipa3", "ipa4", "kd_ipa4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (ips)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.ips_title, Constants.ips_title2, Constants.ips, "ips3", "kd_ips3", "ips4", "kd_ips4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (sbdp)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.sbdp_title, Constants.sbdp_title2, Constants.sbdp, "sbdp3", "kd_sbdp3", "sbdp4", "kd_sbdp4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (pjok)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.pjok_title, Constants.pjok_title2, Constants.pjok, "pjok3", "kd_pjok3", "pjok4", "kd_pjok4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (bjr)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.bjr_title, Constants.bjr_title2, Constants.bjr, "bjr3", "kd_bjr3", "bjr4", "kd_bjr4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (bing)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.bing_title, Constants.bing_title2, Constants.bing, "bing3", "kd_bing3", "bing4", "kd_bing4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (bta)
+            {
+                UpdateData(Connection.adapter, Connection.dataset, Constants.bta_title, Constants.bta_title2, Constants.bta, "bta3", "kd_bta3", "bta4", "kd_bta4");
                 save.IsEnabled = false;
                 reCount();
 
@@ -352,6 +414,10 @@ namespace Raport
         }
         private void btnDasis_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction("Data Siswa", "Pages/Dasis.xaml");
             dasis = true;
         }
@@ -372,7 +438,11 @@ namespace Raport
         }
         private void btnPkn_Click(object sender, RoutedEventArgs e)
         {
-            btnAction("PKN (" + Database.kkm_pkn + ")", "Pages/Subjects/mp_pkn.xaml");
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
+            btnAction(Constants.pkn_title + " (" + Database.kkm_pkn + ")", "Pages/Subjects/mp_pkn.xaml");
             pkn = true;
         }
         private void btnagm_MouseEnter(object sender, MouseEventArgs e)
@@ -392,6 +462,10 @@ namespace Raport
         }
         private void btnagm_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.agm_title + " (" + Database.kkm_agm + ")", "Pages/Subjects/mp_agm.xaml");
             agm = true;
         }
@@ -413,6 +487,10 @@ namespace Raport
         }
         private void btnbi_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.bi_title + " (" + Database.kkm_bi + ")", "Pages/Subjects/mp_bi.xaml");
             bi = true;
         }
@@ -434,6 +512,10 @@ namespace Raport
         }
         private void btnmtk_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.mtk_title + " (" + Database.kkm_mtk + ")", "Pages/Subjects/mp_mtk.xaml");
             mtk = true;
         }
@@ -455,6 +537,10 @@ namespace Raport
         }
         private void btnipa_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.ipa_title + " (" + Database.kkm_ipa + ")", "Pages/Subjects/mp_ipa.xaml");
             ipa = true;
         }
@@ -476,6 +562,10 @@ namespace Raport
         }
         private void btnips_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.ips_title + " (" + Database.kkm_ips + ")", "Pages/Subjects/mp_ips.xaml");
             ips = true;
         }
@@ -497,6 +587,10 @@ namespace Raport
         }
         private void btnsbdp_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.sbdp_title + " (" + Database.kkm_sbdp + ")", "Pages/Subjects/mp_sbdp.xaml");
             sbdp = true;
         }
@@ -518,6 +612,10 @@ namespace Raport
         }
         private void btnpjok_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.pjok_title + " (" + Database.kkm_pjok + ")", "Pages/Subjects/mp_pjok.xaml");
             pjok = true;
         }
@@ -539,6 +637,10 @@ namespace Raport
         }
         private void btnbjr_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.bjr_title + " (" + Database.kkm_bjr + ")", "Pages/Subjects/mp_bjr.xaml");
             bjr = true;
         }
@@ -560,6 +662,10 @@ namespace Raport
         }
         private void btnbing_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.bing_title + " (" + Database.kkm_bing + ")", "Pages/Subjects/mp_bing.xaml");
             bing = true;
         }
@@ -581,6 +687,10 @@ namespace Raport
         }
         private void btnbta_Click(object sender, RoutedEventArgs e)
         {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             btnAction(Constants.bta_title + " (" + Database.kkm_bta + ")", "Pages/Subjects/mp_bta.xaml");
             bta = true;
         }
