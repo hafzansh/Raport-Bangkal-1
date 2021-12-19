@@ -15,38 +15,38 @@ using System.Windows.Shapes;
 
 namespace Raport.Pages
 {
-    public partial class mp_pkn : Page
+    public partial class mp_mtk3 : Page
     {
         private static TaskScheduler GetSyncronizationContent() =>
      SynchronizationContext.Current != null ?
           TaskScheduler.FromCurrentSynchronizationContext() :
           TaskScheduler.Current;
-        public mp_pkn()
+        public mp_mtk3()
         {
 
             InitializeComponent();
-            Constants.current1 = Database.kd_pkn3;
-            Constants.current3 = Database.kd_pkn4;
+            Constants.current1 = Database.kd_mtk3;
+            Constants.current3 = Database.kd_mtk4;
             Constants.current2 = Database.kkm_pkn;
-            Connection.dataset.Tables[Constants.pkn_title].Clear();
-            Connection.DBConnection2(Constants.pkn, Constants.pkn_title);
-            Connection.dataset.Tables["kd_pkn3"].Clear();
-            Connection.KD3("pkn3", "kd_pkn3", Database.kd_pkn3);
-            data_kd.ItemsSource = Connection.dataset.Tables["kd_pkn3"].DefaultView;
-            data.ItemsSource = Connection.dataset.Tables[Constants.pkn_title].DefaultView;            
-            if (Database.kd_pkn3 == 1)
+            Connection.dataset.Tables[Constants.mtk_title].Clear();
+            Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
+            Connection.dataset.Tables["kd_mtk3"].Clear();
+            Connection.KD3("mtk3", "kd_mtk3", Database.kd_mtk3);
+            data_kd.ItemsSource = Connection.dataset.Tables["kd_mtk3"].DefaultView;
+            data.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;            
+            if (Database.kd_mtk3 == 1)
             {
                 data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = data.Columns[4].IsReadOnly = true;
             }
-            else if (Database.kd_pkn3 == 2)
+            else if (Database.kd_mtk3 == 2)
             {
                 data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = true;
             }
-            else if (Database.kd_pkn3 == 3)
+            else if (Database.kd_mtk3 == 3)
             {
                 data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = true;
             }
-            else if (Database.kd_pkn3 == 4)
+            else if (Database.kd_mtk3 == 4)
             {
                 data.Columns[7].IsReadOnly = true;
             }

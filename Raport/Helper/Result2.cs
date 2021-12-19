@@ -7,29 +7,30 @@ using System.Windows.Data;
 
 namespace Raport.Helper
 {
-    /// <summary>
-    /// Lógica de interacción para Dashboard.xaml
-    /// </summary>    
-    public class Average : IMultiValueConverter
+    public class Result2 : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {            
+        {
             double sum = 0;
-            double sum2 = 0;
-            int val = Constants.current1;
+            int val = Constants.current3;
+            string result;
             if (values.Any(x => x == DependencyProperty.UnsetValue))
                 return DependencyProperty.UnsetValue;
-            for (int i = 0; i < val ; i++)
+            for (int i = 0; i < val; i++)
             {
                 sum += System.Convert.ToDouble(values[i]);
             }
-            for (int i=5;i< (5 + val); i++)
-            {
-                sum2 += System.Convert.ToDouble(values[i]);
-            }
             //sum /= values.Length;            
-            double result = (sum + sum2) / (val*2);
-            return result.ToString();
+            double resultval = sum / val;
+            if (resultval <= Constants.current2)
+            {
+                result = "Tidak Tuntas";
+            }
+            else
+            {
+                result = "Tuntas";
+            }
+            return result;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

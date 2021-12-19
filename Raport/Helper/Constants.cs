@@ -22,6 +22,7 @@ namespace Raport.Helper
         public static string agm_title = "Agama";
         public static string pkn = "mp_pkn";
         public static string pkn_title = "PKN";
+        public static string pkn_title2 = "PKN2";
         public static string bi = "mp_bi";
         public static string bi_title = "Bahasa Indonesia";
         public static string mtk = "mp_mtk";
@@ -54,7 +55,12 @@ namespace Raport.Helper
             "nip_wali_kelas VARCHAR(16),kepala_sekolah VARCHAR(30),nip_kepala_sekolah VARCHAR(16),semester VARCHAR(10),tahun VARCHAR(10)," +
             "kelas VARCHAR(10),kd_agm3 INT(2),kd_agm4 INT(2),kd_pkn3 INT(2),kd_pkn4 INT(2),kd_bi3 INT(2),kd_bi4 INT(2),kd_mtk3 INT(2)," +
             "kd_mtk4 INT(2),kd_ipa3 INT(2),kd_ipa4 INT(2),kd_ips3 INT(2),kd_ips4 INT(2),kd_sbdp3 INT(2),kd_sbdp4 INT(2),kd_pjok3 INT(2)," +
-            "kd_pjok4 INT(2),kd_bjr3 INT(2),kd_bjr4 INT(2),kd_bing3 INT(2),kd_bing4 INT(2),kd_bta3 INT(2),kd_bta4 INT(2));";
+            "kd_pjok4 INT(2),kd_bjr3 INT(2),kd_bjr4 INT(2),kd_bing3 INT(2),kd_bing4 INT(2),kd_bta3 INT(2),kd_bta4 INT(2)" +
+            ",kkm_agm INT(2),kkm_pkn INT(2),kkm_bi INT(2),kkm_mtk INT(2),kkm_ipa INT(2),kkm_ips INT(2),kkm_sbdp INT(2),kkm_pjok INT(2),kkm_bjr INT(2)" +
+            ",kkm_bing INT(2),kkm_bta INT(2));";
+        public static string kd_query = "CREATE TABLE kompetensi_dasar (id INTEGER      PRIMARY KEY AUTOINCREMENT,kd VARCHAR(20),agm3 TEXT," +
+            "agm4  TEXT,pkn3 TEXT,pkn4  TEXT,mtk3 TEXT,mtk4  TEXT,bi3 TEXT,bi4   TEXT,ips3 TEXT,ips4  TEXT,ipa3 TEXT,ipa4  TEXT," +
+            "pjok3 TEXT,pjok4 TEXT,sbdp3 TEXT,sbdp4 TEXT,bjr3 TEXT,bjr4  TEXT,bing3 TEXT,bing4 TEXT,bta3 TEXT,bta4  TEXT);";
         public static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string folder = "Raport Bangkal 1/";
         public static string folderpath = Path.Combine(path,folder);
@@ -65,6 +71,7 @@ namespace Raport.Helper
 
         public static int current1;
         public static int current2;
+        public static int current3;
         public static void CloseApp()
         {
             System.Windows.Application.Current.Shutdown();

@@ -1,4 +1,4 @@
-﻿<Page x:Class="Raport.Pages.mp_pkn"
+﻿<Page x:Class="Raport.Pages.mp_mtk3"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,7 +23,7 @@
                 <DataGrid Name="data_kd" Margin="0,0,0,20" Height="151" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" SelectionUnit="Cell" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="KOMPETENSI DASAR" Width="200" Binding="{Binding kd}"/>
-                    <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Isikan Kompetensi Dasar Aspek Pengetahuan" Binding="{Binding pkn3}"/>
+                    <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Isikan Kompetensi Dasar Aspek Pengetahuan" Binding="{Binding mtk3}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <DataGrid VerticalScrollBarVisibility="Disabled" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" Name="data" Margin="0,0,0,10" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown" SelectionUnit="Cell">

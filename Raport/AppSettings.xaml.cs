@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,12 +28,13 @@ namespace Raport
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Database.db_name = db_name.Text;
-            Database.db_name = "Test_I (Satu)_Ganjil_2021-2022";
-            Constants.dbName = Database.db_name;                
+            Database.db_name = "Masliah_I (Satu)_Ganjil_2021-2022";
+            Constants.dbName = Database.db_name;
             Window window = new Window1();
             window.Show();
             this.Hide();
         }
+
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {

@@ -10,25 +10,26 @@ namespace Raport.Helper
     /// <summary>
     /// Lógica de interacción para Dashboard.xaml
     /// </summary>    
-    public class Average : IMultiValueConverter
+    public class Average2 : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {            
             double sum = 0;
-            double sum2 = 0;
-            int val = Constants.current1;
+            int val = Constants.current3;
             if (values.Any(x => x == DependencyProperty.UnsetValue))
                 return DependencyProperty.UnsetValue;
+
+            //foreach (var item in values)
+            //{
+            //    sum += System.Convert.ToDouble(item);
+            //}
             for (int i = 0; i < val ; i++)
             {
                 sum += System.Convert.ToDouble(values[i]);
             }
-            for (int i=5;i< (5 + val); i++)
-            {
-                sum2 += System.Convert.ToDouble(values[i]);
-            }
+            
             //sum /= values.Length;            
-            double result = (sum + sum2) / (val*2);
+            double result = (sum /val);
             return result.ToString();
         }
 

@@ -29,8 +29,6 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
                 <Frame Name="settings_frame" NavigationUIVisibility="Hidden" Height="530" Margin="20 5 20 0" />
             </StackPanel>
-            
-
         </Grid>
     </Border>
 </Window>

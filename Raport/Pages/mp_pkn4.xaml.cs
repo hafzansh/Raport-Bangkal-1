@@ -15,45 +15,45 @@ using System.Windows.Shapes;
 
 namespace Raport.Pages
 {
-    public partial class mp_pkn : Page
+    public partial class mp_pkn4 : Page
     {
         private static TaskScheduler GetSyncronizationContent() =>
      SynchronizationContext.Current != null ?
           TaskScheduler.FromCurrentSynchronizationContext() :
           TaskScheduler.Current;
-        public mp_pkn()
+        public mp_pkn4()
         {
 
             InitializeComponent();
             Constants.current1 = Database.kd_pkn3;
             Constants.current3 = Database.kd_pkn4;
             Constants.current2 = Database.kkm_pkn;
-            Connection.dataset.Tables[Constants.pkn_title].Clear();
-            Connection.DBConnection2(Constants.pkn, Constants.pkn_title);
-            Connection.dataset.Tables["kd_pkn3"].Clear();
-            Connection.KD3("pkn3", "kd_pkn3", Database.kd_pkn3);
-            data_kd.ItemsSource = Connection.dataset.Tables["kd_pkn3"].DefaultView;
-            data.ItemsSource = Connection.dataset.Tables[Constants.pkn_title].DefaultView;            
-            if (Database.kd_pkn3 == 1)
-            {
-                data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = data.Columns[4].IsReadOnly = true;
-            }
-            else if (Database.kd_pkn3 == 2)
-            {
-                data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = true;
-            }
-            else if (Database.kd_pkn3 == 3)
-            {
-                data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = true;
-            }
-            else if (Database.kd_pkn3 == 4)
-            {
-                data.Columns[7].IsReadOnly = true;
-            }
-            else
-            {
+            Connection.dataset.Tables[Constants.pkn_title2].Clear();
+            Connection.DBConnection3(Constants.pkn, Constants.pkn_title2);
+            Connection.dataset.Tables["kd_pkn4"].Clear();
+            Connection.KD3("pkn4", "kd_pkn4", Database.kd_pkn4);
+            data_kd.ItemsSource = Connection.dataset.Tables["kd_pkn4"].DefaultView;            
+            data.ItemsSource = Connection.dataset.Tables[Constants.pkn_title2].DefaultView;            
+            //if (Database.kd_pkn3 == 1)
+            //{
+            //    data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = data.Columns[4].IsReadOnly = true;
+            //}
+            //else if (Database.kd_pkn3 == 2)
+            //{
+            //    data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = data.Columns[5].IsReadOnly = true;
+            //}
+            //else if (Database.kd_pkn3 == 3)
+            //{
+            //    data.Columns[7].IsReadOnly = data.Columns[6].IsReadOnly = true;
+            //}
+            //else if (Database.kd_pkn3 == 4)
+            //{
+            //    data.Columns[7].IsReadOnly = true;
+            //}
+            //else
+            //{
 
-            }
+            //}
         }
         private void data_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {

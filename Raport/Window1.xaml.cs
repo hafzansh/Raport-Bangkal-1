@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -19,6 +21,7 @@ namespace Raport
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
+    /// 
     
     public partial class Window1 : Window
     {
@@ -28,10 +31,17 @@ namespace Raport
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         bool Home = true;
         bool pkn,dashboard, dasis = false;
+        private static TaskScheduler GetSyncronizationContent() =>
+     SynchronizationContext.Current != null ?
+          TaskScheduler.FromCurrentSynchronizationContext() :
+          TaskScheduler.Current;
         public Window1()
         {
             InitializeComponent();
+            
             loadValue();
+            setting.Content = Database.kelas + ", " + Database.semester + ", " + Database.tahun;
+            guru.Content = Database.wali_kelas;
             Connection.setConnection();
             btnHome.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Save.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
@@ -55,7 +65,7 @@ namespace Raport
                 Database.kelas = (string)dr["kelas"];
                 Database.kd_agm3 = (int)dr["kd_agm3"];
                 Database.kd_agm4 = (int)dr["kd_agm4"];
-                Database.kd_pkn3 = (int)dr["kd_pkn4"];
+                Database.kd_pkn3 = (int)dr["kd_pkn3"];
                 Database.kd_pkn4 = (int)dr["kd_pkn4"];
                 Database.kd_bi3 = (int)dr["kd_bi3"];
                 Database.kd_bi4 = (int)dr["kd_bi4"];
@@ -75,6 +85,17 @@ namespace Raport
                 Database.kd_bing4 = (int)dr["kd_bing4"];
                 Database.kd_bta3 = (int)dr["kd_bta3"];
                 Database.kd_bta4 = (int)dr["kd_bta4"];
+                Database.kkm_agm = (int)dr["kkm_agm"];
+                Database.kkm_pkn = (int)dr["kkm_pkn"];
+                Database.kkm_bi = (int)dr["kkm_bi"];
+                Database.kkm_mtk = (int)dr["kkm_mtk"];
+                Database.kkm_ipa = (int)dr["kkm_ipa"];
+                Database.kkm_ips = (int)dr["kkm_ips"];
+                Database.kkm_sbdp = (int)dr["kkm_sbdp"];
+                Database.kkm_pjok = (int)dr["kkm_pjok"];
+                Database.kkm_bjr = (int)dr["kkm_bjr"];
+                Database.kkm_bing = (int)dr["kkm_bing"];
+                Database.kkm_bta = (int)dr["kkm_bta"];
             }
             Connection.sqlite.Close();
         }
@@ -378,6 +399,7 @@ namespace Raport
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
+            
             btnAction("Home", "Pages/Home.xaml");            
             Home = true;            
         }
@@ -388,13 +410,18 @@ namespace Raport
             dashboard = true;
         }
         private void btnDasis_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             btnAction("Data Siswa", "Pages/Dasis.xaml");
             dasis = true;
         }
         private void btnPkn_Click(object sender, RoutedEventArgs e)
+        {         
+            btnAction("PKN", "Pages/mp_pkn.xaml");        
+            pkn = true;
+        }
+        private void btnPkn2_Click(object sender, RoutedEventArgs e)
         {
-            btnAction("PKN", "Pages/mp_pkn.xaml");
+            btnAction("PKN", "Pages/mp_pkn4.xaml");
             pkn = true;
         }
         private void Button_Click(object sender, RoutedEventArgs e)

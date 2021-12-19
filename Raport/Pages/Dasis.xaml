@@ -4,18 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Raport.Pages"
+      xmlns:helper="clr-namespace:Raport.Helper"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Data Siswa">
-
     <Grid VirtualizingPanel.IsVirtualizing="True">
-        <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
-            <DataGrid Style="{StaticResource datagridS1}" MaxHeight="1000" MaxWidth="1300" CanUserResizeColumns="false" AutoGenerateColumns="False" SelectionUnit="Cell" IsSynchronizedWithCurrentItem="False" CanUserReorderColumns="False" CanUserAddRows="True" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="dasisDG" CellEditEnding="dasisDG_CellEditEnding" PreviewKeyDown="dasisDG_PreviewKeyDown" PreparingCellForEdit="dasisDG_PreparingCellForEdit">
+        <Border CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
+            <DataGrid Margin="10,0,10,0" Style="{StaticResource datagridS1}" MaxHeight="1000" MaxWidth="1300" CanUserResizeColumns="false" AutoGenerateColumns="False" SelectionUnit="Cell" IsSynchronizedWithCurrentItem="False" CanUserReorderColumns="False" CanUserAddRows="True" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="dasisDG" CellEditEnding="dasisDG_CellEditEnding" PreviewKeyDown="dasisDG_PreviewKeyDown" PreparingCellForEdit="dasisDG_PreparingCellForEdit">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="  No. Induk" Width="45" Binding="{Binding induk}"/>
                     <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Width="150" Binding="{Binding nama}"/>
                     <DataGridTextColumn Header="Tempat Lahir" Width="100" Binding="{Binding tempat_lahir}"/>
-                    <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding tanggal_lahir}"/>
+                    <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding tanggal_lahir}"/>                    
                     <DataGridTemplateColumn Header="Jenis Kelamin" Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

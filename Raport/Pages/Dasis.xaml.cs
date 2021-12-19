@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,9 +23,10 @@ namespace Raport.Pages
         public Dasis()
         {
             InitializeComponent();
-            //Connection.DBConnection(Constants.dasis, Constants.dasis_title);
-            dasisDG.ItemsSource = Connection.dataset.Tables[Constants.dasis_title].DefaultView;
-        }
+            Connection.dataset.Tables[Constants.dasis_title].Clear();
+            Connection.DBConnection(Constants.dasis, Constants.dasis_title);
+            dasisDG.ItemsSource = Connection.dataset.Tables[Constants.dasis_title].DefaultView;            
+        }        
         private void dasisDG_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             foreach (Window window in Application.Current.Windows)

@@ -39,9 +39,26 @@ namespace Raport.Helper
         public static int kd_bing4;
         public static int kd_bta3;
         public static int kd_bta4;
-                
+        public static int kkm_agm;
+        public static int kkm_pkn;
+        public static int kkm_bi;
+        public static int kkm_mtk;
+        public static int kkm_ipa;
+        public static int kkm_ips;
+        public static int kkm_sbdp;
+        public static int kkm_pjok;
+        public static int kkm_bjr;
+        public static int kkm_bing;
+        public static int kkm_bta;
+
+
         public static void CreateDB()
         {
+            bool exists = Directory.Exists(Constants.folderpath);
+
+            if (!exists)
+                Directory.CreateDirectory(Constants.folderpath);
+
             if (!File.Exists(Constants.folderpath + db_name))
             {
                 try
@@ -79,8 +96,10 @@ namespace Raport.Helper
                     CreateTable(command, Constants.bta);
                     CreateKDT(command,Constants.bta);
                     CreateTrigger(command);
-
                     InsertAppSettings(command);
+                    command.CommandText = Constants.kd_query;
+                    command.ExecuteNonQuery();
+                    InsertKD(command);
                 }
                 catch(Exception ex)
                 {
@@ -93,13 +112,23 @@ namespace Raport.Helper
             }
 
         }
+        public static void InsertKD(SQLiteCommand command)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                string query = "insert into kompetensi_dasar (id,kd) values (null,'Kompetensi Dasar " + i + "');";
+                command.CommandText = query;
+                command.ExecuteNonQuery();
+            }
+            
+        }
         public static void InsertAppSettings(SQLiteCommand command)
         {
             string query = "insert into app_settings values (NULL,'" +
             Database.wali_kelas + "' , '" + nip_wali_kelas + "' , '" + kepala_sekolah + "' , '" + nip_kepala_sekolah + "' , '" + semester + "' , '" + tahun + "' , '" +
             kelas + "'," + kd_agm3 + "," + kd_agm4 + "," + kd_pkn3 + "," + kd_pkn4 + "," + kd_bi3 + "," + kd_bi4 + "," + kd_mtk3 + "," +
             kd_mtk4 + "," + kd_ipa3 + "," + kd_ipa4 + "," + kd_ips3 + "," + kd_ips4 + "," + kd_sbdp3 + "," + kd_sbdp4 + "," + kd_pjok3 + "," +
-            kd_pjok4 + "," + kd_bjr3 + "," + kd_bjr4 + "," + kd_bing3 + "," + kd_bing4 + "," + kd_bta3 + "," + kd_bta4 + ")";
+            kd_pjok4 + "," + kd_bjr3 + "," + kd_bjr4 + "," + kd_bing3 + "," + kd_bing4 + "," + kd_bta3 + "," + kd_bta4 + ",70,70,70,70,70,70,70,70,70,70,70)";
             command.CommandText = query;
             command.ExecuteNonQuery();
         }

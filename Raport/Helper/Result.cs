@@ -11,22 +11,23 @@ namespace Raport.Helper
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            double sum = 0;            
+            double sum = 0;
+            double sum2 = 0;
+            int val = Constants.current1;
+            string result;
             if (values.Any(x => x == DependencyProperty.UnsetValue))
                 return DependencyProperty.UnsetValue;
-
-            //foreach (var item in values)
-            //{
-            //    sum += System.Convert.ToDouble(item);
-            //}
-            //sum /= values.Length;
-            for (int i = 0; i < Constants.current1; i++)
+            for (int i = 0; i < val; i++)
             {
                 sum += System.Convert.ToDouble(values[i]);
             }
-            sum /= Constants.current1;
-            string result;
-            if (sum <=5)
+            for (int i = 5; i < (5 + val); i++)
+            {
+                sum2 += System.Convert.ToDouble(values[i]);
+            }
+            //sum /= values.Length;            
+            double resultval = (sum + sum2) / (val * 2);
+            if (resultval <= Constants.current2)
             {
                 result = "Tidak Tuntas";
             }

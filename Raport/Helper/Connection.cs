@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Raport.Helper
@@ -15,7 +16,8 @@ namespace Raport.Helper
         public static DataTable table = new DataTable();
         public static DataSet dataset = new DataSet();
         public static SQLiteCommandBuilder commandBuilder;        
-        private static string kd = "kdp1,kdp2,kdp3,kdp4,kdp5,";
+        private static string kd = "kdp1,kdp2,kdp3,kdp4,kdp5,tugas1,tugas2,tugas3,tugas4,tugas5,";
+        private static string kd3 = "kdk1,kdk2,kdk3,kdk4,kdk5";
         public static SQLiteConnection sqlite = new SQLiteConnection("Data Source=" + Constants.folderpath + Constants.dbName +".db" +";" + Constants.dbVersion);
         public static void setConnection()
         {
@@ -25,7 +27,11 @@ namespace Raport.Helper
                 Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
                 Connection.DBConnection2(Constants.pkn, Constants.pkn_title);
                 Connection.KD3("pkn3", "kd_pkn3",Database.kd_pkn3);
+                Connection.KD3("mtk3", "kd_mtk3", Database.kd_mtk3);
 
+
+                Connection.DBConnection3(Constants.pkn, Constants.pkn_title2);
+                Connection.KD3("pkn4", "kd_pkn4", Database.kd_pkn4);
             }
             catch (Exception ex)
             {
@@ -35,7 +41,7 @@ namespace Raport.Helper
         public static void DBConnection(String q, String tablename)
         {
             try
-            {                                
+            {                
                 string query = "SELECT * FROM " + q;
                 adapter.SelectCommand = new SQLiteCommand(query, sqlite);
                 commandBuilder = new SQLiteCommandBuilder(adapter);
@@ -55,6 +61,21 @@ namespace Raport.Helper
                 adapter.SelectCommand = new SQLiteCommand(query, sqlite);
                 commandBuilder = new SQLiteCommandBuilder(adapter);
                 adapter.Fill(dataset, tablename);
+
+            }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        public static void DBConnection3(String target, String tablename)
+        {
+            try
+            {
+                string query = "SELECT distinct " + target + ".id, " + target + ".induk, data_siswa.nama, " + kd3 + " FROM " + target + " inner join data_siswa on " + target + ".induk=data_siswa.induk";
+                adapter.SelectCommand = new SQLiteCommand(query, sqlite);
+                commandBuilder = new SQLiteCommandBuilder(adapter);
+                adapter.Fill(dataset, Constants.pkn_title2);
 
             }
             catch (SQLiteException ex)
