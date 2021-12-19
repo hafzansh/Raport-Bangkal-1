@@ -1,6 +1,7 @@
 ﻿using Raport.Helper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
@@ -30,7 +31,7 @@ namespace Raport
         public static RoutedCommand Toggle = new RoutedCommand();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         bool Home = true;
-        bool pkn,dashboard, dasis = false;
+        bool pkn,agm,mtk,bi,ipa,ips,pjok,sbdp,bjr,bing,bta,dashboard, dasis = false;
         private static TaskScheduler GetSyncronizationContent() =>
      SynchronizationContext.Current != null ?
           TaskScheduler.FromCurrentSynchronizationContext() :
@@ -186,14 +187,11 @@ namespace Raport
                 Tg_Btn.IsChecked = true;
             }
 
-        }
-        
+        }        
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Tg_Btn.IsChecked = false;
         }
-
-        // Start: MenuLeft PopupButton //
         private void btnHome_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
@@ -204,96 +202,11 @@ namespace Raport
                 Header.PopupText.Text = "Home";
             }
         }
-
         private void btnHome_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
-        private void btnDasis_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnProducts;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Data Siswa";
-            }
-        }
-
-        private void btnDasis_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-        private void btnDashboard_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnDashboard;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Dashboard";
-            }
-        }
-
-        private void btnDashboard_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-
-        private void btnProducts_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnProducts;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Products";
-            }
-        }
-
-        private void btnProducts_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-
-        private void btnProductStock_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnProductStock;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Product Stock";
-            }
-        }
-
-        private void btnProductStock_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-
-        private void btnOrderList_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnOrderList;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Order List";
-            }
-        }
-
-        private void btnOrderList_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-
         private void btnBilling_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
@@ -304,42 +217,7 @@ namespace Raport
                 Header.PopupText.Text = "Billing";
             }
         }
-
         private void btnBilling_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-
-        private void btnPointOfSale_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnPointOfSale;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Poin Of Sale";
-            }
-        }
-
-        private void btnPointOfSale_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-
-        private void btnSecurity_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnSecurity;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Security";
-            }
-        }
-
-        private void btnSecurity_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
@@ -354,15 +232,11 @@ namespace Raport
                 Header.PopupText.Text = "Setting";
             }
         }
-
         private void btnSetting_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
-        // End: MenuLeft PopupButton //
-
-        // Start: Button Close | Restore | Minimize 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             if (save.IsEnabled)
@@ -375,7 +249,6 @@ namespace Raport
                 Constants.CloseApp();
             }
         }
-
         private void btnRestore_Click(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Normal)
@@ -383,46 +256,26 @@ namespace Raport
             else
                 WindowState = WindowState.Normal;
         }
-
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
-        // End: Button Close | Restore | Minimize
-
         private void btnAction(String title,String uri)
         {
             fContainer.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
             appTitle.Content = title;
-            Home = dasis = dashboard = false;
+            pkn = agm = mtk = bi = ipa = ips = pjok = sbdp = bjr = bing = bta = Home = dasis = dashboard = false;
         }
-
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             
             btnAction("Home", "Pages/Home.xaml");            
             Home = true;            
         }
-
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
             btnAction("Dashboard", "Pages/Dashboard.xaml");
             dashboard = true;
-        }
-        private void btnDasis_Click(object sender, RoutedEventArgs e)
-        {            
-            btnAction("Data Siswa", "Pages/Dasis.xaml");
-            dasis = true;
-        }
-        private void btnPkn_Click(object sender, RoutedEventArgs e)
-        {         
-            btnAction("PKN", "Pages/mp_pkn.xaml");        
-            pkn = true;
-        }
-        private void btnPkn2_Click(object sender, RoutedEventArgs e)
-        {
-            btnAction("PKN", "Pages/mp_pkn4.xaml");
-            pkn = true;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -445,15 +298,19 @@ namespace Raport
             }
             else if (pkn)
             {
-
-                Connection.UpdatePKN(Connection.adapter, Connection.dataset, Constants.pkn_title, Constants.pkn);
-                Connection.UpdateKD(Connection.adapter, Connection.dataset,"pkn3", "kd_pkn3");
+                UpdateData(Connection.adapter, Connection.dataset, Constants.pkn_title, Constants.pkn_title2, Constants.pkn, "pkn3", "kd_pkn3", "pkn4", "kd_pkn4");
                 save.IsEnabled = false;
                 reCount();
 
             }
         }
-
+        private void UpdateData(SQLiteDataAdapter adapter, DataSet dataset, string title3,string title4,string table,string kd3,string kdtable3,string kd4,string kdtable4)
+        {
+            Connection.UpdateData3(adapter, dataset, title3, table);
+            Connection.UpdateData4(adapter, dataset, title4, table);
+            Connection.UpdateKD(adapter, dataset, kd3, kdtable3);
+            Connection.UpdateKD(adapter, dataset, kd4, kdtable4);
+        }
         public void reCount()
         {
             timeSaved = DateTime.UtcNow.Ticks;
@@ -463,7 +320,6 @@ namespace Raport
             dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
             dispatcherTimer.Start();
         }
-
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
@@ -478,6 +334,66 @@ namespace Raport
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
-        }        
+        }
+        private void btnDasis_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnDasis;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Data Siswa";
+            }
+        }
+        private void btnDasis_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnDasis_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction("Data Siswa", "Pages/Dasis.xaml");
+            dasis = true;
+        }
+        private void btnPkn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnPkn;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.pkn_title;
+            }
+        }
+        private void btnPkn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnPkn_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction("PKN (" + Database.kkm_pkn + ")", "Pages/mp_pkn.xaml");
+            pkn = true;
+        }
+        private void btnagm_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnagm;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.agm_title;
+            }
+        }
+        private void btnagm_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnagm_Click(object sender, RoutedEventArgs e)
+        {
+            btnAction("agm (" + Database.kkm_agm + ")", "Pages/mp_agm.xaml");
+            agm = true;
+        }
     }
 }

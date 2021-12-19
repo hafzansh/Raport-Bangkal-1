@@ -29,9 +29,9 @@ namespace Raport.Pages
             Constants.current3 = Database.kd_mtk4;
             Constants.current2 = Database.kkm_pkn;
             Connection.dataset.Tables[Constants.mtk_title].Clear();
-            Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
+            Connection.MP_KD3(Constants.mtk, Constants.mtk_title);
             Connection.dataset.Tables["kd_mtk3"].Clear();
-            Connection.KD3("mtk3", "kd_mtk3", Database.kd_mtk3);
+            Connection.KD("mtk3", "kd_mtk3", Database.kd_mtk3);
             data_kd.ItemsSource = Connection.dataset.Tables["kd_mtk3"].DefaultView;
             data.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;            
             if (Database.kd_mtk3 == 1)

@@ -28,7 +28,7 @@ namespace Raport.Pages
             Constants.current1 = Database.kd_mtk3;
             InitializeComponent();            
             Connection.dataset.Tables[Constants.mtk_title].Clear();
-            Connection.DBConnection2(Constants.mtk, Constants.mtk_title);            
+            Connection.MP_KD3(Constants.mtk, Constants.mtk_title);            
             DG_mtk.ItemsSource = Connection.dataset.Tables[Constants.mtk_title].DefaultView;
             if (Database.kd_mtk3 == 1)
             {

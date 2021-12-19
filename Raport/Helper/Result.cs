@@ -27,7 +27,7 @@ namespace Raport.Helper
             }
             //sum /= values.Length;            
             double resultval = (sum + sum2) / (val * 2);
-            if (resultval <= Constants.current2)
+            if (resultval < Constants.current2)
             {
                 result = "Tidak Tuntas";
             }

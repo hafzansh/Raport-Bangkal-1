@@ -17,21 +17,21 @@ namespace Raport.Helper
         public static DataSet dataset = new DataSet();
         public static SQLiteCommandBuilder commandBuilder;        
         private static string kd = "kdp1,kdp2,kdp3,kdp4,kdp5,tugas1,tugas2,tugas3,tugas4,tugas5,";
-        private static string kd3 = "kdk1,kdk2,kdk3,kdk4,kdk5";
+        private static string kdk = "kdk1,kdk2,kdk3,kdk4,kdk5";
         public static SQLiteConnection sqlite = new SQLiteConnection("Data Source=" + Constants.folderpath + Constants.dbName +".db" +";" + Constants.dbVersion);
         public static void setConnection()
         {
             try
             {
                 Connection.DBConnection(Constants.dasis, Constants.dasis_title);
-                Connection.DBConnection2(Constants.mtk, Constants.mtk_title);
-                Connection.DBConnection2(Constants.pkn, Constants.pkn_title);
-                Connection.KD3("pkn3", "kd_pkn3",Database.kd_pkn3);
-                Connection.KD3("mtk3", "kd_mtk3", Database.kd_mtk3);
+                Connection.MP_KD3(Constants.mtk, Constants.mtk_title);
+                Connection.MP_KD3(Constants.pkn, Constants.pkn_title);
+                Connection.KD("pkn3", "kd_pkn3",Database.kd_pkn3);
+                Connection.KD("mtk3", "kd_mtk3", Database.kd_mtk3);
 
 
-                Connection.DBConnection3(Constants.pkn, Constants.pkn_title2);
-                Connection.KD3("pkn4", "kd_pkn4", Database.kd_pkn4);
+                Connection.MP_KD4(Constants.pkn, Constants.pkn_title2);
+                Connection.KD("pkn4", "kd_pkn4", Database.kd_pkn4);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace Raport.Helper
                 Console.WriteLine(ex);
             }
         }
-        public static void DBConnection2(String target,String tablename)
+        public static void MP_KD3(String target,String tablename)
         {
             try
             {                
@@ -68,11 +68,11 @@ namespace Raport.Helper
                 Console.WriteLine(ex);
             }
         }
-        public static void DBConnection3(String target, String tablename)
+        public static void MP_KD4(String target, String tablename)
         {
             try
             {
-                string query = "SELECT distinct " + target + ".id, " + target + ".induk, data_siswa.nama, " + kd3 + " FROM " + target + " inner join data_siswa on " + target + ".induk=data_siswa.induk";
+                string query = "SELECT distinct " + target + ".id, " + target + ".induk, data_siswa.nama, " + kdk + " FROM " + target + " inner join data_siswa on " + target + ".induk=data_siswa.induk";
                 adapter.SelectCommand = new SQLiteCommand(query, sqlite);
                 commandBuilder = new SQLiteCommandBuilder(adapter);
                 adapter.Fill(dataset, Constants.pkn_title2);
@@ -83,7 +83,7 @@ namespace Raport.Helper
                 Console.WriteLine(ex);
             }
         }
-        public static void KD3(String target, String tablename,int limit)
+        public static void KD(String target, String tablename,int limit)
         {
             try
             {
@@ -128,11 +128,26 @@ namespace Raport.Helper
                 MessageBox.Show("Error, " + ex);
             }
         }
-        public static void UpdatePKN(SQLiteDataAdapter uAdapter, DataSet uDS, string uTable, String q)
+        public static void UpdateData3(SQLiteDataAdapter uAdapter, DataSet uDS, string uTable, String q)
         {
             try
             {
                 string query = "SELECT id," + kd + "uts,uas FROM " + q;
+                uAdapter.SelectCommand = new SQLiteCommand(query, sqlite);
+                commandBuilder = new SQLiteCommandBuilder(uAdapter);
+                uAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+                uAdapter.Update(uDS, uTable);
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error, " + ex);
+            }
+        }
+        public static void UpdateData4(SQLiteDataAdapter uAdapter, DataSet uDS, string uTable, String q)
+        {
+            try
+            {
+                string query = "SELECT id," + kdk + " FROM " + q;
                 uAdapter.SelectCommand = new SQLiteCommand(query, sqlite);
                 commandBuilder = new SQLiteCommandBuilder(uAdapter);
                 uAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
