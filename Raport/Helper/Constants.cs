@@ -11,7 +11,21 @@ namespace Raport.Helper
         public static String[] header_title = {"Induk","Nama Siswa","Tempat Lahir","Tanggal Lahir","Jenis Kelamin","Agama","Alamat","Nama Ayah",
                                       "Nama Ibu","Pekerjaan Ayah","Pekerjaan Ibu","Pendidikan Sebelumnya","Kelurahan","Kecamatan"};
         public static float[] header_width = { 1, 3, 2, 2, 2, 2, 3, 3, 3, 2, 2, 2, 2, 2 };
+        public static int rowC = 0;
+        public static string[] header_list = {
+            "agm3","agm4",
+            "pkn3","pkn4",
+            "bi4","bi4",
+            "mtk3","mtk4",
+            "ipa3","ipa4",
+            "ips3","ips4",
+            "sbdp3","sbdp4",
+            "pjok3","pjok4",
+            "bjr3","bjr4",
+            "bing3","bing4",
+            "bta3","bta4"
 
+                                       };
         public static string dasis = "data_siswa";
         public static string dasis_title = "Data Siswa";
         public static string absen = "data_absen";
@@ -68,9 +82,9 @@ namespace Raport.Helper
             "kd_pjok4 INT(2),kd_bjr3 INT(2),kd_bjr4 INT(2),kd_bing3 INT(2),kd_bing4 INT(2),kd_bta3 INT(2),kd_bta4 INT(2)" +
             ",kkm_agm INT(2),kkm_pkn INT(2),kkm_bi INT(2),kkm_mtk INT(2),kkm_ipa INT(2),kkm_ips INT(2),kkm_sbdp INT(2),kkm_pjok INT(2),kkm_bjr INT(2)" +
             ",kkm_bing INT(2),kkm_bta INT(2));";
-        public static string kd_query = "CREATE TABLE kompetensi_dasar (id INTEGER      PRIMARY KEY AUTOINCREMENT,kd VARCHAR(20),agm3 TEXT," +
-            "agm4  TEXT,pkn3 TEXT,pkn4  TEXT,mtk3 TEXT,mtk4  TEXT,bi3 TEXT,bi4   TEXT,ips3 TEXT,ips4  TEXT,ipa3 TEXT,ipa4  TEXT," +
-            "pjok3 TEXT,pjok4 TEXT,sbdp3 TEXT,sbdp4 TEXT,bjr3 TEXT,bjr4  TEXT,bing3 TEXT,bing4 TEXT,bta3 TEXT,bta4  TEXT);";
+        public static string kd_query = "CREATE TABLE kompetensi_dasar (id INTEGER      PRIMARY KEY AUTOINCREMENT,kd VARCHAR(20),agm3 text default ' '," +
+            "agm4  text default ' ',pkn3 text default ' ',pkn4  text default ' ',mtk3 text default ' ',mtk4  text default ' ',bi3 text default ' ',bi4   text default ' ',ips3 text default ' ',ips4  text default ' ',ipa3 text default ' ',ipa4  text default ' '," +
+            "pjok3 text default ' ',pjok4 text default ' ',sbdp3 text default ' ',sbdp4 text default ' ',bjr3 text default ' ',bjr4  text default ' ',bing3 text default ' ',bing4 text default ' ',bta3 text default ' ',bta4  TEXT default ' ');";
         public static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string folder = "Raport Bangkal 1/";
         public static string folderpath = Path.Combine(path,folder);

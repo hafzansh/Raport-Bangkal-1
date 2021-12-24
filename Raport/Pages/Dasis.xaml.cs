@@ -22,10 +22,20 @@ namespace Raport.Pages
     {
         public Dasis()
         {
-            InitializeComponent();
-            Connection.dataset.Tables[Constants.dasis_title].Clear();
-            Connection.DBConnection(Constants.dasis, Constants.dasis_title);
-            dasisDG.ItemsSource = Connection.dataset.Tables[Constants.dasis_title].DefaultView;            
+            InitializeComponent();            
+            Modal.Spinner(progress => 
+            {
+                progress.Report("Loading");
+                Connection.dataset.Tables[Constants.dasis_title].Clear();
+                progress.Report("Loading");
+                Connection.DBConnection(Constants.dasis, Constants.dasis_title);
+                progress.Report("Loading");
+                this.Dispatcher.BeginInvoke((Action)delegate () {
+                    dasisDG.ItemsSource = Connection.dataset.Tables[Constants.dasis_title].DefaultView;
+                });
+            }
+            );
+            
         }        
         private void dasisDG_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {

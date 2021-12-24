@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -39,11 +40,23 @@ namespace Raport
         public Window1()
         {
             InitializeComponent();
-            
-            loadValue();
-            setting.Content = Database.kelas + ", " + Database.semester + ", " + Database.tahun;
-            guru.Content = Database.wali_kelas;
-            Connection.setConnection();
+            this.Opacity = 0.5;            
+            this.Effect = new BlurEffect();
+            Modal.Spinner(progress =>
+            {
+                loadValue();
+                progress.Report("Loading");
+                this.Dispatcher.BeginInvoke((Action)delegate () {
+                    setting.Content = Database.kelas + ", " + Database.semester + ", " + Database.tahun;
+                    progress.Report("Loading");
+                    guru.Content = Database.wali_kelas;
+                    progress.Report("Loading");
+                });                
+                Connection.setConnection();
+                progress.Report("Loading");
+            });
+            this.Opacity = 1;
+            this.Effect = null;
             btnHome.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Save.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
             Toggle.InputGestures.Add(new KeyGesture(Key.Tab, ModifierKeys.Control));

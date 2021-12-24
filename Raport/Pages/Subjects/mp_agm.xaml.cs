@@ -1,5 +1,6 @@
 ﻿using Raport.Helper;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,7 +12,7 @@ namespace Raport.Pages.Subjects
         public mp_agm()
         {
 
-            InitializeComponent();
+            InitializeComponent();       
             Constants.current1 = Database.kd_agm3;
             Constants.current3 = Database.kd_agm4;
             Constants.current2 = Database.kkm_agm;            
@@ -31,14 +32,15 @@ namespace Raport.Pages.Subjects
         }
         private void fillConnect()
         {
-            Connection.MP_KD3(Constants.agm, Constants.agm_title);
-            Connection.MP_KD4(Constants.agm, Constants.agm_title2);
-            Connection.KD("agm3", "kd_agm3", Database.kd_agm3);
-            Connection.KD("agm4", "kd_agm4", Database.kd_agm4);
-            data_kd.ItemsSource = Connection.dataset.Tables["kd_agm3"].DefaultView;
-            data.ItemsSource = Connection.dataset.Tables[Constants.agm_title].DefaultView;
-            data_kd2.ItemsSource = Connection.dataset.Tables["kd_agm4"].DefaultView;
-            data2.ItemsSource = Connection.dataset.Tables[Constants.agm_title2].DefaultView;
+      
+                Connection.MP_KD3(Constants.agm, Constants.agm_title);
+                Connection.MP_KD4(Constants.agm, Constants.agm_title2);
+                Connection.KD("agm3", "kd_agm3", Database.kd_agm3);
+                Connection.KD("agm4", "kd_agm4", Database.kd_agm4);
+                    data_kd.ItemsSource = Connection.dataset.Tables["kd_agm3"].DefaultView;
+                    data.ItemsSource = Connection.dataset.Tables[Constants.agm_title].DefaultView;
+                    data_kd2.ItemsSource = Connection.dataset.Tables["kd_agm4"].DefaultView;
+                    data2.ItemsSource = Connection.dataset.Tables[Constants.agm_title2].DefaultView;
         }
         private void clearTable()
         {

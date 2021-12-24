@@ -149,7 +149,7 @@
                 FontFamily="Roboto"
                 HeaderFontWeight="Bold"
                 HeaderHorizontalAlignment="Right"
-                IsOpened="True" >
+                IsOpened="False" >
                     <DataGrid Height="510" Name="data2" CanUserDeleteRows="False" ColumnWidth="*" Style="{StaticResource datagridS1}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" CellEditEnding="data_CellEditEnding" PreviewKeyDown="data_PreviewKeyDown" SelectionUnit="Cell">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="No" Width="40" Binding="{Binding id}" IsReadOnly="True"/>

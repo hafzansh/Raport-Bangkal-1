@@ -1,5 +1,6 @@
 ﻿using Raport.Helper;
 using Raport.Services;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,6 +19,15 @@ namespace Raport.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Report.CreateDasis(Connection.dataset.Tables[Constants.dasis_title]);
+        }
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            Report.createRaport();
+        }
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Environment.CurrentDirectory);
         }
     }
 }

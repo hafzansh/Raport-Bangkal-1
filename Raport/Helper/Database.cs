@@ -63,7 +63,7 @@ namespace Raport.Helper
             {
                 try
                 {
-                    using SQLiteConnection sql = new SQLiteConnection("Data Source=" + Constants.folderpath + db_name + ".db" + ";" + Constants.dbVersion);
+                    using SQLiteConnection sql = new SQLiteConnection("Data Source=" + Constants.folderpath + db_name + ".db" + ";Foreign Key Constraints = On;" + Constants.dbVersion);
                     sql.Open();                    
                     SQLiteCommand command = new SQLiteCommand(Constants.dasis_query, sql);
                     command.ExecuteNonQuery();
@@ -72,6 +72,9 @@ namespace Raport.Helper
                     command.CommandText = Constants.sikap_query;
                     command.ExecuteNonQuery();
                     command.CommandText = Constants.app_query;
+                    command.ExecuteNonQuery();
+                    string script = File.ReadAllText(Environment.CurrentDirectory + @"\Scripts\create_view.sql");
+                    command.CommandText = script;
                     command.ExecuteNonQuery();
                     CreateTable(command, Constants.agm);
                     CreateKDT(command,Constants.agm);
