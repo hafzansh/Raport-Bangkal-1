@@ -8,8 +8,8 @@
         Title="Spinner" WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <ProgressBar Height="50" Name="pBar" IsIndeterminate="True"/>
-            <Label Content="Value here" HorizontalAlignment="Center" Name="pValue"/>
+            <ProgressBar Height="50" Name="pBar" IsIndeterminate="False" Value="1"/>
+            <Label Content="Proses Pencetakan" HorizontalAlignment="Center" Name="pValue"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -56,10 +56,11 @@ namespace Raport.Services
             document.Add(tables);
             document.Close();
         }
-        public static void createRaport()
+        public static void createRaport(int i)
         {
             try
             {
+                int val = 0;
                 DataTable table2 = new DataTable();
                 DataTable kd = new DataTable();
                 DataTable sikap = new DataTable();
@@ -96,10 +97,8 @@ namespace Raport.Services
                 //wordApp.Visible = true;
                 Modal.ProgressModal(progress =>
                 {
-
-                    for (int i = 0; i < 1; i++)
-                    {
-                        progress.Report("Mengolah " + table.Rows[i]["nama"].ToString() + " (" + (i + 1) + "dari " + Constants.rowC + ")");
+                    //progress.Report("Mengolah " + table.Rows[i]["nama"].ToString() + " (" + (i + 1) + "dari " + Constants.rowC + ")");
+                        progress.Report(val + 8.25);
                         document = wordApp.Documents.Add(filename);
                         string[] mapel = { "agm", "pkn", "bi", "mtk", "ipa", "ips", "sbdp", "pjok", "bjr", "bing", "bta" };
                         string[] mapel_tt = { Constants.agm_title, Constants.pkn_title, Constants.bi_title, Constants.mtk_title, Constants.ipa_title, Constants.ips_title, Constants.sbdp_title, Constants.pjok_title, Constants.bjr_title, Constants.bing_title, Constants.bta_title };
@@ -306,17 +305,19 @@ namespace Raport.Services
                                     wordApp.Selection.TypeText(Sikap(sikap.Rows[i]["sikap4"].ToString()));
                                 }
 
-                            }
+                            }                        
+                            val += 9;
+                            progress.Report(val);
                         };
                         document.ExportAsFixedFormat(Constants.folderpath + Database.db_name + @"\" + table.Rows[i]["nama"] + ".PDF", Microsoft.Office.Interop.Word.WdExportFormat.wdExportFormatPDF);
                         document.Close(Microsoft.Office.Interop.Word.WdSaveOptions.wdDoNotSaveChanges, Microsoft.Office.Interop.Word.WdOriginalFormat.wdOriginalDocumentFormat, false);
-                    }
+                    
                     wordApp.Quit();
                 });
                 table.Dispose();
                 table2.Dispose();
                 kd.Dispose();
-                MessageBox.Show(DateTime.Now.ToString("h:mm:ss"));
+                val = 0;
             }
             catch (SQLiteException ex)
             {
@@ -403,31 +404,31 @@ namespace Raport.Services
             List<string> title = new List<string>() {
                 "view_mp_agama","view_mp_pkn","view_mp_bi","view_mp_mtk","view_mp_ipa","view_mp_ips",
                 "view_mp_sbdp","view_mp_pjok","view_mp_bjr","view_mp_bing","view_mp_bta"};
-            Modal.ProgressModal(progress =>
-            {
+            //Modal.ProgressModal(progress =>
+            //{
                 addData(title[0], 3, 4);
-                progress.Report(title[0]);
+                //progress.Report(title[0]);
                 addData(title[1], 5, 6);
-                progress.Report(title[1]);
+                //progress.Report(title[1]);
                 addData(title[2], 7, 8);
-                progress.Report(title[2]);
+                //progress.Report(title[2]);
                 addData(title[3], 9, 10);
-                progress.Report(title[3]);
+                //progress.Report(title[3]);
                 addData(title[4], 11, 12);
-                progress.Report(title[4]);
+                //progress.Report(title[4]);
                 addData(title[5], 13, 14);
-                progress.Report(title[5]);
+                //progress.Report(title[5]);
                 addData(title[6], 15, 16);
-                progress.Report(title[6]);
+                //progress.Report(title[6]);
                 addData(title[7], 17, 18);
-                progress.Report(title[7]);
+                //progress.Report(title[7]);
                 addData(title[8], 19, 20);
-                progress.Report(title[8]);
+                //progress.Report(title[8]);
                 addData(title[9], 21, 22);
-                progress.Report(title[9]);
+                //progress.Report(title[9]);
                 addData(title[10], 23, 24);
-                progress.Report(title[10]);
-            });
+                //progress.Report(title[10]);
+            //});
             for (int i = 0; i < Constants.rowC; i++)
             {
                 table.Rows[i][0] = i + 1;

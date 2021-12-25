@@ -30,15 +30,15 @@ namespace Raport.Helper
 
             splash.ShowDialog();
         }
-        public static void ProgressModal(Action<IProgress<string>> work)
+        public static void ProgressModal(Action<IProgress<double>> work)
         {
             ProgressModal splash = new ProgressModal();
 
             splash.Loaded += (_, args) =>
             {
                 BackgroundWorker worker = new BackgroundWorker();
-                Progress<string> progress = new Progress<string>(
-                    data => splash.pValue.Content = data);
+                Progress<double> progress = new Progress<double>(
+                    data => splash.pBar.Value = data);
 
                 worker.DoWork += (s, workerArgs) => work(progress);
                 worker.RunWorkerCompleted +=
