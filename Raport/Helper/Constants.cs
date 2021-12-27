@@ -86,7 +86,7 @@ namespace Raport.Helper
             "agm4  text default ' ',pkn3 text default ' ',pkn4  text default ' ',mtk3 text default ' ',mtk4  text default ' ',bi3 text default ' ',bi4   text default ' ',ips3 text default ' ',ips4  text default ' ',ipa3 text default ' ',ipa4  text default ' '," +
             "pjok3 text default ' ',pjok4 text default ' ',sbdp3 text default ' ',sbdp4 text default ' ',bjr3 text default ' ',bjr4  text default ' ',bing3 text default ' ',bing4 text default ' ',bta3 text default ' ',bta4  TEXT default ' ');";
         public static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        public static string folder = "Raport Bangkal 1/";
+        public static string folder = @"Raport Bangkal 1\";
         public static string folderpath = Path.Combine(path,folder);
         public static string dbName;
         public static string dbVersion = "Version=3;";

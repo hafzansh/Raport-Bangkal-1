@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="itext7" Version="7.2.0" />
     <PackageReference Include="MaterialDesign-WPF-Expander" Version="0.9.0" />

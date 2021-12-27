@@ -50,7 +50,7 @@ namespace Raport.Pages
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Environment.CurrentDirectory);
+            
         }        
         private void Button4_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +59,16 @@ namespace Raport.Pages
                 if (window.GetType() == typeof(Window1))
                 {
                     (window as Window1).btnDasis.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                }
+            }
+        }
+        private void Button5_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() == typeof(Window1))
+                {
+                    (window as Window1).fContainer.Navigate(new Uri("Pages/Laporan.xaml",UriKind.RelativeOrAbsolute));
                 }
             }
         }

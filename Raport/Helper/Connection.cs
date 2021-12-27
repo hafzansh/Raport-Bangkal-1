@@ -12,7 +12,7 @@ namespace Raport.Helper
     
     public class Connection
     {
-        public static SQLiteDataAdapter adapter = new SQLiteDataAdapter();        
+        public static SQLiteDataAdapter adapter = new();
         public static DataTable table = new DataTable();
         public static DataSet dataset = new DataSet();
         public static SQLiteCommandBuilder commandBuilder;        
