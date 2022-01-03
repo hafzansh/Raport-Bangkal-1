@@ -1,0 +1,35 @@
+﻿<Page x:Class="Raport.Pages.Absen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Raport.Pages"
+      xmlns:helper="clr-namespace:Raport.Helper"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Data Siswa">
+
+    <Grid VirtualizingPanel.IsVirtualizing="True">
+        <Border CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
+            <DataGrid FrozenColumnCount="1" Margin="0,0,0,0" Style="{StaticResource datagridS1}" CellEditEnding="absenDG_CellEditEnding" LoadingRow="DataGrid_LoadingRow" MaxHeight="1000" MaxWidth="1300" CanUserResizeColumns="false" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="absenDG">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="  No. Induk" Width="45" Binding="{Binding induk}" IsReadOnly="True" />
+                    <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Width="*" Binding="{Binding nama}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Pramuka" Width="70" Binding="{Binding pramuka}"/>
+                    <DataGridTextColumn Header="Karate" Width="70" Binding="{Binding karate}"/>
+                    <DataGridTextColumn Header="PMR" Width="70" Binding="{Binding pmr}"/>
+                    <DataGridTextColumn Header="Tari" Width="70" Binding="{Binding tari}"/>
+                    <DataGridTextColumn Header="Tinggi (CM)" Width="70" Binding="{Binding tinggi}"/>
+                    <DataGridTextColumn Header="Berat Badan (KG)" Width="70" Binding="{Binding berat_badan}"/>
+                    <DataGridTextColumn Header="Pendengaran" Width="90" Binding="{Binding pendengaran}"/>
+                    <DataGridTextColumn Header="Penglihatan" Width="90" Binding="{Binding penglihatan}"/>
+                    <DataGridTextColumn Header="Gigi" Width="70" Binding="{Binding gigi}"/>
+                    <DataGridTextColumn Header="Lainnya" Width="80" Binding="{Binding lainnya}"/>
+                    <DataGridTextColumn Header="Sakit" Width="70" Binding="{Binding s}"/>
+                    <DataGridTextColumn Header="Izin" Width="70" Binding="{Binding i}"/>
+                    <DataGridTextColumn Header="Alpa" Width="70" Binding="{Binding a}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

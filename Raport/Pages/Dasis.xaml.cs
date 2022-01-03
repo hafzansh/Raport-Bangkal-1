@@ -20,6 +20,7 @@ namespace Raport.Pages
     /// </summary>
     public partial class Dasis : Page
     {
+
         public Dasis()
         {
             InitializeComponent();            

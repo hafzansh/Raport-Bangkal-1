@@ -50,7 +50,13 @@ namespace Raport.Pages
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() == typeof(Window1))
+                {
+                    (window as Window1).fContainer.Navigate(new Uri("Pages/Landing/UserSettings.xaml", UriKind.RelativeOrAbsolute));
+                }
+            }
         }        
         private void Button4_Click(object sender, RoutedEventArgs e)
         {

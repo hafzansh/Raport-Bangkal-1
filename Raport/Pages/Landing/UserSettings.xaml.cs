@@ -1,6 +1,7 @@
 ﻿using Raport.Helper;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,10 +27,12 @@ namespace Raport.Pages.Landing
             if (Constants.isLanding)
             {
                 savenext.Content = "Selanjutnya";
+                page_title.Content = "Buat Raport Baru";
             }
             else
             {
                 savenext.Content = "Simpan";
+                page_title.Content = "Edit Pengaturan Raport";
             }
         }
 
@@ -52,7 +55,44 @@ namespace Raport.Pages.Landing
             }
             else
             {
-                
+                if (validate())
+                {
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window.GetType() == typeof(Window1))
+                        {
+                            (window as Window1).fContainer.Navigate(new Uri("Pages/Landing/KDSettings.xaml", UriKind.RelativeOrAbsolute));
+                            (window as Window1).guru.Content = Database.wali_kelas;
+                            (window as Window1).setting.Content = Database.kelas + ", " + Database.semester + ", " + Database.tahun;
+                            try {
+                                SQLiteCommand command = Connection.sqlite.CreateCommand();
+                                command.CommandText = "UPDATE app_settings SET wali_kelas = @wali, " +
+                                    "nip_wali_kelas = @nip_wali,kepala_sekolah = @kepsek," +
+                                    "nip_kepala_sekolah = @nip_kepsek,semester = @smt," +
+                                    "tahun = @tahun,kelas = @kelas where id=1";
+                                command.Parameters.AddWithValue("@wali", Database.wali_kelas);
+                                command.Parameters.AddWithValue("@nip_wali", Database.nip_wali_kelas);
+                                command.Parameters.AddWithValue("@kepsek", Database.kepala_sekolah);
+                                command.Parameters.AddWithValue("@nip_kepsek", Database.nip_kepala_sekolah);
+                                command.Parameters.AddWithValue("@smt", Database.semester);
+                                command.Parameters.AddWithValue("@tahun", Database.tahun);
+                                command.Parameters.AddWithValue("@kelas", Database.kelas);
+                                Connection.sqlite.Open();
+                                command.ExecuteNonQuery();
+                                Connection.sqlite.Close();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("pog" + ex);
+                            }
+                            
+
+                            
+
+                        }
+                    }
+                }
             }
         }
         private bool validate()

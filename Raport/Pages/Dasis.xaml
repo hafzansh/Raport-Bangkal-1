@@ -8,9 +8,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Data Siswa">
+    
     <Grid VirtualizingPanel.IsVirtualizing="True">
         <Border CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
             <DataGrid FrozenColumnCount="1" Margin="10,0,10,0" Style="{StaticResource datagridS1}" MaxHeight="1000" MaxWidth="1300" CanUserResizeColumns="false" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserDeleteRows="True" EnableColumnVirtualization="True" EnableRowVirtualization="True" x:Name="dasisDG" CellEditEnding="dasisDG_CellEditEnding" PreviewKeyDown="dasisDG_PreviewKeyDown" PreparingCellForEdit="dasisDG_PreparingCellForEdit">
+                <DataGrid.Resources>
+                    <helper:DateConverter x:Key="conv"/>
+                    <helper:ValidationHelper x:Key="val" />
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Width="100" Header="Aksi" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
@@ -20,10 +25,43 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="  No. Induk" Width="45" Binding="{Binding induk}"/>
+                    <DataGridTextColumn Header="  No. Induk" Width="45" Binding="{Binding induk}" />
+                    <!--<DataGridTextColumn.Binding>
+                            <Binding Path="induk" UpdateSourceTrigger="LostFocus">
+                                <Binding.ValidationRules>
+                                    <helper:ValidationHelper  />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>-->
                     <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Width="150" Binding="{Binding nama}"/>
                     <DataGridTextColumn Header="Tempat Lahir" Width="100" Binding="{Binding tempat_lahir}"/>
-                    <DataGridTextColumn Header="Tanggal Lahir" Width="80" Binding="{Binding tanggal_lahir}"/>                    
+                    <DataGridTemplateColumn Header="Tanggal Lahir" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding tanggal_lahir,Converter={StaticResource conv}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding tanggal_lahir, StringFormat='dd/MM/yyyy'}">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="{x:Type DatePickerTextBox}">
+                                            <Setter Property="Control.Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <TextBox x:Name="PART_TextBox"
+     Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy', 
+     RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Jenis Kelamin" Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

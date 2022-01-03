@@ -32,7 +32,7 @@ namespace Raport
         public static RoutedCommand Toggle = new RoutedCommand();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         bool Home = true;
-        bool pkn,agm,mtk,bi,ipa,ips,pjok,sbdp,bjr,bing,bta,dashboard, dasis = false;
+        bool absen,sikap,pkn,agm,mtk,bi,ipa,ips,pjok,sbdp,bjr,bing,bta,dashboard, dasis = false;
         private static TaskScheduler GetSyncronizationContent() =>
      SynchronizationContext.Current != null ?
           TaskScheduler.FromCurrentSynchronizationContext() :
@@ -220,36 +220,6 @@ namespace Raport
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
-        private void btnBilling_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnBilling;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Billing";
-            }
-        }
-        private void btnBilling_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-        private void btnSetting_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnSetting;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Setting";
-            }
-        }
-        private void btnSetting_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             if (save.IsEnabled)
@@ -277,7 +247,7 @@ namespace Raport
         {
             fContainer.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
             appTitle.Content = title;
-            pkn = agm = mtk = bi = ipa = ips = pjok = sbdp = bjr = bing = bta = Home = dasis = dashboard = false;
+            absen = sikap = pkn = agm = mtk = bi = ipa = ips = pjok = sbdp = bjr = bing = bta = Home = dasis = dashboard = false;
         }
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
@@ -374,6 +344,20 @@ namespace Raport
             else if (bta)
             {
                 UpdateData(Connection.adapter, Connection.dataset, Constants.bta_title, Constants.bta_title2, Constants.bta, "bta3", "kd_bta3", "bta4", "kd_bta4");
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (absen)
+            {
+                Connection.UpdateAbsen();
+                save.IsEnabled = false;
+                reCount();
+
+            }
+            else if (sikap)
+            {
+                Connection.UpdateSikap();
                 save.IsEnabled = false;
                 reCount();
 
@@ -706,6 +690,56 @@ namespace Raport
             }
             btnAction(Constants.bta_title + " (" + Database.kkm_bta + ")", "Pages/Subjects/mp_bta.xaml");
             bta = true;
+        }
+        private void btnAbsen_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnAbsen;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.absen_title;
+            }
+        }
+
+        private void btnAbsen_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnAbsen_Click(object sender, RoutedEventArgs e)
+        {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
+            btnAction(Constants.absen_title, "Pages/Absen.xaml");
+            absen = true;
+        }
+        private void btnSikap_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnSikap;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = Constants.sikap_title;
+            }
+        }
+
+        private void btnSikap_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        private void btnSikap_Click(object sender, RoutedEventArgs e)
+        {
+            if (save.IsEnabled)
+            {
+                save.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
+            btnAction(Constants.sikap_title, "Pages/Sikap.xaml");
+            sikap = true;
         }
     }
 }

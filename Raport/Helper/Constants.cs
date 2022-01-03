@@ -29,7 +29,7 @@ namespace Raport.Helper
         public static string dasis = "data_siswa";
         public static string dasis_title = "Data Siswa";
         public static string absen = "data_absen";
-        public static string absen_title = "Absen";
+        public static string absen_title = "Absensi";
         public static string sikap = "data_sikap";
         public static string sikap_title = "Sikap";
         public static string agm = "mp_agama";
