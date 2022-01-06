@@ -66,7 +66,10 @@
                 <ComboBoxItem Content="V (Lima)"/>
                 <ComboBoxItem Content="VI (Enam)"/>
             </ComboBox>
-            <Button Name="savenext" Style="{StaticResource RoundedButtonStyle}" Margin="0 0 30 0" Grid.Row="9" Grid.Column="4" Content="Selanjutnya" Height="30" Width="70" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="savenext_Click" />
+            <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="4" Margin="0 0 30 15" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button Name="back" Style="{StaticResource RoundedButtonStyle}" Margin="0 0 30 0"   Content="Kembali" Height="30" Width="70" Click="back_Click"  />
+                <Button Name="savenext" Style="{StaticResource RoundedButtonStyle}"   Content="Simpan" Height="30" Width="70" Click="savenext_Click"  />
+            </StackPanel>
             <Border Grid.RowSpan="8" Grid.Column="4"
                               Margin="14 70 0 0"
                               Width="250" Height="250"

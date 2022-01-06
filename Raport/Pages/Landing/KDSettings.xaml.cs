@@ -84,133 +84,133 @@ namespace Raport.Pages.Landing
         private bool validate()
         {
             bool a = true;
-            if (kd_agm3.Text == null)
+            if (kd_agm3.Text == "")
             {
                 MessageBox.Show("KD Agama (Pengetahuan) Belum Diisi!");
                 kd_agm3.Focus();
                 a = false;
             }
-            else if (kd_agm4.Text == null)
+            else if (kd_agm4.Text == "")
             {
                 MessageBox.Show("KD Agama (Keterampilan) Belum Diisi!");
                 kd_agm4.Focus();
                 a = false;
             }
-            else if (kd_pkn3.Text == null)
+            else if (kd_pkn3.Text == "")
             {
                 MessageBox.Show("KD PKN (Pengetahuan) Belum Diisi!");
                 kd_pkn3.Focus();
                 a = false;
             }
-            else if (kd_pkn4.Text == null)
+            else if (kd_pkn4.Text == "")
             {
                 MessageBox.Show("KD PKN (Keterampilan) Belum Diisi!");
                 kd_pkn4.Focus();
                 a = false;
             }
-            else if (kd_bi3.Text == null)
+            else if (kd_bi3.Text == "")
             {
                 MessageBox.Show("KD Bahasa Indonesia (Pengetahuan) Belum Diisi!");
                 kd_bi3.Focus();
                 a = false;
             }
-            else if (kd_bi4.Text == null)
+            else if (kd_bi4.Text == "")
             {
                 MessageBox.Show("KD Bahasa Indonesia (Keterampilan) Belum Diisi!");
                 kd_bi4.Focus();
                 a = false;
             }
-            else if (kd_mtk3.Text == null)
+            else if (kd_mtk3.Text == "")
             {
                 MessageBox.Show("KD Matematika (Pengetahuan) Belum Diisi!");
                 kd_mtk3.Focus();
                 a = false;
             }
-            else if (kd_mtk4.Text == null)
+            else if (kd_mtk4.Text == "")
             {
                 MessageBox.Show("KD Matematika (Keterampilan) Belum Diisi!");
                 kd_mtk4.Focus();
                 a = false;
             }
-            else if (kd_ipa3.Text == null)
+            else if (kd_ipa3.Text == "")
             {
                 MessageBox.Show("KD IPA (Pengetahuan) Belum Diisi!");
                 kd_ipa3.Focus();
                 a = false;
             }
-            else if (kd_ipa4.Text == null)
+            else if (kd_ipa4.Text == "")
             {
                 MessageBox.Show("KD IPA (Keterampilan) Belum Diisi!");
                 kd_ipa4.Focus();
                 a = false;
             }
-            else if (kd_ips3.Text == null)
+            else if (kd_ips3.Text == "")
             {
                 MessageBox.Show("KD IPS (Pengetahuan) Belum Diisi!");
                 kd_ips3.Focus();
                 a = false;
             }
-            else if (kd_ips4.Text == null)
+            else if (kd_ips4.Text == "")
             {
                 MessageBox.Show("KD IPS (Keterampilan) Belum Diisi!");
                 kd_ips4.Focus();
                 a = false;
             }
-            else if (kd_sbdp3.Text == null)
+            else if (kd_sbdp3.Text == "")
             {
                 MessageBox.Show("KD SBdP (Pengetahuan) Belum Diisi!");
                 kd_sbdp3.Focus();
                 a = false;
             }
-            else if (kd_sbdp4.Text == null)
+            else if (kd_sbdp4.Text == "")
             {
                 MessageBox.Show("KD SBdP (Keterampilan) Belum Diisi!");
                 kd_sbdp4.Focus();
                 a = false;
             }
-            else if (kd_pjok3.Text == null)
+            else if (kd_pjok3.Text == "")
             {
                 MessageBox.Show("KD PJOK (Pengetahuan) Belum Diisi!");
                 kd_pjok3.Focus();
                 a = false;
             }
-            else if (kd_pjok4.Text == null)
+            else if (kd_pjok4.Text == "")
             {
                 MessageBox.Show("KD PJOK (Keterampilan) Belum Diisi!");
                 kd_pjok4.Focus();
                 a = false;
             }
-            else if (kd_bjr3.Text == null)
+            else if (kd_bjr3.Text == "")
             {
                 MessageBox.Show("KD Bahasa Banjar (Pengetahuan) Belum Diisi!");
                 kd_bjr3.Focus();
                 a = false;
             }
-            else if (kd_bjr4.Text == null)
+            else if (kd_bjr4.Text == "")
             {
                 MessageBox.Show("KD Bahasa Banjar (Keterampilan) Belum Diisi!");
                 kd_bjr4.Focus();
                 a = false;
             }
-            else if (kd_bing3.Text == null)
+            else if (kd_bing3.Text == "")
             {
                 MessageBox.Show("KD Bahasa Inggris (Pengetahuan) Belum Diisi!");
                 kd_bing3.Focus();
                 a = false;
             }
-            else if (kd_bing4.Text == null)
+            else if (kd_bing4.Text == "")
             {
                 MessageBox.Show("KD Bahasa Inggris (Keterampilan) Belum Diisi!");
                 kd_bing4.Focus();
                 a = false;
             }
-            else if (kd_bta3.Text == null)
+            else if (kd_bta3.Text == "")
             {
                 MessageBox.Show("KD BTA (Pengetahuan) Belum Diisi!");
                 kd_bta3.Focus();
                 a = false;
             }
-            else if (kd_bta4.Text == null)
+            else if (kd_bta4.Text == "")
             {
                 MessageBox.Show("KD BTA (Keterampilan) Belum Diisi!");
                 kd_bta4.Focus();

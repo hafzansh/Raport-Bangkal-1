@@ -22,7 +22,7 @@ namespace Raport
         public AppSettings()
         {
             InitializeComponent();
-            settings_frame.Navigate(new Uri("Pages/Landing/UserSettings.xaml", UriKind.RelativeOrAbsolute));
+            settings_frame.Navigate(new Uri("Pages/Landing/WelcomeScreen.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

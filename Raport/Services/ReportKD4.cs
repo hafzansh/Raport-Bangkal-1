@@ -35,6 +35,7 @@ namespace Raport.Services
         }
         public static void CreateReport(DataTable tablekd, DataTable tablenilai2, string mp, string smt, string kl, string th, string wl, double kk,int bagi)
         {
+            try { 
             DataTable tablenilai = tablenilai2.Copy();
             tablenilai.Columns.Add("Rata", typeof(double), $"(kdk1+kdk2+kdk3+kdk4+kdk5)/{bagi}").SetOrdinal(8);
             tablenilai.Columns.Add("Keterangan", typeof(string)).SetOrdinal(9);
@@ -231,6 +232,12 @@ namespace Raport.Services
             document.Add(newline);
             document.Add(nilaikd);
             document.Close();
+                Constants.openFolder(@"\Nilai KD4");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Data masih kosong");
+            }
         }
         private static decimal kdp(string target, DataTable tablenilai)
         {

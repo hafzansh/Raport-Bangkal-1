@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -65,16 +66,16 @@ namespace Raport.Helper
         public static string bta = "mp_bta";
         public static string bta_title = "BTA";
         public static string bta_title2 = "BTA2";
-        public static string dasis_query = "CREATE TABLE data_siswa (induk INTEGER(8)  PRIMARY KEY,nama VARCHAR(30), " +
-                        "tempat_lahir VARCHAR(15), tanggal_lahir VARCHAR(20), jenis_kelamin VARCHAR(9), agama VARCHAR(10)," +
-                        "alamat TEXT, nama_ayah VARCHAR(30), nama_ibu VARCHAR(30), p_ayah VARCHAR(15), p_ibu VARCHAR(15)," +
-                        "pendidikan_sebelumnya VARCHAR(10), kelurahan VARCHAR(15), kecamatan VARCHAR(15));";
+        public static string dasis_query = "CREATE TABLE data_siswa (induk INTEGER(8)  PRIMARY KEY,nama VARCHAR(30) default ' ', " +
+                        "tempat_lahir VARCHAR(15) default ' ', tanggal_lahir VARCHAR(20) default '01/01/2000', jenis_kelamin VARCHAR(9) default ' ', agama VARCHAR(10) default ' '," +
+                        "alamat TEXT, nama_ayah VARCHAR(30) default ' ', nama_ibu VARCHAR(30) default ' ', p_ayah VARCHAR(15) default ' ', p_ibu VARCHAR(15) default ' '," +
+                        "pendidikan_sebelumnya VARCHAR(10) default ' ', kelurahan VARCHAR(15) default ' ', kecamatan VARCHAR(15) default ' ');";
         public static string absen_query = "CREATE TABLE data_absen (id INTEGER primary key autoincrement,induk INTEGER(8)  REFERENCES data_siswa(induk) ON DELETE NO ACTION " +
-            "ON UPDATE NO ACTION, pramuka     VARCHAR(5),karate VARCHAR(5),pmr VARCHAR(5),tari VARCHAR(5),tinggi VARCHAR(6)," +
-            "berat_badan VARCHAR(5),pendengaran VARCHAR(10),penglihatan VARCHAR(10),gigi VARCHAR(10),lainnya VARCHAR(10),s INTEGER(2)," +
-            "i INTEGER(2),a INTEGER(2),FOREIGN KEY(induk) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE);";
+            "ON UPDATE NO ACTION, pramuka     VARCHAR(5) default ' ',karate VARCHAR(5) default ' ',pmr VARCHAR(5) default ' ',tari VARCHAR(5) default ' ',tinggi VARCHAR(6) default ' '," +
+            "berat_badan VARCHAR(5) default ' ',pendengaran VARCHAR(10) default ' ',penglihatan VARCHAR(10) default ' ',gigi VARCHAR(10) default ' ',lainnya VARCHAR(10) default ' ',s INTEGER(2) default '0'," +
+            "i INTEGER(2) default '0',a INTEGER(2) default '0',FOREIGN KEY(induk) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE);";
         public static string sikap_query = "CREATE TABLE data_sikap (id INTEGER     PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE," +
-            "sikap1 INTEGER(1),sikap2 INTEGER(1),sikap3 INTEGER(1),sikap4 INTEGER(1));";
+            "sikap1 INTEGER(1) default '0',sikap2 INTEGER(1) default '0',sikap3 INTEGER(1) default '0',sikap4 INTEGER(1) default '0');";
         public static string app_query = "CREATE TABLE app_settings (id INTEGER      PRIMARY KEY AUTOINCREMENT,wali_kelas VARCHAR(30)," +
             "nip_wali_kelas VARCHAR(16),kepala_sekolah VARCHAR(30),nip_kepala_sekolah VARCHAR(16),semester VARCHAR(10),tahun VARCHAR(10)," +
             "kelas VARCHAR(10),kd_agm3 INT(2),kd_agm4 INT(2),kd_pkn3 INT(2),kd_pkn4 INT(2),kd_bi3 INT(2),kd_bi4 INT(2),kd_mtk3 INT(2)," +
@@ -96,6 +97,21 @@ namespace Raport.Helper
         public static int current1;
         public static int current2;
         public static int current3;
+        public static void openFolder(string target)
+        {
+            string msgtext = "Buka folder laporan?";
+            string txt = "Laporan Tersimpan";
+            MessageBoxButton button = MessageBoxButton.YesNo;
+            MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Process.Start("explorer.exe", Path.Combine(Constants.folderpath + Database.db_name + target));
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+        }
         public static void CloseApp()
         {
             System.Windows.Application.Current.Shutdown();

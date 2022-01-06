@@ -33,6 +33,7 @@ namespace Raport.Services
         }
         public static void CreateDasis(DataTable dt)
         {
+            try { 
             PdfFont font = SetFont();
             PdfFont bold = SetBold();
             string path = Constants.folderpath + Database.db_name + @"\Data Siswa";
@@ -101,7 +102,7 @@ namespace Raport.Services
             head.AddCell(cell22);
             head.SetFontSize(16);
             for (int h = 0; h < dt.Columns.Count; h++)
-            {
+            {                    
                 Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.CENTER).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph(Constants.header_title[h]));
                 tables.AddHeaderCell(cells);
             }
@@ -111,9 +112,20 @@ namespace Raport.Services
                 {
                     for (int h = 0; h < dt.Columns.Count; h++)
                     {
-                        Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.CENTER).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph(r[h].ToString()));
-                        cells.SetHeight(40);
-                        tables.AddCell(cells);
+                            if (h == 3)
+                            {
+                                DateTime date = System.Convert.ToDateTime(r[h]);
+                                Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.CENTER).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph(date.ToString("dd/MM/yyyy")));
+                                cells.SetHeight(40);
+                                tables.AddCell(cells);
+                            }
+                            else
+                            {
+                                Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.CENTER).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph(r[h].ToString()));
+                                cells.SetHeight(40);
+                                tables.AddCell(cells);
+                            }
+                        
                     }
                 }
             }
@@ -123,6 +135,12 @@ namespace Raport.Services
             document.Add(head);
             document.Add(tables);
             document.Close();
+                Constants.openFolder(@"\Data Siswa");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Data masih kosong");
+            }
         }
         public static void createRaport(int i)
         {
@@ -165,7 +183,6 @@ namespace Raport.Services
                 //wordApp.Visible = true;
                 Modal.ProgressModal(progress =>
                 {
-                    //progress.Report("Mengolah " + table.Rows[i]["nama"].ToString() + " (" + (i + 1) + "dari " + Constants.rowC + ")");
                         progress.Report(val + 8.25);
                         document = wordApp.Documents.Add(filename);
                         string[] mapel = { "agm", "pkn", "bi", "mtk", "ipa", "ips", "sbdp", "pjok", "bjr", "bing", "bta" };

@@ -10,20 +10,18 @@ namespace Raport.Helper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string dt = System.Convert.ToString(value);
-            if (dt[1].ToString() == "/")
+            string dt;
+            DateTime k; 
+            if (value.ToString() == "")
             {
-                dt = "0" + dt;
+                dt = "01/01/2000 12:00:00 AM";
+                k = DateTime.Parse(dt.ToString(), CultureInfo.CreateSpecificCulture("en-US"));
+                return k.ToString("dd/MM/yyyy");
             }
-            string first = dt.Substring(0, 2);
-            string mid = dt.Substring(3, 2);
-            string last = dt.Substring(6, 4);
-            string res = mid + "/" + first + "/" + last;
-            //DateTime k = System.Convert.ToDateTime(dt.Substring(0, 10));
-            DateTime k = DateTime.Parse(value.ToString(), CultureInfo.CreateSpecificCulture("en-US"));
-            //DateTime k = System.Convert.ToDateTime(value);
-            //DateTime dt = DateTime.ParseExact(value.ToString(), "dd/MM/yyyy", System.Threading.Thread.CurrentThread.CurrentCulture);
-            return k.ToString("dd/MM/yyyy");
+            else {
+                k = DateTime.Parse(value.ToString(), CultureInfo.CreateSpecificCulture("en-US"));
+                return k.ToString("dd/MM/yyyy");
+            }            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

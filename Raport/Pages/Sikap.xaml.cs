@@ -24,7 +24,6 @@ namespace Raport.Pages
         public Sikap()
         {
             InitializeComponent();
-            InitializeComponent();
             Modal.Spinner(progress =>
             {
                 progress.Report("Loading");

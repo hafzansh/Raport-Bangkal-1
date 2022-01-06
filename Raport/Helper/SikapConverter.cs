@@ -26,9 +26,13 @@ namespace Raport.Helper
             {
                 result = "Cukup";
             }
-            else
+            else if (val ==1)
             {
                 result = "Perlu Bimbingan";
+            }
+            else
+            {
+                result = "Belum Diisi";
             }
             return result;
         }

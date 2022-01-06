@@ -73,6 +73,7 @@
                     </DockPanel>
                 </Border>
             </Grid>-->
+            <Button Click="Button_Click_2"/>
         </Border>
         <Border Grid.Column="2" Margin="13" CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
             <!--<Grid >

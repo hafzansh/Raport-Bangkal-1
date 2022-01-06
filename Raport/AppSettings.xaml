@@ -10,7 +10,6 @@
             CornerRadius="8">
         <Grid VirtualizingStackPanel.VirtualizationMode="Recycling">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -21,12 +20,7 @@
                 <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
                 <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="20 5 20 20">
-                <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"/>
-                <TextBox x:Name="kd_agm3" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="kd_agm4" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
                 <Frame Name="settings_frame" NavigationUIVisibility="Hidden" Height="530" Margin="20 5 20 0" />
             </StackPanel>
         </Grid>

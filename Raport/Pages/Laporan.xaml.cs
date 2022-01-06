@@ -90,30 +90,15 @@ namespace Raport.Pages
                     break;
             }
         }
-        private void openFolder(string target)
-        {
-            string msgtext = "Buka folder laporan?";
-            string txt = "Laporan Tersimpan";
-            MessageBoxButton button = MessageBoxButton.YesNo;
-            MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    Process.Start("explorer.exe", Path.Combine(Constants.folderpath + Database.db_name + target));
-                    break;
-                case MessageBoxResult.No:                    
-                    break;
-            }
-        }
+
         private void Report3(string kd,string nilai,string title,double kkm,int bagi)
         {
             ReportKD3.CreateReport(Connection.dataset.Tables[kd], Connection.dataset.Tables[nilai], title, Database.semester, Database.kelas, Database.tahun, Database.wali_kelas, kkm,bagi);
-            openFolder(@"\Nilai KD3");
         }
         private void Report4(string kd, string nilai, string title, double kkm,int bagi)
         {
             ReportKD4.CreateReport(Connection.dataset.Tables[kd], Connection.dataset.Tables[nilai], title, Database.semester, Database.kelas, Database.tahun, Database.wali_kelas, kkm,bagi);
-            openFolder(@"\Nilai KD4");
+            
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
@@ -160,7 +145,12 @@ namespace Raport.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Report.CreateDasis(Connection.dataset.Tables[Constants.dasis_title]);
-            openFolder(@"\Data Siswa");
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NilaiRaport.print();
         }
     }
 }

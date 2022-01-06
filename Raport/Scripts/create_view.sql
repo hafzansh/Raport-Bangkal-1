@@ -460,9 +460,9 @@ CREATE VIEW view_mp_bta AS
            INNER JOIN
            view_mp_bta4 b ON c.induk = b.induk;		   
 		   
-CREATE VIEW view_mp_agm3 AS
+CREATE VIEW view_mp_agama3 AS
     SELECT id,
-           mp_agm.induk,
+           mp_agama.induk,
            data_siswa.nama,
            kdp1,
            kdp2,
@@ -486,13 +486,13 @@ CREATE VIEW view_mp_agm3 AS
                       tugas5 = 0) THEN 0 ELSE (kdp1 + kdp2 + kdp3 + kdp4 + kdp5 + tugas1 + tugas2 + tugas3 + tugas4 + tugas5) / (CASE WHEN KDP1 = 0 THEN 0 ELSE 1 END + CASE WHEN KDP2 = 0 THEN 0 ELSE 1 END + CASE WHEN KDP3 = 0 THEN 0 ELSE 1 END + CASE WHEN KDP4 = 0 THEN 0 ELSE 1 END + CASE WHEN KDP5 = 0 THEN 0 ELSE 1 END + CASE WHEN TUGAS1 = 0 THEN 0 ELSE 1 END + CASE WHEN TUGAS2 = 0 THEN 0 ELSE 1 END + CASE WHEN TUGAS3 = 0 THEN 0 ELSE 1 END + CASE WHEN TUGAS4 = 0 THEN 0 ELSE 1 END + CASE WHEN TUGAS5 = 0 THEN 0 ELSE 1 END) END AS Rerata,
            uts,
            uas
-      FROM mp_agm
+      FROM mp_agama
            INNER JOIN
-           data_siswa ON mp_agm.induk = data_siswa.induk;
+           data_siswa ON mp_agama.induk = data_siswa.induk;
 		   
-CREATE VIEW view_mp_agm4 AS
+CREATE VIEW view_mp_agama4 AS
     SELECT id,
-           mp_agm.induk,
+           mp_agama.induk,
            data_siswa.nama,
            kdk1,
            kdk2,
@@ -504,19 +504,19 @@ CREATE VIEW view_mp_agm4 AS
                       kdk3 = 0 AND 
                       kdk4 = 0 AND 
                       kdk5 = 0) THEN 0 ELSE (kdk1 + kdk2 + kdk3 + kdk4 + kdk5) / (CASE WHEN kdk1 = 0 THEN 0 ELSE 1 END + CASE WHEN kdk2 = 0 THEN 0 ELSE 1 END + CASE WHEN kdk3 = 0 THEN 0 ELSE 1 END + CASE WHEN kdk4 = 0 THEN 0 ELSE 1 END + CASE WHEN kdk5 = 0 THEN 0 ELSE 1 END) END AS Rerata
-      FROM mp_agm
+      FROM mp_agama
            INNER JOIN
-           data_siswa ON mp_agm.induk = data_siswa.induk;
+           data_siswa ON mp_agama.induk = data_siswa.induk;
 
-CREATE VIEW view_mp_agm AS
+CREATE VIEW view_mp_agama AS
     SELECT c.induk,
            ( (a.rerata * 0.6) + ( (a.uts + a.uas) * 0.4) / 2) AS nilai1,
            b.rerata AS nilai2
       FROM data_siswa c
            INNER JOIN
-           view_mp_agm3 a ON c.induk = a.induk
+           view_mp_agama3 a ON c.induk = a.induk
            INNER JOIN
-           view_mp_agm4 b ON c.induk = b.induk;		   
+           view_mp_agama4 b ON c.induk = b.induk;		   
 		   
 CREATE VIEW view_mp_pkn3 AS
     SELECT id,
