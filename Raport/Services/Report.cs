@@ -149,7 +149,7 @@ namespace Raport.Services
                 Constants.openFolder(@"\Data Siswa");
             }catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Data nilai masih belum lengkap!, Detail "+ ex.ToString());
             }
         }
         public static void createRaport(int i)

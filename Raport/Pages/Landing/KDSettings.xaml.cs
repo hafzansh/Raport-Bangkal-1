@@ -1,6 +1,7 @@
 ﻿using Raport.Helper;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -77,7 +78,56 @@ namespace Raport.Pages.Landing
             }
             else
             {
-                MessageBox.Show("it's working");
+                if (validate())
+                {
+                    try
+                    {
+                        SQLiteCommand command = Connection.sqlite.CreateCommand();
+                        command.CommandText = "UPDATE app_settings SET " +
+                            "kd_agm3 = @1, " +
+                            "kd_agm4 = @2,kd_pkn3 = @3," +
+                            "kd_pkn4 = @4,kd_bi3 = @5," +
+                            "kd_bi4 = @6,kd_mtk3 = @7," +
+                            "kd_mtk4 = @8,kd_ipa3 = @9," +
+                            "kd_ipa4 = @10,kd_ips3 = @11," +
+                            "kd_ips4 = @12,kd_sbdp3 = @13," +
+                            "kd_sbdp4 = @14,kd_pjok3 = @15," +
+                            "kd_pjok4 = @16,kd_bjr3 = @17," +
+                            "kd_bjr4 = @18,kd_bing3 = @19," +
+                            "kd_bing4 = @20,kd_bta3 = @21," +
+                            "kd_bta4 = @22 where id=1";
+                        command.Parameters.AddWithValue("@1", Database.kd_agm3);
+                        command.Parameters.AddWithValue("@2", Database.kd_agm4);
+                        command.Parameters.AddWithValue("@3", Database.kd_pkn3);
+                        command.Parameters.AddWithValue("@4", Database.kd_pkn4);
+                        command.Parameters.AddWithValue("@5", Database.kd_bi3);
+                        command.Parameters.AddWithValue("@6", Database.kd_bi4);
+                        command.Parameters.AddWithValue("@7", Database.kd_mtk3);
+                        command.Parameters.AddWithValue("@8", Database.kd_mtk4);
+                        command.Parameters.AddWithValue("@9", Database.kd_ipa3);
+                        command.Parameters.AddWithValue("@10", Database.kd_ipa4);
+                        command.Parameters.AddWithValue("@11", Database.kd_ips3);
+                        command.Parameters.AddWithValue("@12", Database.kd_ips4);
+                        command.Parameters.AddWithValue("@13", Database.kd_sbdp3);
+                        command.Parameters.AddWithValue("@14", Database.kd_sbdp4);
+                        command.Parameters.AddWithValue("@15", Database.kd_pjok3);
+                        command.Parameters.AddWithValue("@16", Database.kd_pjok4);
+                        command.Parameters.AddWithValue("@17", Database.kd_bjr3);
+                        command.Parameters.AddWithValue("@18", Database.kd_bjr4);
+                        command.Parameters.AddWithValue("@19", Database.kd_bing3);
+                        command.Parameters.AddWithValue("@20", Database.kd_bing4);
+                        command.Parameters.AddWithValue("@21", Database.kd_bta3);
+                        command.Parameters.AddWithValue("@22", Database.kd_bta4);
+                        Connection.sqlite.Open();
+                        command.ExecuteNonQuery();
+                        Connection.sqlite.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("pog" + ex);
+                    }
+                }
             }
             
         }
@@ -233,7 +283,7 @@ namespace Raport.Pages.Landing
                 Database.kd_sbdp3 = int.Parse(kd_sbdp3.Text);
                 Database.kd_sbdp4 = int.Parse(kd_sbdp4.Text);
                 Database.kd_pjok3 = int.Parse(kd_pjok3.Text);
-                Database.kd_pjok4 = int.Parse(kd_bta4.Text);
+                Database.kd_pjok4 = int.Parse(kd_pjok4.Text);
                 Database.kd_bjr3 = int.Parse(kd_bjr3.Text);
                 Database.kd_bjr4 = int.Parse(kd_bjr4.Text);
                 Database.kd_bing3 = int.Parse(kd_bing3.Text);

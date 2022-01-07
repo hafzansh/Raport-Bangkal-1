@@ -94,6 +94,7 @@ namespace Raport.Services
         }
         public static void CreateReport(bool val,DataTable dtnew)
         {
+            try { 
                 bool isPengetahuan = val;
                 PdfFont font = SetFont();
                 PdfFont bold = SetBold();
@@ -256,7 +257,11 @@ namespace Raport.Services
                 document.Add(nilaikd);
                 document.Close();
                 Constants.openFolder(@"\Data Siswa");
-        }
+        }catch (Exception ex)
+            {
+                MessageBox.Show("Data nilai masih belum lengkap!, Detail "+ ex.ToString());
+            }
+}
         private static decimal kdp(string target, DataTable tablenilai)
         {
             decimal kdp1 = tablenilai.Select().Where(p => p[target] != DBNull.Value && Convert.ToInt32(p[target]) > 0).Select(c => Convert.ToDecimal(c[target])).Average();
