@@ -2,6 +2,7 @@
 using iText.Kernel.Font;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Draw;
 using iText.Layout;
 using iText.Layout.Borders;
 using iText.Layout.Element;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using TextAlignment = iText.Layout.Properties.TextAlignment;
@@ -40,7 +42,7 @@ namespace Raport.Services
             bool exists = Directory.Exists(path);
             if (!exists)
                 Directory.CreateDirectory(path);
-            PdfWriter writer = new PdfWriter(path + @"\Data Siswa.pdf");
+            PdfWriter writer = new PdfWriter(path + @"\DATA SISWA.pdf");
             PdfDocument pdf = new PdfDocument(writer);
             pdf.SetDefaultPageSize(PageSize.A3.Rotate());
             Document document = new Document(pdf);
@@ -52,7 +54,8 @@ namespace Raport.Services
             header.Add(new Text("\nSD NEGERI 1 BANGKAL").SetFont(bold)).SetTextAlignment(TextAlignment.CENTER).SetFontSize(13);
             Paragraph title = new Paragraph("DATA SISWA").SetTextAlignment(TextAlignment.CENTER).SetFontSize(18).SetFont(bold);
             Table tables = new Table(UnitValue.CreatePercentArray(Constants.header_width));
-            tables.SetWidth(UnitValue.CreatePercentValue(100));
+            LineSeparator ls = new LineSeparator(new SolidLine());
+                tables.SetWidth(UnitValue.CreatePercentValue(100));
             //tables.SetFixedLayout();
             Paragraph newline = new Paragraph(new Text("\n"));            
             Paragraph semester = new Paragraph();
@@ -114,8 +117,15 @@ namespace Raport.Services
                     {
                             if (h == 3)
                             {
-                                DateTime date = System.Convert.ToDateTime(r[h]);
+                                DateTime date = DateTime.Parse(r[h].ToString(), CultureInfo.CreateSpecificCulture("en-US"));
+                            //DateTime date = Convert.ToDateTime(r[h]);
                                 Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.CENTER).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph(date.ToString("dd/MM/yyyy")));
+                                cells.SetHeight(40);
+                                tables.AddCell(cells);
+                            }
+                            else if (h==1)
+                            {
+                                Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph("         "+r[h].ToString()));
                                 cells.SetHeight(40);
                                 tables.AddCell(cells);
                             }
@@ -129,17 +139,17 @@ namespace Raport.Services
                     }
                 }
             }
-
+            tables.SetFontSize(10);
             document.Add(header);
+            document.Add(ls);
             document.Add(title);
             document.Add(head);
             document.Add(tables);
             document.Close();
                 Constants.openFolder(@"\Data Siswa");
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                MessageBox.Show("Data masih kosong");
+                MessageBox.Show(ex.ToString());
             }
         }
         public static void createRaport(int i)

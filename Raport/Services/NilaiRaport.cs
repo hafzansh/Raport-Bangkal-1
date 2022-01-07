@@ -17,6 +17,7 @@ namespace Raport.Services
         public static void print()
         {
             DataTable dt = new DataTable();
+            DataTable dtnew = new DataTable();
             DataTable dt2 = new DataTable();
             
             string script = File.ReadAllText(@"Scripts/sql1.sql");
@@ -39,6 +40,7 @@ namespace Raport.Services
             dt.Columns.Add("semester", typeof(string));
             dt.Columns.Add("kelas", typeof(string));
             dt.Columns.Add("jlh", typeof(string));
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 dt.Rows[i]["bta_3"] = dt2.Rows[i]["bta_3"];
@@ -77,6 +79,18 @@ namespace Raport.Services
                 dt.Columns.Add("pr_" + mapel[i] + "1");
                 dt.Columns.Add("pr_" + mapel[i] + "2");
             }
+            dt.Columns.Add("pramuka", typeof(string));
+            dt.Columns.Add("karate", typeof(string));
+            dt.Columns.Add("pmr", typeof(string));
+            dt.Columns.Add("tinggi", typeof(string));
+            dt.Columns.Add("berat_badan", typeof(string));
+            dt.Columns.Add("penglihatan", typeof(string));
+            dt.Columns.Add("pendengaran", typeof(string));
+            dt.Columns.Add("gigi", typeof(string));
+            dt.Columns.Add("lainnya", typeof(string));
+            dt.Columns.Add("s", typeof(string));
+            dt.Columns.Add("i", typeof(string));
+            dt.Columns.Add("a", typeof(string));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 string[] mapel_tt = { Constants.agm_title, Constants.pkn_title, Constants.bi_title, Constants.mtk_title, Constants.ipa_title, Constants.ips_title, Constants.sbdp_title, Constants.pjok_title, Constants.bjr_title, Constants.bing_title, Constants.bta_title };
@@ -90,6 +104,18 @@ namespace Raport.Services
                     dt.Rows[i]["nm"] = Database.wali_kelas;
                     dt.Rows[i]["nip"] = Database.nip_wali_kelas;
                     dt.Rows[i]["kelas"] = Database.kelas;
+                    dt.Rows[i]["pramuka"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["pramuka"].ToString();
+                    dt.Rows[i]["pmr"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["pmr"].ToString();
+                    dt.Rows[i]["karate"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["karate"].ToString();
+                    dt.Rows[i]["tinggi"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["tinggi"].ToString();
+                    dt.Rows[i]["berat_badan"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["berat_badan"].ToString();
+                    dt.Rows[i]["penglihatan"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["penglihatan"].ToString();
+                    dt.Rows[i]["pendengaran"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["pendengaran"].ToString();
+                    dt.Rows[i]["gigi"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["gigi"].ToString();
+                    dt.Rows[i]["lainnya"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["lainnya"].ToString();
+                    dt.Rows[i]["s"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["s"].ToString();
+                    dt.Rows[i]["i"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["i"].ToString();
+                    dt.Rows[i]["a"] = Connection.dataset.Tables[Constants.absen_title].Rows[i]["a"].ToString();
                     dt.Rows[i]["jlh"] = dt.Rows.Count;
                     dt.Rows[i]["KI1_1"] = Sikap(Connection.dataset.Tables[Constants.sikap_title].Rows[i]["sikap1"].ToString());
                     dt.Rows[i]["KI1_2"] = Sikap(Connection.dataset.Tables[Constants.sikap_title].Rows[i]["sikap2"].ToString());
@@ -112,8 +138,16 @@ namespace Raport.Services
                     
                 }
             }
-            
-                StringBuilder sb = new StringBuilder();
+            dt.Columns.Add("total", typeof(double), "agm_3+ pkn_3+ bi_3+ mtk_3+ ipa_3+ ips_3+ sbdp_3+ pjok_3+ bjr_3+ bing_3+ bta_3+agm_4+ pkn_4+ bi_4+ mtk_4+ ipa_4+ ips_4+ sbdp_4+ pjok_4+ bjr_4+ bing_4+ bta_4");
+            dt.Columns.Add("peringkat", typeof(double));
+            dt.DefaultView.Sort = "total DESC";
+            int rank = 1;
+            foreach (DataRowView dr in dt.DefaultView)
+            {
+                dr["peringkat"] = rank;
+                rank++;
+            }
+            StringBuilder sb = new StringBuilder();
 
             IEnumerable<string> columnNames = dt.Columns.Cast<DataColumn>().
                                               Select(column => column.ColumnName);
@@ -125,7 +159,7 @@ namespace Raport.Services
                 sb.AppendLine(string.Join(";", fields));
             }
 
-            File.WriteAllText("test.csv", sb.ToString());
+            File.WriteAllText(@"Templates\TempData.csv", sb.ToString());
         }
         private static string Sikap(string target)
         {

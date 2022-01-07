@@ -51,53 +51,58 @@
             </Grid>
         </Border>
         <Border Grid.Column="1" Margin="13" CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
-            <!--<Grid >
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <fa:FontAwesome VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="20,4,0,0" Icon="Book" FontSize="70" Foreground="{StaticResource SecundaryIconColor}"/>
-                <Label VerticalAlignment="Center" Grid.Column="1" Margin="0,3,15,0" Grid.Row="0" HorizontalAlignment="Right" Content="Cetak" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
-                <Label Grid.Column="1" Margin="0,-5,15,0" Grid.Row="1" HorizontalAlignment="Right" Content="Laporan" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
+                <TextBlock fas:Awesome.Inline=":recordvinyl:" VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="20,4,0,0" FontSize="70" Foreground="{StaticResource SecundaryIconColor}"/>
+                <Label VerticalAlignment="Center" Grid.Column="1" Margin="0,3,15,0" Grid.Row="0" HorizontalAlignment="Right" Content="Rekapitulasi" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
+                <Label Grid.Column="1" Margin="0,-5,15,0" Grid.Row="1" HorizontalAlignment="Right" Content="Nilai Siswa" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
                 <Border Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="0,0,5,5" BorderThickness="0,1,0,0" BorderBrush="Gray" Background="{DynamicResource PrimaryBlueColor}">
-                    <DockPanel>
-                        <Label Margin="15,5,15,0"  HorizontalAlignment="Left" Content="Menu Laporan" FontSize="20" FontWeight="Bold" Foreground="DimGray"/>
-                        --><!--<Label HorizontalAlignment="Right" Content=">" Margin="0,5,10,0" FontSize="20" FontWeight="Bold" Foreground="Gray"/>--><!--
-                        <Button HorizontalAlignment="Right" Margin="0,2,15,0" Style="{StaticResource IconButtonFA_Arrow}" Click="Button2_Click"/>
-                    </DockPanel>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Click="Button_rekap3" Height="35" Margin="20,0,45,0" Content="Rekap Pengetahuan" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
+                        <Button Grid.Column="1" Click="Button_rekap4" Height="35" Margin="20,0,50,0" Content="Rekap Keterampilan" Padding="10,8,10,10" Style="{StaticResource RoundedButtonStyle}"/>
+                    </Grid>
                 </Border>
-            </Grid>-->
-            <Button Click="Button_Click_2"/>
+            </Grid>
         </Border>
         <Border Grid.Column="2" Margin="13" CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
-            <!--<Grid >
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <fa:FontAwesome VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="20,4,0,0" Icon="Cogs" FontSize="70" Foreground="{StaticResource SecundaryIconColor}"/>
-                <Label VerticalAlignment="Center" Grid.Column="1" Margin="0,3,15,0" Grid.Row="0" HorizontalAlignment="Right" Content="Preferensi" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
-                <Label Grid.Column="1" Margin="0,-5,15,0" Grid.Row="1" HorizontalAlignment="Right" Content="Aplikasi" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
+                <TextBlock fas:Awesome.Inline=":print:" VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="20,4,0,0" FontSize="70" Foreground="{StaticResource SecundaryIconColor}"/>
+                <Label VerticalAlignment="Center" Grid.Column="1" Margin="0,3,15,0" Grid.Row="0" HorizontalAlignment="Right" Content="Cetak" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
+                <Label Grid.Column="1" Margin="0,-5,15,0" Grid.Row="1" HorizontalAlignment="Right" Content="Nilai Raport" FontSize="30" FontWeight="Bold" Foreground="{StaticResource SecundaryIconColor}"/>
                 <Border Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="0,0,5,5" BorderThickness="0,1,0,0" BorderBrush="Gray" Background="{DynamicResource PrimaryBlueColor}">
-                    <DockPanel>
-                        <Label Margin="15,5,15,0"  HorizontalAlignment="Left" Content="Pengaturan Raport" FontSize="20" FontWeight="Bold" Foreground="DimGray"/>
-                        --><!--<Label HorizontalAlignment="Right" Content=">" Margin="0,5,10,0" FontSize="20" FontWeight="Bold" Foreground="Gray"/>--><!--
-                        <Button HorizontalAlignment="Right" Margin="0,2,15,0" Style="{StaticResource IconButtonFA_Arrow}" Click="Button3_Click"/>
-                    </DockPanel>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Click="Button_Click_2" Height="35" Margin="20,0,45,0" Content="Cover Depan Raport" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
+                        <Button Grid.Column="1" Click="Button_Click_2" Height="35" Margin="20,0,50,0" Content="Nilai Raport" Padding="10,8,10,10" Style="{StaticResource RoundedButtonStyle}"/>
+                    </Grid>
                 </Border>
-            </Grid>-->
+            </Grid>
         </Border>
 
         <Border Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2"  Margin="13,3,13,0" CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">

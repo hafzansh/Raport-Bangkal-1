@@ -144,13 +144,72 @@ namespace Raport.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Report.CreateDasis(Connection.dataset.Tables[Constants.dasis_title]);
+            Modal.Spinner(progress =>
+            {
+                progress.Report("Loading");
+                Report.CreateDasis(Connection.dataset.Tables[Constants.dasis_title]);
+            });
             
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NilaiRaport.print();
+            try
+            {
+                Modal.Spinner(progress =>
+                {
+                    progress.Report("Loading");
+                    NilaiRaport.print();
+                    progress.Report("Loading");
+                    string strDataFilename = Environment.CurrentDirectory + @"\Templates\TempData.csv";
+                    Object strWordFilename = Environment.CurrentDirectory + @"\Templates\Raport.docx";
+                    Microsoft.Office.Interop.Word.Application _wordApp = new Microsoft.Office.Interop.Word.Application();
+                    Microsoft.Office.Interop.Word.Document oDoc = _wordApp.Documents.Add(strWordFilename);
+                    progress.Report("Loading");
+                    _wordApp.Visible = true;
+                    oDoc.MailMerge.MainDocumentType = Microsoft.Office.Interop.Word.WdMailMergeMainDocType.wdFormLetters;
+                    oDoc.MailMerge.OpenDataSource(strDataFilename);                    
+                    oDoc.MailMerge.Execute(true);                    
+                });
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
+        private void Button_rekap3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Modal.Spinner(progress =>
+                {
+                    progress.Report("Loading");
+                    RekapNilai.print(true);
+                    
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+        private void Button_rekap4(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Modal.Spinner(progress =>
+                {
+                    progress.Report("Loading");
+                    RekapNilai.print(false);
+
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

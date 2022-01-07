@@ -71,8 +71,8 @@ namespace Raport.Helper
                         "alamat TEXT, nama_ayah VARCHAR(30) default ' ', nama_ibu VARCHAR(30) default ' ', p_ayah VARCHAR(15) default ' ', p_ibu VARCHAR(15) default ' '," +
                         "pendidikan_sebelumnya VARCHAR(10) default ' ', kelurahan VARCHAR(15) default ' ', kecamatan VARCHAR(15) default ' ');";
         public static string absen_query = "CREATE TABLE data_absen (id INTEGER primary key autoincrement,induk INTEGER(8)  REFERENCES data_siswa(induk) ON DELETE NO ACTION " +
-            "ON UPDATE NO ACTION, pramuka     VARCHAR(5) default ' ',karate VARCHAR(5) default ' ',pmr VARCHAR(5) default ' ',tari VARCHAR(5) default ' ',tinggi VARCHAR(6) default ' '," +
-            "berat_badan VARCHAR(5) default ' ',pendengaran VARCHAR(10) default ' ',penglihatan VARCHAR(10) default ' ',gigi VARCHAR(10) default ' ',lainnya VARCHAR(10) default ' ',s INTEGER(2) default '0'," +
+            "ON UPDATE NO ACTION, pramuka     VARCHAR(5) default '-',karate VARCHAR(5) default '-',pmr VARCHAR(5) default '-',tari VARCHAR(5) default '-',tinggi VARCHAR(6) default '-'," +
+            "berat_badan VARCHAR(5) default '-',pendengaran VARCHAR(10) default '-',penglihatan VARCHAR(10) default '-',gigi VARCHAR(10) default '-',lainnya VARCHAR(10) default '-',s INTEGER(2) default '0'," +
             "i INTEGER(2) default '0',a INTEGER(2) default '0',FOREIGN KEY(induk) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE);";
         public static string sikap_query = "CREATE TABLE data_sikap (id INTEGER     PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE," +
             "sikap1 INTEGER(1) default '0',sikap2 INTEGER(1) default '0',sikap3 INTEGER(1) default '0',sikap4 INTEGER(1) default '0');";
