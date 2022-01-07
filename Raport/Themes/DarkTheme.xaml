@@ -24,5 +24,7 @@
     <SolidColorBrush x:Key="FourthIconColor" Color="#323B4B"/>
 
     <SolidColorBrush x:Key="btnClose" Color="#F72626"/>
+    <SolidColorBrush x:Key="ThirdIconColor" Color="#70a9a1"/>
+    
     
 </ResourceDictionary>

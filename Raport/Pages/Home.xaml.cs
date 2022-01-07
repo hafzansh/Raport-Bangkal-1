@@ -54,7 +54,7 @@ namespace Raport.Pages
             {
                 if (window.GetType() == typeof(Window1))
                 {
-                    (window as Window1).fContainer.Navigate(new Uri("Pages/Landing/UserSettings.xaml", UriKind.RelativeOrAbsolute));
+                    (window as Window1).fContainer.Navigate(new Uri("Pages/Landing/KKMSettings.xaml", UriKind.RelativeOrAbsolute));
                 }
             }
         }        

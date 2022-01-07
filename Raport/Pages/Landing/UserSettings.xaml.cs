@@ -26,27 +26,40 @@ namespace Raport.Pages.Landing
             checkValue();
             if (Constants.isLanding)
             {
-                back.Visibility = Visibility.Visible;
                 savenext.Content = "Selanjutnya";
                 page_title.Content = "Buat Raport Baru";
             }
             else
             {
-                back.Visibility = Visibility.Hidden;
                 savenext.Content = "Simpan";
                 page_title.Content = "Edit Pengaturan Raport";
             }
         }
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Window window in Application.Current.Windows)
+            if (Constants.isLanding)
             {
-                if (window.GetType() == typeof(AppSettings))
+                foreach (Window window in Application.Current.Windows)
                 {
-                    (window as AppSettings).settings_frame.Navigate(new Uri("Pages/Landing/WelcomeScreen.xaml", UriKind.RelativeOrAbsolute));
+
+                    if (window.GetType() == typeof(AppSettings))
+                    {
+                        (window as AppSettings).settings_frame.Navigate(new Uri("Pages/Landing/WelcomeScreen.xaml", UriKind.RelativeOrAbsolute));
+                    }
+
                 }
             }
-        }
+            else
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(Window1))
+                    {
+                        (window as Window1).fContainer.Navigate(new Uri("Pages/Landing/KKMSettings.xaml", UriKind.RelativeOrAbsolute));
+                    }
+                }
+            }
+        }        
             private void savenext_Click(object sender, RoutedEventArgs e)
         {
 

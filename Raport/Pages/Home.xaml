@@ -100,13 +100,13 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Induk" Width="45" Binding="{Binding induk}" IsReadOnly="True"/>
                     <DataGridTextColumn CellStyle="{StaticResource datagridS1Name}" Header="Nama" Width="*" Binding="{Binding nama}" IsReadOnly="True"/>
-                    <DataGridTemplateColumn Header="Cetak" Width="100"  IsReadOnly="True">
+                    <!--<DataGridTemplateColumn Header="Cetak" Width="100"  IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Click="Button2_Click" CommandParameter="{Binding ElementName=dg_home}">Cetak Raport</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

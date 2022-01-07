@@ -93,12 +93,19 @@ namespace Raport.Pages
 
         private void Report3(string kd,string nilai,string title,double kkm,int bagi)
         {
-            ReportKD3.CreateReport(Connection.dataset.Tables[kd], Connection.dataset.Tables[nilai], title, Database.semester, Database.kelas, Database.tahun, Database.wali_kelas, kkm,bagi);
+            Modal.Spinner(progress =>
+            {
+                progress.Report("Loading");
+                ReportKD3.CreateReport(Connection.dataset.Tables[kd], Connection.dataset.Tables[nilai], title, Database.semester, Database.kelas, Database.tahun, Database.wali_kelas, kkm, bagi);
+            });
         }
         private void Report4(string kd, string nilai, string title, double kkm,int bagi)
         {
-            ReportKD4.CreateReport(Connection.dataset.Tables[kd], Connection.dataset.Tables[nilai], title, Database.semester, Database.kelas, Database.tahun, Database.wali_kelas, kkm,bagi);
-            
+            Modal.Spinner(progress =>
+            {
+                progress.Report("Loading");
+                ReportKD4.CreateReport(Connection.dataset.Tables[kd], Connection.dataset.Tables[nilai], title, Database.semester, Database.kelas, Database.tahun, Database.wali_kelas, kkm, bagi);
+            });
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
