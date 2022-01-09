@@ -98,7 +98,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Click="Button_Click_2" Height="35" Margin="20,0,45,0" Content="Cover Depan Raport" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
+                        <Button Grid.Column="0" Click="Button_Click_5" Height="35" Margin="20,0,45,0" Content="Cover Depan Raport" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
                         <Button Grid.Column="1" Click="Button_Click_2" Height="35" Margin="20,0,50,0" Content="Nilai Raport" Padding="10,8,10,10" Style="{StaticResource RoundedButtonStyle}"/>
                     </Grid>
                 </Border>

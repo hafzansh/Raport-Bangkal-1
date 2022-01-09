@@ -35,10 +35,11 @@ namespace Raport.Services
         }
         public static void CreateReport(DataTable tablekd, DataTable tablenilai2, string mp, string smt, string kl, string th, string wl, double kk,int bagi)
         {
-            try { 
-            DataTable tablenilai = tablenilai2.Copy();
+            try
+            {
+                DataTable tablenilai = tablenilai2.Copy();
             tablenilai.Columns.Add("Rata", typeof(double), $"(kdp1+kdp2+kdp3+kdp4+kdp5+tugas1+tugas2+tugas3+tugas4+tugas5)/{bagi*2}").SetOrdinal(13);
-            tablenilai.Columns.Add("Total", typeof(double), "((Rata*0.6)+((uts+uas)*0.4))/2").SetOrdinal(16);
+            tablenilai.Columns.Add("Total", typeof(double), "(Rata*0.6)+((uts+uas)*0.4)/2").SetOrdinal(16);
             tablenilai.Columns.Add("Keterangan", typeof(string)).SetOrdinal(17);            
             for (int i = 0; i < tablenilai.Rows.Count; i++)
             {
@@ -249,7 +250,7 @@ namespace Raport.Services
             document.Add(nilaikd);
             document.Close();
                 Constants.openFolder(@"\Nilai KD3");
-            }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show("Data masih kosong");
@@ -257,7 +258,7 @@ namespace Raport.Services
 }
         private static decimal kdp(string target, DataTable tablenilai)
         {
-            decimal kdp1 = tablenilai.Select().Where(p => p[target] != DBNull.Value && Convert.ToInt32(p[target]) > 0).Select(c => Convert.ToDecimal(c[target])).Average();
+            decimal kdp1 = tablenilai.Select().Where(p => p[target] != DBNull.Value && Convert.ToInt32(p[target]) >= 0).Select(c => Convert.ToDecimal(c[target])).Average();
             return kdp1;
         }
     }

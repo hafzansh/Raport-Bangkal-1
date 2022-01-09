@@ -235,5 +235,23 @@ namespace Raport.Pages
                 ReportSikap.CreateReport();
             });
         }
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Modal.Spinner(progress =>
+            {
+                progress.Report("Loading");
+                ReportCover.CreateReport();
+                progress.Report("Loading");
+                string strDataFilename = Environment.CurrentDirectory + @"\Templates\TempDataCover.csv";
+                Object strWordFilename = Environment.CurrentDirectory + @"\Templates\RaportCover.docx";
+                Microsoft.Office.Interop.Word.Application _wordApp = new Microsoft.Office.Interop.Word.Application();
+                Microsoft.Office.Interop.Word.Document oDoc = _wordApp.Documents.Add(strWordFilename);
+                progress.Report("Loading");
+                _wordApp.Visible = true;
+                oDoc.MailMerge.MainDocumentType = Microsoft.Office.Interop.Word.WdMailMergeMainDocType.wdFormLetters;
+                oDoc.MailMerge.OpenDataSource(strDataFilename);
+                oDoc.MailMerge.Execute(true);
+            });
+        }
     }
 }

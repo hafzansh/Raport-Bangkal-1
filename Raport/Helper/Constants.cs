@@ -9,9 +9,9 @@ namespace Raport.Helper
 {
     public class Constants
     {
-        public static String[] header_title = {"Induk","Nama Siswa","Tempat Lahir","Tanggal Lahir","Jenis Kelamin","Agama","Alamat","Nama Ayah",
+        public static String[] header_title = {"No","Induk","Nama Siswa","Tempat Lahir","Tanggal Lahir","Jenis Kelamin","Agama","Alamat","Nama Ayah",
                                       "Nama Ibu","Pekerjaan Ayah","Pekerjaan Ibu","Pendidikan Sebelumnya","Kelurahan","Kecamatan"};
-        public static float[] header_width = { 1, 3, 2, 2, 2, 2, 3, 3, 3, 2, 2, 2, 2, 2 };
+        public static float[] header_width = { 1,1, 3, 2, 2, 2, 2, 3, 3, 3, 2, 2, 2, 2, 2 };
         public static int rowC = 0;
         public static string[] header_list = {
             "agm3","agm4",

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Data.SQLite;
 using Raport.Helper;
+using System.Windows;
 
 namespace Raport.Services
 {
@@ -14,8 +15,53 @@ namespace Raport.Services
     {
         public static SQLiteDataAdapter adapter = new SQLiteDataAdapter();
         public static SQLiteCommandBuilder commandBuilder;
+        private static DataSet dataset = new();
+        public static void tempData()
+        {
+            dataset.Clear();
+            KD("pkn3", "kd_pkn3", Database.kd_pkn3);
+            KD("mtk3", "kd_mtk3", Database.kd_mtk3);
+            KD("agm3", "kd_agm3", Database.kd_agm3);
+            KD("bi3", "kd_bi3", Database.kd_bi3);
+            KD("ipa3", "kd_ipa3", Database.kd_ipa3);
+            KD("ips3", "kd_ips3", Database.kd_ips3);
+            KD("sbdp3", "kd_sbdp3", Database.kd_sbdp3);
+            KD("pjok3", "kd_pjok3", Database.kd_pjok3);
+            KD("bjr3", "kd_bjr3", Database.kd_bjr3);
+            KD("bing3", "kd_bing3", Database.kd_bing3);
+            KD("bta3", "kd_bta3", Database.kd_bta3);
+
+            KD("pkn4", "kd_pkn4", Database.kd_pkn4);
+            KD("mtk4", "kd_mtk4", Database.kd_mtk4);
+            KD("agm4", "kd_agm4", Database.kd_agm4);
+            KD("bi4", "kd_bi4", Database.kd_bi4);
+            KD("ipa4", "kd_ipa4", Database.kd_ipa4);
+            KD("ips4", "kd_ips4", Database.kd_ips4);
+            KD("sbdp4", "kd_sbdp4", Database.kd_sbdp4);
+            KD("pjok4", "kd_pjok4", Database.kd_pjok4);
+            KD("bjr4", "kd_bjr4", Database.kd_bjr4);
+            KD("bing4", "kd_bing4", Database.kd_bing4);
+            KD("bta4", "kd_bta4", Database.kd_bta4);
+        }
+        private static void KD(String target, String tablename, int limit)
+        {
+            try
+            {
+                string query = "select id,kd," + target + " from kompetensi_dasar";
+                adapter.SelectCommand = new SQLiteCommand(query, Connection.sqlite);
+                commandBuilder = new SQLiteCommandBuilder(adapter);
+                adapter.Fill(dataset, tablename);
+
+            }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         public static void print()
         {
+            //try { 
+            tempData();
             DataTable dt = new DataTable();
             DataTable dtnew = new DataTable();
             DataTable dt2 = new DataTable();
@@ -126,16 +172,16 @@ namespace Raport.Services
                         if (k < 5)
                         {
                             dt.Rows[i]["kdes_" + mapel[j] + k] = deskripsi(Connection.dataset.Tables[mapel_tt[j]].Rows[i]["kdp" + (k + 1)].ToString());
-                            dt.Rows[i]["kdes_" + mapel[j] + (k+5)] = deskripsi(Connection.dataset.Tables[mapel_tt2[j]].Rows[i]["kdk" + (k + 1)].ToString());
-                            dt.Rows[i]["kd_" + mapel[j] + k] = Connection.dataset.Tables["kd_" + mapel[j] + "3"].Rows[k][mapel[j] + "3"].ToString();
-                            dt.Rows[i]["kd_" + mapel[j] + (k + 5)] = Connection.dataset.Tables["kd_" + mapel[j] + "4"].Rows[k][mapel[j] + "4"].ToString();
+                            dt.Rows[i]["kdes_" + mapel[j] + (k + 5)] = deskripsi(Connection.dataset.Tables[mapel_tt2[j]].Rows[i]["kdk" + (k + 1)].ToString());
+                            dt.Rows[i]["kd_" + mapel[j] + k] = dataset.Tables["kd_" + mapel[j] + "3"].Rows[k][mapel[j] + "3"].ToString();
+                            dt.Rows[i]["kd_" + mapel[j] + (k + 5)] = dataset.Tables["kd_" + mapel[j] + "4"].Rows[k][mapel[j] + "4"].ToString();
                         }
                         else
                         {
-                            
+
                         }
                     }
-                    
+
                 }
             }
             dt.Columns.Add("total", typeof(double), "agm_3+ pkn_3+ bi_3+ mtk_3+ ipa_3+ ips_3+ sbdp_3+ pjok_3+ bjr_3+ bing_3+ bta_3+agm_4+ pkn_4+ bi_4+ mtk_4+ ipa_4+ ips_4+ sbdp_4+ pjok_4+ bjr_4+ bing_4+ bta_4");
@@ -160,7 +206,12 @@ namespace Raport.Services
             }
 
             File.WriteAllText(@"Templates\TempData.csv", sb.ToString());
-        }
+        //}
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+}
         private static string Sikap(string target)
         {
             string result = "Sikap";

@@ -14,6 +14,9 @@
     <None Remove="Resources\save.svg" />
     <None Remove="Resources\sd_logo.png" />
     <None Remove="Resources\tut_logo.png" />
+    <None Remove="Scripts\create_view.sql" />
+    <None Remove="Templates\Raport.docx" />
+    <None Remove="Templates\RaportCover.docx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +44,15 @@
     <Content Include="Resources\tut_logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\create_view.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Raport.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\RaportCover.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -66,6 +78,15 @@
     <Compile Update="Helper\ModalUI\ProgressModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Scripts\sql1.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\sql2.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

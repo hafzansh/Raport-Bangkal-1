@@ -241,7 +241,7 @@ namespace Raport.Services
         }
         private static decimal kdp(string target, DataTable tablenilai)
         {
-            decimal kdp1 = tablenilai.Select().Where(p => p[target] != DBNull.Value && Convert.ToInt32(p[target]) > 0).Select(c => Convert.ToDecimal(c[target])).Average();
+            decimal kdp1 = tablenilai.Select().Where(p => p[target] != DBNull.Value && Convert.ToInt32(p[target]) >= 0).Select(c => Convert.ToDecimal(c[target])).Average();
             return kdp1;
         }
     }

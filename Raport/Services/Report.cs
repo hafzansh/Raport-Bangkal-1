@@ -33,9 +33,12 @@ namespace Raport.Services
         {
             return PdfFontFactory.CreateFont(@"C:\Windows\Fonts\timesbd.ttf");
         }
-        public static void CreateDasis(DataTable dt)
+        public static void CreateDasis(DataTable dtc)
         {
-            try { 
+            try {
+                DataTable dt = new();
+                dt.Clear();
+                dt = dtc.Copy();
             PdfFont font = SetFont();
             PdfFont bold = SetBold();
             string path = Constants.folderpath + Database.db_name + @"\Data Siswa";
@@ -104,7 +107,12 @@ namespace Raport.Services
             head.AddCell(cell21);
             head.AddCell(cell22);
             head.SetFontSize(16);
-            for (int h = 0; h < dt.Columns.Count; h++)
+                dt.Columns.Add("no", typeof(int)).SetOrdinal(0);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dt.Rows[i]["no"] = i + 1;
+                }
+                for (int h = 0; h < dt.Columns.Count; h++)
             {                    
                 Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.CENTER).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph(Constants.header_title[h]));
                 tables.AddHeaderCell(cells);
@@ -115,7 +123,7 @@ namespace Raport.Services
                 {
                     for (int h = 0; h < dt.Columns.Count; h++)
                     {
-                            if (h == 3)
+                            if (h == 4)
                             {
                                 DateTime date = DateTime.Parse(r[h].ToString(), CultureInfo.CreateSpecificCulture("en-US"));
                             //DateTime date = Convert.ToDateTime(r[h]);
@@ -123,7 +131,7 @@ namespace Raport.Services
                                 cells.SetHeight(40);
                                 tables.AddCell(cells);
                             }
-                            else if (h==1)
+                            else if (h==2)
                             {
                                 Cell cells = new Cell(1, 1).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE).Add(new Paragraph("         "+r[h].ToString()));
                                 cells.SetHeight(40);
@@ -144,6 +152,7 @@ namespace Raport.Services
             document.Add(ls);
             document.Add(title);
             document.Add(head);
+            document.Add(newline);
             document.Add(tables);
             document.Close();
                 Constants.openFolder(@"\Data Siswa");
