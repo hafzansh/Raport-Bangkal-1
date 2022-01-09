@@ -218,5 +218,22 @@ namespace Raport.Pages
             }
 
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Modal.Spinner(progress =>
+            {
+                progress.Report("Loading");
+                ReportAbsen.CreateReport();
+            });
+        }
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Modal.Spinner(progress =>
+            {
+                progress.Report("Loading");
+                ReportSikap.CreateReport();
+            });
+        }
     }
 }

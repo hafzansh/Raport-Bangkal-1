@@ -33,11 +33,11 @@
             <Label Grid.Row="1" Margin="2 10 0 10">Nama Wali Kelas</Label>
             <TextBox Name="wali_kelas" Style="{StaticResource SingleLineTextBox}" Grid.Row="1" Grid.Column="1" Height="20" Margin="0,5,0,10" />
             <Label Grid.Row="2" Margin="2 0 0 10">Nip. Wali Kelas</Label>
-            <TextBox Name="nip_wali_kelas" Style="{StaticResource SingleLineTextBox}" Grid.Row="2" Grid.Column="1" Height="20" Margin="0,0,0,15" />
+            <TextBox PreviewTextInput="validate" Name="nip_wali_kelas" Style="{StaticResource SingleLineTextBox}" Grid.Row="2" Grid.Column="1" Height="20" Margin="0,0,0,15" />
             <Label Grid.Row="4" Margin="2 0 0 10">Nama Kepala Sekolah</Label>
             <TextBox Name="kepala_sekolah" Style="{StaticResource SingleLineTextBox}" Grid.Row="4" Grid.Column="1" Height="20" Margin="0,0,0,15"  />
             <Label Grid.Row="5" Margin="2 0 0 10">Nip Kepala Sekolah</Label>
-            <TextBox Name="nip_kepala_sekolah" Style="{StaticResource SingleLineTextBox}" Grid.Row="5" Grid.Column="1" Height="20" Margin="0,0,0,15"  />
+            <TextBox PreviewTextInput="validate" Name="nip_kepala_sekolah" Style="{StaticResource SingleLineTextBox}" Grid.Row="5" Grid.Column="1" Height="20" Margin="0,0,0,15"  />
             <Label Grid.Row="6" Margin="2 0 0 10">Tahun Ajaran</Label>
             <ComboBox Name="tahun" Style="{StaticResource ComboBoxFlatStyle}" SelectedIndex="0" Grid.Row="6" Grid.Column="1" Height="20" Margin="0,0,0,15">
                 <ComboBoxItem Content="2021-2022"/>

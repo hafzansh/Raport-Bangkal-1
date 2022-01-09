@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -35,6 +36,12 @@ namespace Raport.Pages.Landing
                 page_title.Content = "Edit Pengaturan Raport";
             }
         }
+        
+        private void validate(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         private void back_Click(object sender, RoutedEventArgs e)
         {
             if (Constants.isLanding)
@@ -60,7 +67,7 @@ namespace Raport.Pages.Landing
                 }
             }
         }        
-            private void savenext_Click(object sender, RoutedEventArgs e)
+        private void savenext_Click(object sender, RoutedEventArgs e)
         {
 
             if (Constants.isLanding)

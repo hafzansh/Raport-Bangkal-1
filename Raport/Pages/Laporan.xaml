@@ -44,8 +44,8 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Click="Button_Click_1" Height="35" Margin="20,0,20,0" Content="Data Siswa" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
-                        <Button Grid.Column="1" Height="35" Margin="20,0,20,0" Content="Kehadiran" Padding="10,8,10,10" Style="{StaticResource RoundedButtonStyle}"/>
-                        <Button Grid.Column="2" Height="35" Margin="20,0,50,0" Content="Sikap" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
+                        <Button Grid.Column="1" Height="35" Margin="20,0,20,0" Content="Kehadiran" Padding="10,8,10,10" Style="{StaticResource RoundedButtonStyle}" Click="Button_Click_3"/>
+                        <Button Click="Button_Click_4" Grid.Column="2" Height="35" Margin="20,0,50,0" Content="Sikap" Padding="10,8,10,10"  Style="{StaticResource RoundedButtonStyle}"/>
                     </Grid>
                 </Border>
             </Grid>
