@@ -1,4 +1,5 @@
-﻿using iText.Kernel.Colors;
+﻿using iText.IO.Image;
+using iText.Kernel.Colors;
 using iText.Kernel.Font;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
@@ -55,6 +56,7 @@ namespace Raport.Services
                 .SetTextAlignment(TextAlignment.CENTER).SetFontSize(13)
                 .SetFont(font);
             header.Add(new Text("\nSD NEGERI 1 BANGKAL").SetFont(bold)).SetTextAlignment(TextAlignment.CENTER).SetFontSize(13);
+            
             Paragraph title = new Paragraph("DATA SISWA").SetTextAlignment(TextAlignment.CENTER).SetFontSize(18).SetFont(bold);
             Table tables = new Table(UnitValue.CreatePercentArray(Constants.header_width));
             LineSeparator ls = new LineSeparator(new SolidLine());
@@ -65,7 +67,9 @@ namespace Raport.Services
             Paragraph kelas = new Paragraph();
             Paragraph tahun = new Paragraph();            
             Paragraph wali = new Paragraph();
-            Table head = new Table(2, true);
+
+
+                Table head = new Table(2, true);
             wali.Add("Wali Kelas").SetFont(font);
             wali.Add(new Tab());
             wali.Add(new Text(": " + Database.wali_kelas).SetFont(bold));
@@ -147,8 +151,23 @@ namespace Raport.Services
                     }
                 }
             }
-            tables.SetFontSize(10);
-            document.Add(header);
+                
+                tables.SetFontSize(10);
+                header.Add(new Text("\nJln. Mistar Cokrukosumo Rt. 3 Rw. 1 Bangkal, Kecamatan Cempaka Kode Pos 70732").SetFont(font)).SetTextAlignment(TextAlignment.CENTER).SetFontSize(13);
+                header.Add(new Text("\nKota Banjarbaru Kalimantan Selatan").SetFont(font)).SetTextAlignment(TextAlignment.CENTER).SetFontSize(13);
+                string ImageFile = @"Resources\tut_logo_full.png";
+                string ImageFile2 = @"Resources\bjb_logo.png";
+                iText.IO.Image.ImageData data = iText.IO.Image.ImageDataFactory.Create(ImageFile);
+                iText.IO.Image.ImageData data2 = iText.IO.Image.ImageDataFactory.Create(ImageFile2);
+                Image img = new Image(data);
+                Image img2 = new Image(data2);
+                img2.SetFixedPosition(40, 725);
+                img.SetHeight(90);
+                img.SetFixedPosition(1070, 725);
+                img2.SetHeight(90);
+                document.Add(img);
+                document.Add(img2);
+                document.Add(header);
             document.Add(ls);
             document.Add(title);
             document.Add(head);

@@ -70,10 +70,10 @@ namespace Raport.Helper
                         "tempat_lahir VARCHAR(15) default ' ', tanggal_lahir VARCHAR(20) default '01/01/2000', jenis_kelamin VARCHAR(9) default ' ', agama VARCHAR(10) default ' '," +
                         "alamat TEXT, nama_ayah VARCHAR(30) default ' ', nama_ibu VARCHAR(30) default ' ', p_ayah VARCHAR(15) default ' ', p_ibu VARCHAR(15) default ' '," +
                         "pendidikan_sebelumnya VARCHAR(10) default ' ', kelurahan VARCHAR(15) default ' ', kecamatan VARCHAR(15) default ' ');";
-        public static string absen_query = "CREATE TABLE data_absen (id INTEGER primary key autoincrement,induk INTEGER(8)  REFERENCES data_siswa(induk) ON DELETE NO ACTION " +
-            "ON UPDATE NO ACTION, pramuka     VARCHAR(5) default '-',karate VARCHAR(5) default '-',pmr VARCHAR(5) default '-',tari VARCHAR(5) default '-',tinggi VARCHAR(6) default '-'," +
+        public static string absen_query = "CREATE TABLE data_absen (id INTEGER primary key autoincrement,induk INTEGER(8)  REFERENCES data_siswa(induk) ON DELETE CASCADE " +
+            "ON UPDATE CASCADE, pramuka     VARCHAR(5) default '-',karate VARCHAR(5) default '-',pmr VARCHAR(5) default '-',tari VARCHAR(5) default '-',tinggi VARCHAR(6) default '-'," +
             "berat_badan VARCHAR(5) default '-',pendengaran VARCHAR(10) default '-',penglihatan VARCHAR(10) default '-',gigi VARCHAR(10) default '-',lainnya VARCHAR(10) default '-',s INTEGER(2) default '0'," +
-            "i INTEGER(2) default '0',a INTEGER(2) default '0',FOREIGN KEY(induk) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE);";
+            "i INTEGER(2) default '0',a INTEGER(2) default '0');";
         public static string sikap_query = "CREATE TABLE data_sikap (id INTEGER     PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk) ON DELETE CASCADE ON UPDATE CASCADE," +
             "sikap1 INTEGER(1) default '0',sikap2 INTEGER(1) default '0',sikap3 INTEGER(1) default '0',sikap4 INTEGER(1) default '0');";
         public static string app_query = "CREATE TABLE app_settings (id INTEGER      PRIMARY KEY AUTOINCREMENT,wali_kelas VARCHAR(30)," +
@@ -82,7 +82,7 @@ namespace Raport.Helper
             "kd_mtk4 INT(2),kd_ipa3 INT(2),kd_ipa4 INT(2),kd_ips3 INT(2),kd_ips4 INT(2),kd_sbdp3 INT(2),kd_sbdp4 INT(2),kd_pjok3 INT(2)," +
             "kd_pjok4 INT(2),kd_bjr3 INT(2),kd_bjr4 INT(2),kd_bing3 INT(2),kd_bing4 INT(2),kd_bta3 INT(2),kd_bta4 INT(2)" +
             ",kkm_agm INT(2),kkm_pkn INT(2),kkm_bi INT(2),kkm_mtk INT(2),kkm_ipa INT(2),kkm_ips INT(2),kkm_sbdp INT(2),kkm_pjok INT(2),kkm_bjr INT(2)" +
-            ",kkm_bing INT(2),kkm_bta INT(2));";
+            ",kkm_bing INT(2),kkm_bta INT(2),password varchar(16));";
         public static string kd_query = "CREATE TABLE kompetensi_dasar (id INTEGER      PRIMARY KEY AUTOINCREMENT,kd VARCHAR(20),agm3 text default ' '," +
             "agm4  text default ' ',pkn3 text default ' ',pkn4  text default ' ',mtk3 text default ' ',mtk4  text default ' ',bi3 text default ' ',bi4   text default ' ',ips3 text default ' ',ips4  text default ' ',ipa3 text default ' ',ipa4  text default ' '," +
             "pjok3 text default ' ',pjok4 text default ' ',sbdp3 text default ' ',sbdp4 text default ' ',bjr3 text default ' ',bjr4  text default ' ',bing3 text default ' ',bing4 text default ' ',bta3 text default ' ',bta4  TEXT default ' ');";

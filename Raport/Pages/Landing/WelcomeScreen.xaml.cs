@@ -1,4 +1,5 @@
 ﻿using Raport.Helper;
+using Raport.Helper.ModalUI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -130,24 +131,14 @@ namespace Raport.Pages.Landing
                 Directory.CreateDirectory(Constants.folderpath);
 
             Process.Start("explorer.exe", Constants.folderpath);
+            
         }
 
         private void listFiles_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            FileName raport = (FileName)listFiles.SelectedItems[0];
-            Constants.isLanding = false;
-            Database.db_name = raport.Details;
-            Constants.dbName = Database.db_name;
-            Window window = new Window1();
-            window.WindowState = WindowState.Maximized;
-            window.Show();
-            foreach (Window current in Application.Current.Windows)
-            {
-                if (current.GetType() == typeof(AppSettings))
-                {
-                    (current as AppSettings).Hide();
-                }
-            }
+            FileName raport = (FileName)listFiles.SelectedItems[0];            
+            PasswordDialog pd = new PasswordDialog(raport.Details);
+            pd.ShowDialog();
 
         }
     }

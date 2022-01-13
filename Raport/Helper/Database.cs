@@ -17,6 +17,7 @@ namespace Raport.Helper
         public static string semester;
         public static string tahun;
         public static string kelas;
+        public static string pass;
         public static int kd_agm3;
         public static int kd_agm4;
         public static int kd_pkn3;
@@ -131,7 +132,7 @@ namespace Raport.Helper
             Database.wali_kelas + "' , '" + nip_wali_kelas + "' , '" + kepala_sekolah + "' , '" + nip_kepala_sekolah + "' , '" + semester + "' , '" + tahun + "' , '" +
             kelas + "'," + kd_agm3 + "," + kd_agm4 + "," + kd_pkn3 + "," + kd_pkn4 + "," + kd_bi3 + "," + kd_bi4 + "," + kd_mtk3 + "," +
             kd_mtk4 + "," + kd_ipa3 + "," + kd_ipa4 + "," + kd_ips3 + "," + kd_ips4 + "," + kd_sbdp3 + "," + kd_sbdp4 + "," + kd_pjok3 + "," +
-            kd_pjok4 + "," + kd_bjr3 + "," + kd_bjr4 + "," + kd_bing3 + "," + kd_bing4 + "," + kd_bta3 + "," + kd_bta4 + ",70,70,70,70,70,70,70,70,70,70,70)";
+            kd_pjok4 + "," + kd_bjr3 + "," + kd_bjr4 + "," + kd_bing3 + "," + kd_bing4 + "," + kd_bta3 + "," + kd_bta4 + ",70,70,70,70,70,70,70,70,70,70,70,"+pass+")";
             command.CommandText = query;
             command.ExecuteNonQuery();
         }
@@ -163,7 +164,7 @@ namespace Raport.Helper
         }
         public static string TableQuery(string title)
         {
-            string q = "CREATE TABLE " + title + " (id INTEGER PRIMARY KEY AUTOINCREMENT,induk VARCHAR(8) REFERENCES data_siswa(induk)" +
+            string q = "CREATE TABLE " + title + " (id INTEGER PRIMARY KEY AUTOINCREMENT,induk INTEGER(8) REFERENCES data_siswa(induk)" +
                 " ON DELETE CASCADE ON UPDATE CASCADE,uts double default (0), uas double default (0)); ";
 
             return q;

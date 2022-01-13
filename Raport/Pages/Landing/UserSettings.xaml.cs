@@ -101,7 +101,7 @@ namespace Raport.Pages.Landing
                                 command.CommandText = "UPDATE app_settings SET wali_kelas = @wali, " +
                                     "nip_wali_kelas = @nip_wali,kepala_sekolah = @kepsek," +
                                     "nip_kepala_sekolah = @nip_kepsek,semester = @smt," +
-                                    "tahun = @tahun,kelas = @kelas where id=1";
+                                    "tahun = @tahun,kelas = @kelas,password = @pass where id=1";
                                 command.Parameters.AddWithValue("@wali", Database.wali_kelas);
                                 command.Parameters.AddWithValue("@nip_wali", Database.nip_wali_kelas);
                                 command.Parameters.AddWithValue("@kepsek", Database.kepala_sekolah);
@@ -109,6 +109,7 @@ namespace Raport.Pages.Landing
                                 command.Parameters.AddWithValue("@smt", Database.semester);
                                 command.Parameters.AddWithValue("@tahun", Database.tahun);
                                 command.Parameters.AddWithValue("@kelas", Database.kelas);
+                                command.Parameters.AddWithValue("@pass", Database.pass);
                                 Connection.sqlite.Open();
                                 command.ExecuteNonQuery();
                                 Connection.sqlite.Close();
@@ -153,6 +154,12 @@ namespace Raport.Pages.Landing
                 nip_kepala_sekolah.Focus();
                 a = false;
             }
+            else if (passVisible.Text == "")
+            {
+                MessageBox.Show("Isi Password untuk Raport!");
+                passVisible.Focus();
+                a = false;
+            }
             else
             {
                 Database.wali_kelas = wali_kelas.Text;
@@ -162,6 +169,7 @@ namespace Raport.Pages.Landing
                 Database.tahun = tahun.Text;
                 Database.semester = semester.Text;
                 Database.kelas = kelas.Text;
+                Database.pass = passHidden.Password;
                 a = true;
             }
             return a;
@@ -196,6 +204,28 @@ namespace Raport.Pages.Landing
             if (Database.kelas != null)
             {
                 kelas.Text = Database.kelas;
+            }
+            if (Database.pass != null)
+            {
+                passHidden.Password = Database.pass;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (passVisible.Visibility == Visibility.Visible)
+            {
+                passVisible.Visibility = Visibility.Hidden;
+                passHidden.Visibility = Visibility.Visible;
+                passCB.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#323B4B"));
+
+            }
+            else
+            {
+                passVisible.Text = passHidden.Password;
+                passVisible.Visibility = Visibility.Visible;
+                passHidden.Visibility = Visibility.Hidden;
+                passCB.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
     }

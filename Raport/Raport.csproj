@@ -9,11 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\bjb_logo.png" />
     <None Remove="Resources\childrens.png" />
     <None Remove="Resources\logo.png" />
+    <None Remove="Resources\password.ttf" />
     <None Remove="Resources\save.svg" />
     <None Remove="Resources\sd_logo.png" />
     <None Remove="Resources\tut_logo.png" />
+    <None Remove="Resources\tut_logo_full.png" />
     <None Remove="Scripts\create_view.sql" />
     <None Remove="Templates\Raport.docx" />
     <None Remove="Templates\RaportCover.docx" />
@@ -44,6 +47,9 @@
     <Content Include="Resources\tut_logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\tut_logo_full.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\create_view.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -72,6 +78,13 @@
     <Content Include="Resources\sd_logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\bjb_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\password.ttf" />
   </ItemGroup>
 
   <ItemGroup>

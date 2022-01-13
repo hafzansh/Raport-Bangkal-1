@@ -144,7 +144,20 @@ namespace Raport.Services
                 }                
                 
                 nilaikd.SetFontSize(9);
-
+                header.Add(new Text("\nJln. Mistar Cokrukosumo Rt. 3 Rw. 1 Bangkal, Kec. Cempaka").SetFont(font)).SetTextAlignment(TextAlignment.CENTER).SetFontSize(13);
+                header.Add(new Text("\nKode Pos 70732 Kota Banjarbaru Kalimantan Selatan").SetFont(font)).SetTextAlignment(TextAlignment.CENTER).SetFontSize(13);
+                string ImageFile = @"Resources\tut_logo_full.png";
+                string ImageFile2 = @"Resources\bjb_logo.png";
+                iText.IO.Image.ImageData data = iText.IO.Image.ImageDataFactory.Create(ImageFile);
+                iText.IO.Image.ImageData data2 = iText.IO.Image.ImageDataFactory.Create(ImageFile2);
+                Image img = new Image(data);
+                Image img2 = new Image(data2);
+                img2.SetFixedPosition(35, 720);
+                img.SetHeight(90);
+                img.SetFixedPosition(470, 720);
+                img2.SetHeight(90);
+                document.Add(img);
+                document.Add(img2);
                 document.Add(header);
                 document.Add(ls);
                 document.Add(aspek);
